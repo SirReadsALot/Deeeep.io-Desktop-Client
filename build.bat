@@ -1,0 +1,1 @@
+call go build -o dist/chrome/dapp_cr.exe -ldflags -H=windowsgui src/chrome.go 
