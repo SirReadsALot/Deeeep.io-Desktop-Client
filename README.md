@@ -23,6 +23,8 @@ Run `!BUILD.cmd` to pack the client into a win-unpacked folder.
 
 Run `!BUILD_EXE.cmd` to release the exe file of the client.
 
+But before you do all of these, install NodeJS
+
 
 ## Contribution
 For contributing, ask SirReadsALot#3380 on Discord to get an invite to contribute to this repository!
