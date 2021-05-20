@@ -9,7 +9,7 @@ import (
 
 func main() {
 	ui, _ := lorca.New("data:text/html,"+url.PathEscape(`
-		<title>Deeeep.io Desktop App</title>
+		<title>Deeeep.io Desktop Client</title>
 		<style>*{padding: 0; margin: 0; overflow: hidden}</style>
 		<img id="img" src="https://tinyurl.com/m5a4d3vw"></img>
 	`), "", 887, 586)
