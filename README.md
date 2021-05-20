@@ -7,7 +7,7 @@ Welcome to the official repository of the Deeeep.io Desktop Client!
 
 ## What is this?
 
-The D.D.C(Deeeep.io Desktop Client) is a free & opensource desktop application made with ElectronJS for the hit io game called [Deeeep.io](https://deeeep.io).
+The D.D.C (Deeeep.io Desktop Client) is a free & opensource desktop application made with ElectronJS for the hit io game called [Deeeep.io](https://deeeep.io).
 
 It has features like a built-in asset swapper, built-in extension store and detailed DiscordRPC!
 
