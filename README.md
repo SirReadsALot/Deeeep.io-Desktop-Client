@@ -17,7 +17,7 @@ If you want to test this client(for developers who want to learn), you can insta
 
 on GitHub, and unzip it and put in a folder, and open it in any IDE and run any of these scripts in the IDE:
 
-Run `!INSTALL.cmd` to install all the node modules required to run the clinet
+Run `!INSTALL.cmd` to install all the node modules required to run the client
 
 Run `!BUILD.cmd` to pack the client into a win-unpacked folder.
 
