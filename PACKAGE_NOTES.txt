@@ -55,25 +55,25 @@ NSIS PORTABLE
    "build": {
       "productName": "Deeeep.io Desktop Client",
       "appId": "io.deeeep.desktop",
-      "compression":"normal",
+      "files": [
+         "package.json",
+         "splashIntro.html",
+         "deep.js",
+         "build/icon.ico",
+         "build/splashIntro_resized.png",
+         "installerIcon.ico"
+      ],
       "nsis": {
          "oneClick": false,
          "allowToChangeInstallationDirectory": true,
          "createDesktopShortcut": true,
          "installerIcon": "build/installerIcon.ico",
-         "uninstallerIcon":"build/installerIcon.ico",
+         "uninstallerIcon": "build/installerIcon.ico",
          "runAfterFinish": false
-      },
-      "mac": {
-         "category": "public.app-category.games"
-      },
-      "nsis": {
-         "artifactName": "Deeeep.io Desktop Client.exe"
       }
    },
    "dependencies": {
-      "discord-rpc": "^3.2.0",
-      "electron-updater": "^4.3.8"
+      "discord-rpc": "^3.2.0"
    },
    "devDependencies": {
       "electron": "^12.0.1"

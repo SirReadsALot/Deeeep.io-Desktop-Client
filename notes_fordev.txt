@@ -33,15 +33,3 @@ Contributors: SilverTheSnakebird, Theverycutefishy(soon), Quacc
 
 
 551x574 image assets needed for RPC
-
-
-
-       "win": {
-          "icon": "build/icon.ico",
-          "target": [
-             "portable"
-          ],
-          "executableName":"Deeeep.io Desktop Client",
-          "publisherName":"SirReadsALot",
-          "asar": true
-       }, FOR win

@@ -6,7 +6,7 @@
    "description": "The Deeeep.io Desktop Client",
    "main": "deep.js",
    "scripts": {
-      "start": "electron-builder .",
+      "start": "electron .",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
    },
@@ -19,7 +19,9 @@
          "deep.js",
          "build/icon.ico",
          "build/splashIntro_resized.png",
-         "installerIcon.ico"
+         "installerIcon.ico",
+         "exstore.html",
+         "assetswapper.html"
       ],
       "nsis": {
          "oneClick": false,
