@@ -1,19 +1,64 @@
 function createWindow() {
-  const { BrowserWindow } = require('electron')
+  const { BrowserWindow, Menu, ipcRenderer } = require('electron')
+  const { shell } = require('electron')
   var win = new BrowserWindow ({
     width: 1120,
     height: 712,
-    icon: 'assets/icons/win/icon.png',
+    icon: 'build/icon.ico',
     centre: true
   })
   // const { session } = require('electron')
   // session.loadExtension('C:\Users\login-user\AppData\Local\Google\Chrome\User Data\Default\Extensions\cmlbeiacmcbdiepcenjmhmkclmffbgbd')
   win.loadURL('https:/deeeep.io/')
   win.removeMenu()
-  // win.webContents.executeJavaScript(``);
+  // ipcRenderer.on('AddSkin', () => {
+  //       win.webContents.executeJavaScript( AddSkin() )
+  // }
+  var menu = Menu.buildFromTemplate([
+    {
+        label: 'Asset-Swapper',
+        click() {
+        loadAssetSwapper()
+        }
+    },
+    {
+        label: 'Extension Store',
+        click() {
+          loadExtensionStore()
+        }
+    },
+    {
+        label: "Report a Bug",
+        click() {
+          shell.openExternal('https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues')
+        }
+    }
+])
+
+function loadExtensionStore() {
+  console.log("TROLLLED LMAO")
+}
+function loadAssetSwapper() {
+  const { BrowserWindow } = require('electron');
+  var assetSwapper = new BrowserWindow({
+    title: "D.D.C Asset-Swapper",
+    width: 700,
+    height: 600,
+    icon: 'build/icon.ico',
+    centre: true,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+  assetSwapper.loadURL(`file://${__dirname}/assetswapper.html`)
+  assetSwapper.setMenu(null)
+  assetSwapper.webContents.send('AddSkin')
+}
+Menu.setApplicationMenu(menu); 
   win.on('close', function () {
     win.destroy()
-  });
+  })
 }
 
 var splashIntro = () => {
@@ -21,7 +66,6 @@ var splashIntro = () => {
    var splashWindow = new BrowserWindow({
      width: 1130,
      height: 760,
-     icon: './assets/icon.png',
      center: true,
      skipTaskbar: true,
      resizable: false,
@@ -49,12 +93,6 @@ app.once('ready', function () {
   // createWindow()
 })
 
-
-const { autoUpdater } = require("electron-updater");
-const server = "https://deeeep-io-desktop-app.vercel.app/";
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
-autoUpdater.setFeedURL(feed);
-
 const RPC = require('discord-rpc');
 const rpc = new RPC.Client({
   transport:"ipc"
@@ -71,7 +109,7 @@ rpc.on('ready', () => {
 })
 
 rpc.login({
-  clientId: 'insert-clientID'
+  clientId: 'insert-id'
 })
 
 // const gameMode = document.getElementsByClassName('.name')[1];
@@ -92,6 +130,6 @@ rpc.login({
 //   })
 
 //   rpc.login({
-//     clientId: 'insert-clientID'
+//     clientId: 'insert-id'
 //   })
 // }

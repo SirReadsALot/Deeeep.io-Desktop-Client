@@ -29,7 +29,9 @@ then in package.json:
 }
 
 Owner: SirReadsALot
-Contributors: SilverTheSnakebird, Theverycutefishy(soon), Quacc
+Contributors: SilverTheSnakebird, 
+Theverycutefishy(soon), Quacc, chepic9990, 
+Yamac
 
 
 551x574 image assets needed for RPC

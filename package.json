@@ -1,17 +1,17 @@
 {
    "name": "deeeep.io",
    "productName": "Deeeep.io Desktop App",
-   "version": "1.5.6",
+   "version": "1.5.7",
    "author": "SirReadsALot",
    "description": "The Deeeep.io Desktop Client",
    "main": "deep.js",
    "scripts": {
-      "start": "electron .",
+      "start": "electron-builder .",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
    },
    "build": {
-      "productName": "Deeeep.io Desktop Client",
+      "productName": "Deeeep.io_Desktop_Client",
       "appId": "io.deeeep.desktop",
       "files": [
          "package.json",
