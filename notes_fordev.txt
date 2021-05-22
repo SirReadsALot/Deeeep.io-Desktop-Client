@@ -4,10 +4,10 @@ npm install electron-packager --save-dev -g,
 then in package.json:
 {
     "name": "deeeep.io",
-    "productName": "Deeeep.io Desktop App",
+    "productName": "Deeeep.io_Desktop_App",
     "version": "1.5.3",
     "author": "SirReadsALot",
-    "description": "The Deeeep.io Desktop Client",
+    "description": "The_Deeeep.io_Desktop_Client",
     "main": "deep.js",
     "scripts": {
         "start": "electron-packager .",
