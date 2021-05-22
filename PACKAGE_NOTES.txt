@@ -1,6 +1,6 @@
 FOR ELECTRON-BUILDER
 
-WIN PORTABLE
+MAC PORTABLE
 {
    "name": "deeeep.io",
    "productName": "Deeeep.io Desktop App",
@@ -16,18 +16,11 @@ WIN PORTABLE
    "build": {
       "productName": "Deeeep.io Desktop Client",
       "appId": "io.deeeep.desktop",
-      "compression":"normal",
-      "win": {
-         "icon": "build/icon.ico",
-         "target": [
-            "portable"
-         ]
-      },
       "mac": {
          "category": "public.app-category.games"
       },
       "portable": {
-         "artifactName": "Deeeep.io Desktop Client.exe"
+         "artifactName": "Deeeep.io_Desktop_Client.exe"
       }
    },
    "dependencies": {
@@ -42,10 +35,10 @@ WIN PORTABLE
 NSIS PORTABLE
 {
    "name": "deeeep.io",
-   "productName": "Deeeep.io Desktop App",
+   "productName": "Deeeep.io_Desktop_App",
    "version": "1.5.3",
    "author": "SirReadsALot",
-   "description": "The Deeeep.io Desktop Client",
+   "description": "The Deeeep.io_Desktop_Client",
    "main": "deep.js",
    "scripts": {
       "start": "electron-builder .",
@@ -53,7 +46,7 @@ NSIS PORTABLE
       "dist": "electron-builder"
    },
    "build": {
-      "productName": "Deeeep.io Desktop Client",
+      "productName": "Deeeep.io_Desktop_Client",
       "appId": "io.deeeep.desktop",
       "files": [
          "package.json",
@@ -79,3 +72,6 @@ NSIS PORTABLE
       "electron": "^12.0.1"
    }
 }
+
+
+THIS IS OUTDATED, DON'T REFER
