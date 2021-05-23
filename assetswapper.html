@@ -14,6 +14,11 @@
         <label class="skin-label" for="skinID">Enter SkinID: </label>
         <input class="skin-input" type="text" placeholder="Enter SkinID">
         <button onlick="AddSkin()" class="find-btn">Add</button>
+        <br>
+        <label class="animal-label" for="animalID">Enter AnimalID: </label>
+        <input class="skin-input" type="text" placeholder="Enter AnimalID">
+        <button onlick="AddSkin()" class="find-btn">Add</button>
+        <a href="https://sralcodeproj.netlify.app/animalid" target="_blank">See All AnimalID's</a>
       </div>
       <div class="package-div">
 				<div class="skin-pack">
@@ -82,8 +87,11 @@
     	  function AddSkin() {
           console.log("TEST TEST TEST")
       		const inputValue = document.getElementByClassName("skin-input")[0].value;
+          const AnimalID = document.getElementsByClassName("")[0].value;
         	const skinStuff={"level":0, "id":inputValue};
           
+          window.webcontents.execute
+
           function skin(fishLevel,skinId){
             const shortened=game.currentScene.myAnimal;
             try{
@@ -101,5 +109,7 @@
           }
           setInterval(skin,1000,skinStuff.level,skinStuff.id)
       	}
+
+        ipc.send("add-skin", inputValue)
     </script>
   </body>

@@ -1,5 +1,6 @@
 function createWindow() {
-  const { BrowserWindow, Menu, ipcRenderer } = require('electron')
+  const { BrowserWindow, Menu } = require('electron')
+  const ipcRenderer = require('electron').ipcRenderer
   const { shell } = require('electron')
   var win = new BrowserWindow ({
     width: 1120,
@@ -7,13 +8,31 @@ function createWindow() {
     icon: 'build/icon.ico',
     centre: true
   })
-  // const { session } = require('electron')
-  // session.loadExtension('C:\Users\login-user\AppData\Local\Google\Chrome\User Data\Default\Extensions\cmlbeiacmcbdiepcenjmhmkclmffbgbd')
   win.loadURL('https:/deeeep.io/')
   win.removeMenu()
-  // ipcRenderer.on('AddSkin', () => {
-  //       win.webContents.executeJavaScript( AddSkin() )
-  // }
+  // 6270 GGEZ skin
+  // win.webContents.openDevTools()
+  // ipcRenderer.on("add-skins", () => {
+  //   win.webContents.executeJavaScript(`
+  //     const skinStuff={"level":AnimalID, "id":inputValue};
+          
+  //     function skin(fishLevel,skinId){
+  //     const shortened=game.currentScene.myAnimal;
+  //     try{
+  //       const test=true;
+  //         if(shortened.skin) {
+  //           if(shortened.skin.id==skinId)	{
+  //             test=false
+  //           }
+  //       }
+  //       if(shortened.visibleFishLevel==fishLevel&&test) {
+  //         game.currentScene.myAnimal.setSkin(skinId)
+  //       }
+  //         }catch(e){
+  //       }
+  //   }
+  //   setInterval(skin,1000,skinStuff.level,skinStuff.id)
+  // `)})
   var menu = Menu.buildFromTemplate([
     {
         label: 'Asset-Swapper',
@@ -39,6 +58,7 @@ function loadExtensionStore() {
   console.log("TROLLLED LMAO")
 }
 function loadAssetSwapper() {
+  const ipc = require('electron').ipcMain
   const { BrowserWindow } = require('electron');
   var assetSwapper = new BrowserWindow({
     title: "D.D.C Asset-Swapper",
@@ -53,7 +73,7 @@ function loadAssetSwapper() {
   })
   assetSwapper.loadURL(`file://${__dirname}/assetswapper.html`)
   assetSwapper.setMenu(null)
-  assetSwapper.webContents.send('AddSkin')
+  // ipc.send("add-skin", document.getElementsByClassName("skin-input")[0].value)
 }
 Menu.setApplicationMenu(menu); 
   win.on('close', function () {
@@ -109,7 +129,7 @@ rpc.on('ready', () => {
 })
 
 rpc.login({
-  clientId: 'insert-id'
+  clientId: ''
 })
 
 // const gameMode = document.getElementsByClassName('.name')[1];
@@ -130,6 +150,6 @@ rpc.login({
 //   })
 
 //   rpc.login({
-//     clientId: 'insert-id'
+//     clientId: ''
 //   })
 // }
