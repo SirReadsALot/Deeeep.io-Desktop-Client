@@ -1,0 +1,23 @@
+directories:
+  output: dist
+  buildResources: build
+productName: Deeeep.io_Desktop_Client
+appId: io.deeeep.desktop
+compression: normal
+files:
+  - filter:
+      - package.json
+      - splashIntro.html
+      - deep.js
+      - build/icon.ico
+      - build/splashIntro_resized.png
+      - build/installerIcon.ico
+      - assetswapper.html
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  installerIcon: build/installerIcon.ico
+  uninstallerIcon: build/installerIcon.ico
+  runAfterFinish: false
+electronVersion: 12.0.1
