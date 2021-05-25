@@ -1,6 +1,6 @@
 {
    "name": "deeeep.io",
-   "productName": "Deeeep.io Desktop App",
+   "productName": "Deeeep.io_Desktop_App",
    "version": "1.5.7",
    "author": "SirReadsALot",
    "description": "The Deeeep.io Desktop Client",
@@ -13,14 +13,14 @@
    "build": {
       "productName": "Deeeep.io_Desktop_Client",
       "appId": "io.deeeep.desktop",
+      "compression": "normal",
       "files": [
          "package.json",
          "splashIntro.html",
          "deep.js",
          "build/icon.ico",
          "build/splashIntro_resized.png",
-         "installerIcon.ico",
-         "exstore.html",
+         "build/installerIcon.ico",
          "assetswapper.html"
       ],
       "nsis": {
@@ -33,7 +33,8 @@
       }
    },
    "dependencies": {
-      "discord-rpc": "^3.2.0"
+      "discord-rpc": "^3.2.0",
+      "electron-updater": "^4.3.9"
    },
    "devDependencies": {
       "electron": "^12.0.1"

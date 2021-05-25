@@ -16,7 +16,7 @@
         <button onlick="AddSkin()" class="find-btn">Add</button>
         <br>
         <label class="animal-label" for="animalID">Enter AnimalID: </label>
-        <input class="skin-input" type="text" placeholder="Enter AnimalID">
+        <input class="animalID-input" type="text" placeholder="Enter AnimalID">
         <button onlick="AddSkin()" class="find-btn">Add</button>
         <a href="https://sralcodeproj.netlify.app/animalid" target="_blank">See All AnimalID's</a>
       </div>
@@ -72,6 +72,13 @@
         border: 1px solid #999;
         border-radius: .25rem;
       }
+      .animalID-input {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: .375rem;
+        border: 1px solid #999;
+        border-radius: .25rem;
+      }
       .package-div {
       	background-color: #ececec;
         margin: 20px;
@@ -87,8 +94,10 @@
     	  function AddSkin() {
           console.log("TEST TEST TEST")
       		const inputValue = document.getElementByClassName("skin-input")[0].value;
-          const AnimalID = document.getElementsByClassName("")[0].value;
-        	const skinStuff={"level":0, "id":inputValue};
+          const AnimalID = document.getElementsByClassName("animalID-input")[0].value;
+          console.log(inputValue, AnimalID)
+          
+        	const skinStuff={"level":AnimalID, "id":inputValue};
           
           window.webcontents.execute
 
@@ -109,7 +118,6 @@
           }
           setInterval(skin,1000,skinStuff.level,skinStuff.id)
       	}
-
-        ipc.send("add-skin", inputValue)
     </script>
   </body>
+</html>
