@@ -1,6 +1,5 @@
 function createWindow() {
-  const { BrowserWindow, Menu } = require('electron')
-  const ipcRenderer = require('electron').ipcRenderer
+  const { BrowserWindow, Menu, ipcRenderer } = require('electron')
   const { shell } = require('electron')
   var win = new BrowserWindow ({
     width: 1120,
@@ -8,32 +7,20 @@ function createWindow() {
     icon: 'build/icon.ico',
     centre: true
   })
+  // const { session } = require('electron')
+  // session.loadExtension('C:\Users\login-user\AppData\Local\Google\Chrome\User Data\Default\Extensions\cmlbeiacmcbdiepcenjmhmkclmffbgbd')
   win.loadURL('https:/deeeep.io/')
   win.removeMenu()
-  // 6270 GGEZ skin
-  // win.webContents.openDevTools()
-  // ipcRenderer.on("add-skins", () => {
-  //   win.webContents.executeJavaScript(`
-  //     const skinStuff={"level":AnimalID, "id":inputValue};
-          
-  //     function skin(fishLevel,skinId){
-  //     const shortened=game.currentScene.myAnimal;
-  //     try{
-  //       const test=true;
-  //         if(shortened.skin) {
-  //           if(shortened.skin.id==skinId)	{
-  //             test=false
-  //           }
-  //       }
-  //       if(shortened.visibleFishLevel==fishLevel&&test) {
-  //         game.currentScene.myAnimal.setSkin(skinId)
-  //       }
-  //         }catch(e){
-  //       }
-  //   }
-  //   setInterval(skin,1000,skinStuff.level,skinStuff.id)
-  // `)})
+  // ipcRenderer.on('AddSkin', () => {
+  //       win.webContents.executeJavaScript( AddSkin() )
+  // }
   var menu = Menu.buildFromTemplate([
+    {
+      label:'Settings',
+      click() {
+        loadSettings()
+      }
+    },
     {
         label: 'Asset-Swapper',
         click() {
@@ -54,11 +41,13 @@ function createWindow() {
     }
 ])
 
+function loadSettings() {
+  console.log("tol")
+}
 function loadExtensionStore() {
   console.log("TROLLLED LMAO")
 }
 function loadAssetSwapper() {
-  const ipc = require('electron').ipcMain
   const { BrowserWindow } = require('electron');
   var assetSwapper = new BrowserWindow({
     title: "D.D.C Asset-Swapper",
@@ -73,12 +62,22 @@ function loadAssetSwapper() {
   })
   assetSwapper.loadURL(`file://${__dirname}/assetswapper.html`)
   assetSwapper.setMenu(null)
-  // ipc.send("add-skin", document.getElementsByClassName("skin-input")[0].value)
+  assetSwapper.webContents.send('AddSkin')
 }
 Menu.setApplicationMenu(menu); 
   win.on('close', function () {
     win.destroy()
   })
+}
+
+const { Notification } = require('electron')
+function showNotification() {
+  const notification = {
+    title: "D.D.C Alert",
+    body: "The Deeeep.io Desktop Client has been launched!",
+    icon: "./build/icon.ico"
+  }
+  new Notification(notification).show()
 }
 
 var splashIntro = () => {
@@ -109,8 +108,8 @@ var splashIntro = () => {
 const { app } = require('electron')
 app.userAgentFallback = "Chrome";
 app.once('ready', function () {
-  splashIntro()
-  // createWindow()
+  splashIntro(),
+  showNotification()
 })
 
 const RPC = require('discord-rpc');
@@ -129,8 +128,33 @@ rpc.on('ready', () => {
 })
 
 rpc.login({
-  clientId: ''
+  clientId: '817817065862725682'
 })
+import { NsisUpdater } from "electron-updater"
+// Or MacUpdater
+
+export default class AppUpdater {
+    constructor() {
+        const options = {
+            requestHeaders: {
+                // Any request headers to include here
+                Authorization: 'Basic AUTH_CREDS_VALUE'
+            },
+            provider: 'GitHub',
+            url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/downloads'
+        }
+
+        const autoUpdater = new NsisUpdater(options)
+        autoUpdater.checkForUpdatesAndNotify()
+    }
+}
+
+if (process.platform === "win32") {
+  autoUpdater = new NsisUpdater(options)
+}
+else if (process.platform === "darwin") {
+  autoUpdater = new MacUpdater(options)
+}
 
 // const gameMode = document.getElementsByClassName('.name')[1];
 // if (gameMode.value) {
@@ -150,6 +174,6 @@ rpc.login({
 //   })
 
 //   rpc.login({
-//     clientId: ''
+//     clientId: '817817065862725682'
 //   })
 // }
