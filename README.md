@@ -1,5 +1,5 @@
 # Deeeep.io-Desktop-Client
-![Logo](/build/set.png)
+![Logo](/build/Logo_182x187.png)
 
 
 Welcome to the official repository of the Deeeep.io Desktop Client!
