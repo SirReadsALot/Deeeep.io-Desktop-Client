@@ -1,6 +1,6 @@
 # Deeeep.io Desktop Client - GoLang Edition
 
-![logo_go](/build/Logo_182x187.png)
+![logo_go](assets/Logo_182x187.png)
 
 Experimental GoLang port using webview
 
