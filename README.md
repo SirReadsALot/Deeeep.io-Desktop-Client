@@ -1,36 +1,61 @@
-# Deeeep.io-Desktop-Client
-![Logo](/build/Logo_182x187.png)
+<p align="center">
+  <img src="./build/Logo_182x187.png">
+</p>
 
+# Deeeep.io-Desktop-Client
+
+> **NOTE** Currently the client is in beta, so some stuff will not be implemented yet
 
 Welcome to the official repository of the Deeeep.io Desktop Client!
-> Currently the client is in beta, so some stuff will not be implemented yet
 
-## What is this?
-
-The D.D.C (Deeeep.io Desktop Client) is a free & opensource desktop application made with ElectronJS for the hit io game called [Deeeep.io](https://deeeep.io).
+The Deeeep.io Desktop Client is a free and open sourced desktop application made with [NodeJS](https://nodejs.org/en/) and [ElectronJS](https://www.electronjs.org/) for the hit io game called [Deeeep.io](https://deeeep.io).
 
 It has features like a built-in asset swapper, built-in extension store, detailed DiscordRPC and more!
 
+## Supported Platforms
 
-## Testing
-If you want to test this client(for developers who want to learn), you can install the entire thing in a zipped format
+| Version | Platform | Version     | 
+| ------- | -------- | ----------- |
+| v0.5.7  | Windows  | Coming Soon | 
+| v0.7    | MacOS    | Coming Soon |
 
-on GitHub, and unzip it and put in a folder, and open it in any IDE and run any of these scripts in the IDE:
+## Installation
 
-Run `!INSTALL.cmd` to install all the node modules required to run the client
+This application requires NodeJS.
 
-Run `!BUILD.cmd` to pack the client into a win-unpacked folder.
+To download this repository:
 
-Run `!BUILD_EXE.cmd` to release the exe file of the client.
+```
+git clone https://github.com/SirReadsALot/Deeeep.io-Desktop-Client.git
+cd Deeeep.io-Desktop-Client
+```
 
-But before you do all of these, install NodeJS
+To install the required node modules and environment, run the command:
 
+```
+npm install
+```
 
-## Contribution
-For contributing, ask SirReadsALot#3380 on Discord to get an invite to contribute to this repository!
+To build an unpacked client, run the command:
 
-And you can join the official support server at this website: https://sralcodeproj.netlify.app/deeeep.io_desktop_client
+```
+npm run pack
+```
 
+To build a release client, run the command:
+
+```
+npm run dist
+```
+
+## Contributing
+
+To gain access to this repository, contact `SirReadsALot#3380` on Discord.
+
+You are also welcome to submit a pull request or issue at any time.
+
+Join our [Discord server](https://discord.gg/hpX9DZxyUC) or check our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
 
 ## License
+
 The Deeeep.io Desktop Client is licensed under the MIT license.
