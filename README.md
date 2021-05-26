@@ -14,10 +14,10 @@ It has features like a built-in asset swapper, built-in extension store, detaile
 
 ## Supported Platforms
 
-| Version | Platform | Version     | 
+| Version | Platform | Availability| 
 | ------- | -------- | ----------- |
-| v0.5.7  | Windows  | Coming Soon | 
-| v0.7    | MacOS    | Coming Soon |
+| v5.7    | Windows  | Yes | 
+| v5.7    | MacOS    | Coming Soon |
 
 ## Installation
 
