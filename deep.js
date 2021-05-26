@@ -5,7 +5,10 @@ function createWindow() {
     width: 1120,
     height: 712,
     icon: 'build/icon.ico',
-    centre: true
+    centre: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   // const { session } = require('electron')
   // session.loadExtension('C:\Users\login-user\AppData\Local\Google\Chrome\User Data\Default\Extensions\cmlbeiacmcbdiepcenjmhmkclmffbgbd')
@@ -130,31 +133,31 @@ rpc.on('ready', () => {
 rpc.login({
   clientId: '817817065862725682'
 })
-import { NsisUpdater } from "electron-updater"
+// import { NsisUpdater } from "electron-updater"
 // Or MacUpdater
 
-export default class AppUpdater {
-    constructor() {
-        const options = {
-            requestHeaders: {
-                // Any request headers to include here
-                Authorization: 'Basic AUTH_CREDS_VALUE'
-            },
-            provider: 'GitHub',
-            url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/downloads'
-        }
+// export default class AppUpdater {
+//     constructor() {
+//         const options = {
+//             requestHeaders: {
+//                 // Any request headers to include here
+//                 Authorization: 'Basic AUTH_CREDS_VALUE'
+//             },
+//             provider: 'GitHub',
+//             url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/downloads'
+//         }
 
-        const autoUpdater = new NsisUpdater(options)
-        autoUpdater.checkForUpdatesAndNotify()
-    }
-}
+//         const autoUpdater = new NsisUpdater(options)
+//         autoUpdater.checkForUpdatesAndNotify()
+//     }
+// }
 
-if (process.platform === "win32") {
-  autoUpdater = new NsisUpdater(options)
-}
-else if (process.platform === "darwin") {
-  autoUpdater = new MacUpdater(options)
-}
+// if (process.platform === "win32") {
+//   autoUpdater = new NsisUpdater(options)
+// }
+// else if (process.platform === "darwin") {
+//   autoUpdater = new MacUpdater(options)
+// }
 
 // const gameMode = document.getElementsByClassName('.name')[1];
 // if (gameMode.value) {
