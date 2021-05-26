@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="main">
+      <!-- <div class="skin-nav-bar">
+        <div class="skin-nav active">1</div>
+        <div class="skin-nav">2</div>
+      </div> -->
+      <div class="package-div">
+        <!-- <div class="pill">Tier 1</div> -->
+				<div id="skin-pack" class="skin-pack">
+				</div>
+      </div>
+    </div>
+    <script src="data.js"></script>
+    <script>
+      window.onload = () => {
+        const ipcRenderer = require('electron').ipcRenderer
+        const pack = document.getElementById("skin-pack")
+
+        for (const name in data) {
+          const div = document.createElement('div')
+          div.className = 'pill img'
+          const img = document.createElement('img')
+          img.src = `https://deeeep.io/assets/characters/${name}.png`
+          div.appendChild(img)
+          div.onclick = () => ipcRenderer.send('setSkin', data[name])
+          pack.appendChild(div)
+        }
+      }
+    </script>
+  </body>
+</html>

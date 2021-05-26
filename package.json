@@ -4,9 +4,9 @@
    "version": "1.5.7",
    "author": "SirReadsALot",
    "description": "The Deeeep.io Desktop Client",
-   "main": "deep.js",
+   "main": "src/main.js",
    "scripts": {
-      "start": "electron-builder .",
+      "start": "electron .",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
    },
@@ -16,12 +16,11 @@
       "compression": "normal",
       "files": [
          "package.json",
-         "splashIntro.html",
-         "deep.js",
+         "public/**",
+         "src/**.js",
          "build/icon.ico",
          "build/splashIntro_resized.png",
-         "build/installerIcon.ico",
-         "assetswapper.html"
+         "build/installerIcon.ico"
       ],
       "nsis": {
          "oneClick": false,
@@ -37,6 +36,7 @@
       "electron-updater": "^4.3.9"
    },
    "devDependencies": {
+      "electron-build": "",
       "electron": "^12.0.1"
    }
 }
