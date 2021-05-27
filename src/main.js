@@ -13,6 +13,7 @@ function createWindow() {
   });
   win.loadURL("https:/deeeep.io/");
   win.removeMenu();
+  win.webContents.openDevTools()
 
   const menu = Menu.buildFromTemplate([
     {
@@ -44,6 +45,11 @@ function createWindow() {
   ]);
   Menu.setApplicationMenu(menu);
   win.on("close", () => win.destroy());
+
+  ipcMain.on('AddSkin', (arg) => {
+    win.webContents.executeJavaScript(`game.currentScene.myAnimal.setSkin(${arg})`)
+    console.log("THE WEBCONTENTS HAS BEEN INJECTED TROLL")
+  })
 }
 
 function loadSettings() {
@@ -56,7 +62,7 @@ function loadExtensionStore() {
 
 function loadAssetSwapper(win) {
   const asset = new BrowserWindow({
-    title: "Asset-Swapper",
+    title: "D.D.C Asset-Swapper",
     width: 700,
     height: 600,
     icon: "./build/icon.ico",
@@ -72,7 +78,7 @@ function loadAssetSwapper(win) {
   asset.webContents.send("AddSkin");
   asset.on("close", () => asset.destroy());
   ipcMain.on('setSkin', (e, arg) => {
-    win.webContents.executeJavaScript(`game.currentScene.myAnimal.setSkin(${arg})`)
+      ipcMain.send('AddSkin', (arg))
   })
 }
 
