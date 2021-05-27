@@ -2,36 +2,94 @@
 
 npm install electron-packager --save-dev -g,
 then in package.json:
+FOR WINDOWS NSIS:
 {
-    "name": "deeeep.io",
-    "productName": "Deeeep.io Desktop App",
-    "version": "1.5.3",
-    "author": "SirReadsALot",
-    "description": "The Deeeep.io Desktop Client",
-    "main": "deep.js",
-    "scripts": {
-        "start": "electron-packager .",
-        "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=deepMAC-release-builds",
-        "package-win": "electron-packager . Deeeep.io --asar --platform=win32 --icon=assets/icons/win/icon.ico --out=deep-release-builds",
-        "package-win-test": "electron-packager . Deeeep.ioTEST --asar --platform=win32 --icon=assets/icons/win/icon.ico --out=test-build",
-        "package-linux": "electron-packager . Deeeep.io Application --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/linux/1024x1024.png --prune=true --out=deepLINUX-release-builds",
-        "create-installer-win": "node build_installer_win.js"
-    },
-    "dependencies": {
-        "discord-rpc": "^3.2.0",
-        "electron-updater": "^4.3.8"
-    },
-    "devDependencies": {
-        "electron": "^12.0.1",
-        "electron-packager": "^15.2.0",
-        "electron-wix-msi": "^3.2.0"
-    }
+   "name": "deeeep.io",
+   "productName": "Deeeep.io_Desktop_App",
+   "version": "1.5.7",
+   "author": "SirReadsALot",
+   "description": "The Deeeep.io Desktop Client",
+   "main": "src/main.js",
+   "scripts": {
+      "start": "electron .",
+      "pack": "electron-builder --dir",
+      "dist": "electron-builder"
+   },
+   "build": {
+      "productName": "Deeeep.io_Desktop_Client",
+      "appId": "io.deeeep.desktop",
+      "compression": "normal",
+      "files": [
+         "package.json",
+         "public/**",
+         "src/**.js",
+         "build/icon.ico",
+         "build/splashIntro_resized.png",
+         "build/installerIcon.ico"
+      ],
+      "nsis": {
+         "oneClick": false,
+         "allowToChangeInstallationDirectory": true,
+         "createDesktopShortcut": true,
+         "installerIcon": "build/installerIcon.ico",
+         "uninstallerIcon": "build/installerIcon.ico",
+         "runAfterFinish": false
+      }
+   },
+   "dependencies": {
+      "discord-rpc": "^3.2.0",
+      "electron-updater": "^4.3.9"
+   },
+   "devDependencies": {
+      "electron": "^9.4.4"
+   }
 }
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FOR MAC DMG:
+{
+   "name": "deeeep.io",
+   "productName": "Deeeep.io_Desktop_App",
+   "version": "1.5.7",
+   "author": "SirReadsALot",
+   "description": "The Deeeep.io Desktop Client",
+   "main": "src/main.js",
+   "scripts": {
+      "start": "electron .",
+      "pack": "electron-builder --dir",
+      "dist": "electron-builder"
+   },
+   "build": {
+      "productName": "Deeeep.io_Desktop_Client",
+      "appId": "io.deeeep.desktop",
+      "compression": "normal",
+      "mac": {
+          "target": [
+             "dmg"
+          ],
+          "icon":"build/icons/mac/icon.icns",
+          "artifactName":"Deeeep.io Desktop Client",
+          "files": [
+            "package.json",
+            "public/**",
+            "src/**.js",
+            "build/icons/mac/icon.icns"
+         ]
+      }
+   },
+   "dependencies": {
+      "discord-rpc": "^3.2.0",
+      "electron-updater": "^4.3.9"
+   },
+   "devDependencies": {
+      "electron": "^9.4.4"
+   }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Owner: SirReadsALot
 Contributors: SilverTheSnakebird, 
 Theverycutefishy(soon), Quacc, chepic9990, 
 Yamac
-
-
-551x574 image assets needed for RPC
