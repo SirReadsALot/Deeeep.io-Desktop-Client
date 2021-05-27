@@ -4,36 +4,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div class="nav">
+      <h1>Asset-Swapper</h5> 
+    </div>
     <div class="main">
-      <!-- <div class="skin-nav-bar">
-        <div class="skin-nav active">1</div>
-        <div class="skin-nav">2</div>
-      </div> -->
+      <div class="skin-div">
+        <label class="skin-label" for="skinID">Enter SkinID: </label>
+        <input class="skin-input" type="text" placeholder="Enter SkinID">
+        <button onlick="AddSkin()" class="find-btn">Add</button>
+        <br>
+        <label class="animal-label" for="animalID">Enter AnimalID: </label>
+        <input class="animalID-input" type="text" placeholder="Enter AnimalID">
+        <button onlick="AddSkin()" class="find-btn">Add</button>
+        <a href="https://sralcodeproj.netlify.app/animalid" target="_blank">See All AnimalID's</a>
+      </div>
       <div class="package-div">
-        <!-- <div class="pill">Tier 1</div> -->
-				<div id="skin-pack" class="skin-pack">
+				<div class="skin-pack">
+          
 				</div>
       </div>
     </div>
-    <script src="data.js"></script>
-    <script>
-      window.onload = () => {
-        const ipcRenderer = require('electron').ipcRenderer
-        const pack = document.getElementById("skin-pack")
-
-        for (const name in data) {
-          const div = document.createElement('div')
-          div.className = 'pill img'
-          const img = document.createElement('img')
-          img.src = `https://deeeep.io/assets/characters/${name}.png`
-          div.appendChild(img)
-          div.onclick = () => ipcRenderer.send('setSkin', data[name])
-          pack.appendChild(div)
-        }
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Dosis:wght@400;700&display=swap');
+      * {
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
       }
+      body {
+        background-color: white;
+        font-family: 'Raleway', sans-serif;
+      }
+      .find-btn {
+      	background-color: #28a745;
+        width: 40px;
+        font-size: 1rem;
+        line-height: 1.5;
+        border: none;
+        border-radius: .25rem;
+        color: white;
+        padding: .375rem;
+      }
+      .find-btn:active {
+      	background-color: red;
+      }
+      .nav {
+        background-color: black;
+        color: white;
+        height: 50px;
+        font-family: 'Dosis', sans-serif;
+      }
+      .nav h1 {
+        text-align: center;
+      }
+			.skin-div {
+				margin: 20px;
+			}
+      .skin-label {
+        font-size: 1rem;
+      }
+      .skin-input {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: .375rem;
+        border: 1px solid #999;
+        border-radius: .25rem;
+      }
+      .animalID-input {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: .375rem;
+        border: 1px solid #999;
+        border-radius: .25rem;
+      }
+      .package-div {
+      	background-color: #ececec;
+        margin: 20px;
+        height: 100%;
+        border-radius: 3px;
+      }
+      .skin-pack {
+      	background-color: #999;
+        border-radius: 3px;
+      }
+    </style>
+    <script>
+    	  function AddSkin() {
+          console.log("TEST TEST TEST")
+      		const inputValue = document.getElementByClassName("skin-input")[0].value;
+          const AnimalID = document.getElementsByClassName("animalID-input")[0].value;
+
+          
+      	}
     </script>
   </body>
 </html>
