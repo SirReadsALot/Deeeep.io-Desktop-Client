@@ -5,7 +5,7 @@ function createWindow() {
   var win = new BrowserWindow({
     width: 1120,
     height: 712,
-    icon: "build/icon.ico",
+    icon: "./build/icon.ico",
     centre: true,
     webPreferences: {
       nodeIntegration: true,
@@ -22,7 +22,7 @@ function createWindow() {
       },
     },
     {
-      label: "Assets",
+      label: "Asset-Swapper",
       click() {
         loadAssetSwapper(win);
       },
@@ -34,7 +34,7 @@ function createWindow() {
       },
     },
     {
-      label: "Issues",
+      label: "Report a Bug",
       click() {
         shell.openExternal(
           "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues"
@@ -59,7 +59,7 @@ function loadAssetSwapper(win) {
     title: "Asset-Swapper",
     width: 700,
     height: 600,
-    icon: "build/icon.ico",
+    icon: "./build/icon.ico",
     centre: true,
     resizable: false,
     webPreferences: {
@@ -116,19 +116,19 @@ app.once("ready", () => {
   splashIntro(), showNotification();
 });
 
-// const rpc = new RPC.Client({
-//   transport: "ipc",
-// });
+const rpc = new RPC.Client({
+  transport: "ipc",
+});
 
-// rpc.on("ready", () => {
-//   rpc.setActivity({
-//     details: "Playing Deeeep.io",
-//     largeImageKey: "deeplarge",
-//     largeImageText: "Deeeep.io",
-//     startTimestamp: new Date(),
-//   });
-// });
+rpc.on("ready", () => {
+  rpc.setActivity({
+    details: "Playing Deeeep.io",
+    largeImageKey: "deeplarge",
+    largeImageText: "Deeeep.io",
+    startTimestamp: new Date(),
+  });
+});
 
-// rpc.login({
-//   clientId: "817817065862725682",
-// });
+rpc.login({
+  clientId: "817817065862725682",
+});
