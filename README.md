@@ -17,7 +17,7 @@ It has features like a built-in asset swapper, built-in extension store, detaile
 | Current Version | Platform | Availability| 
 | ------- | -------- | ----------- |
 | v1.5.7    | Windows  | Yes | 
-| v1.5.7    | MacOS    | Coming Soon |
+| v1.7    | MacOS    | Coming Soon |
 
 ## Installation
 
@@ -54,7 +54,7 @@ To gain access to this repository, contact `SirReadsALot#3380` on Discord.
 
 You are also welcome to submit a pull request or issue at any time.
 
-Join our [Discord server](https://discord.gg/hpX9DZxyUC) or check our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
+Join our [Discord server](https://discord.gg/hpX9DZxyUC) or check out our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
 
 ## License
 
