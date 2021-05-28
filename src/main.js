@@ -85,7 +85,7 @@ function loadAssetSwapper(win) {
 
 function showNotification() {
   const notification = {
-    title: "Deeeep.io Desktop Client",
+    title: "D.D.C Alert",
     body: "The Deeeep.io Desktop Client has been launched!",
     icon: "./build/icon.ico",
   };
