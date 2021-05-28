@@ -13,17 +13,11 @@
       <div class="skin-div">
         <label class="skin-label" for="skinID">Enter SkinID: </label>
         <input class="skin-input" type="text" placeholder="Enter SkinID">
-        <button onlick="AddSkin()" class="find-btn">Add</button>
-        <br>
-        <label class="animal-label" for="animalID">Enter AnimalID: </label>
-        <input class="animalID-input" type="text" placeholder="Enter AnimalID">
-        <button onlick="AddSkin()" class="find-btn">Add</button>
-        <a href="https://sralcodeproj.netlify.app/animalid" target="_blank">See All AnimalID's</a>
+        <button onclick="AddSkin()" class="find-btn">Add</button>
+        <a href="" target="_blank">How To Get SkinID's</a>
       </div>
       <div class="package-div">
-				<div class="skin-pack">
-          
-				</div>
+				<div class="skin-pack"></div>
       </div>
     </div>
     <style>
@@ -72,13 +66,6 @@
         border: 1px solid #999;
         border-radius: .25rem;
       }
-      .animalID-input {
-        font-size: 1rem;
-        line-height: 1.5;
-        padding: .375rem;
-        border: 1px solid #999;
-        border-radius: .25rem;
-      }
       .package-div {
       	background-color: #ececec;
         margin: 20px;
@@ -92,11 +79,11 @@
     </style>
     <script>
     	  function AddSkin() {
-          console.log("TEST TEST TEST")
-      		const inputValue = document.getElementByClassName("skin-input")[0].value;
-          const AnimalID = document.getElementsByClassName("animalID-input")[0].value;
+      		const inputValue = document.getElementsByClassName("skin-input")[0].value;
+          // const animalID = document.getElementsByClassName("animalID-input")[0].value;
 
-          
+          const { ipcRenderer } = require("electron")
+          ipcRenderer.send("setSkin", (inputValue))
       	}
     </script>
   </body>
