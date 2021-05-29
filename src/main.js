@@ -123,19 +123,19 @@ app.once("ready", () => {
   splashIntro(), showNotification();
 });
 
-const rpc = new RPC.Client({
-  transport: "ipc",
-});
+// const rpc = new RPC.Client({
+//   transport: "ipc",
+// });
 
-rpc.on("ready", () => {
-  rpc.setActivity({
-    details: "Playing Deeeep.io",
-    largeImageKey: "deeplarge",
-    largeImageText: "Deeeep.io",
-    startTimestamp: new Date(),
-  });
-});
+// rpc.on("ready", () => {
+//   rpc.setActivity({
+//     details: "Playing Deeeep.io",
+//     largeImageKey: "deeplarge",
+//     largeImageText: "Deeeep.io",
+//     startTimestamp: new Date(),
+//   });
+// });
 
-rpc.login({
-  clientId: "817817065862725682",
-});
+// rpc.login({
+//   clientId: "817817065862725682",
+// });
