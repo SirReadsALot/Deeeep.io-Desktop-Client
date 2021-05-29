@@ -14,9 +14,9 @@ jobs:
       - run: npm ci
       - run: npm run pack
       - name: Push to built branch
-        uses: Automattic/action-commit-to-branch@master
-        with:
-          branch: 'master-built'
-          commit_message: 'Build master'
+        run: |
+          git add *
+          git commit -m "build"
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
