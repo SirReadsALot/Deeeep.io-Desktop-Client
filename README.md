@@ -26,6 +26,7 @@ This application requires NodeJS.
 
 To download this repository:
 
+> The first step requires Git to be installed
 ```
 git clone https://github.com/SirReadsALot/Deeeep.io-Desktop-Client.git
 cd Deeeep.io-Desktop-Client
