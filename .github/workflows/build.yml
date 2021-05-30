@@ -13,6 +13,7 @@ jobs:
           node-version: '12.x'
       - run: npm ci
       - run: npm run pack
+      - run: rmdir dist/win-unpacked
       - name: Push to built branch
         uses: s0/git-publish-subdir-action@develop
         env:
