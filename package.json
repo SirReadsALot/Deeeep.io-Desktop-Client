@@ -29,6 +29,20 @@
          "installerIcon": "build/installerIcon.ico",
          "uninstallerIcon": "build/installerIcon.ico",
          "runAfterFinish": false
+      },
+      "dmg": {
+         "contents": [
+            {
+               "x": 110,
+               "y": 150
+            },
+            {
+               "x": 240,
+               "y": 150,
+               "type": "link",
+               "path": "/Applications"
+            }
+         ]
       }
    },
    "dependencies": {
