@@ -14,7 +14,7 @@
         <label class="skin-label" for="skinID">Enter SkinID: </label>
         <input class="skin-input" type="text" placeholder="Enter SkinID">
         <button onclick="AddSkin()" class="find-btn">Add</button>
-        <a href="" target="_blank">How To Get SkinID's</a>
+        <a href="../build/How_to_get_skinID.PNG" target="_blank">How To Get SkinID's</a>
       </div>
       <div class="package-div">
 				<div class="skin-pack"></div>
@@ -80,11 +80,27 @@
     <script>
     	  function AddSkin() {
       		const inputValue = document.getElementsByClassName("skin-input")[0].value;
-          // const animalID = document.getElementsByClassName("animalID-input")[0].value;
-
           const { ipcRenderer } = require("electron")
           ipcRenderer.send("setSkin", (inputValue))
-      	}
+        }
+
+        // const main = document.getElementsByClassName("package-div")[0];
+        // const fuse = new Fuse(Object.keys(data))
+        // input.onkeypress = (e) => {
+        //   main.innerHTML = ""
+        //   const res = fuse.search(inputValue.value)
+        //   console.log(res.length)
+        //   for (const skin of res){
+        //     AddSkin(`${skin.item} (${skin.refIndex})`)
+        //   }
+        // }
+    	  // function AddSkin(txt) {
+        //   // ipcRenderer.send("setSkin", (input.value))\
+        //   const newDiv =  document.createElement("DIV");
+        //   newDiv.innerText = txt
+        //   newDiv.className = "skin-obj"
+        //   main.appendChild(newDiv);
+      	// }
     </script>
   </body>
 </html>
