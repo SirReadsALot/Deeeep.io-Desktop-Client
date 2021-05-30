@@ -21,7 +21,8 @@
          "src/**.js",
          "build/icon.ico",
          "build/splashIntro_resized.png",
-         "build/installerIcon.ico"
+         "build/installerIcon.ico",
+         "build/icons/mac/icon.icns"
       ],
       "nsis": {
          "oneClick": false,
@@ -43,7 +44,8 @@
                "type": "link",
                "path": "/Applications"
             }
-         ]
+         ],
+         "icon": "build/icons/mac/icon.icns"
       }
    },
    "dependencies": {
