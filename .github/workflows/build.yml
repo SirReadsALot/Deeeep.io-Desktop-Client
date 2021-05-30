@@ -13,6 +13,8 @@ jobs:
           node-version: '12.x'
       - run: npm ci
       - run: npm run dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Remove File
         uses: JesseTG/rm@v1.0.2
         with:
