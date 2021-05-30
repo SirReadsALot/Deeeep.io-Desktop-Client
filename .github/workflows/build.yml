@@ -13,13 +13,10 @@ jobs:
           node-version: '12.x'
       - run: npm ci
       - run: npm run pack
-      - run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push to built branch
-        run: |
-          git add *
-          git commit -m "build"
-          git push origin main
+        uses: s0/git-publish-subdir-action@develop
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
+          REPO: self
+          BRANCH: downloads # The branch name where you want to push the assets
+          FOLDER: dist # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
