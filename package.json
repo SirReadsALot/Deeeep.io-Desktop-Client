@@ -24,6 +24,9 @@
          "build/installerIcon.ico",
          "build/icons/mac/icon.icns"
       ],
+      "directories": {
+         "buildResources": "build"
+      },
       "nsis": {
          "oneClick": false,
          "allowToChangeInstallationDirectory": true,
