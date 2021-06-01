@@ -42,7 +42,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push to built branch
-        uses: s0/git-publish-subdir-action@develop
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "mac"
+          git add dist
+          git commit -m "build"
+          git push origin mac
         env:
           REPO: self
           BRANCH: mac # The branch name where you want to push the assets
