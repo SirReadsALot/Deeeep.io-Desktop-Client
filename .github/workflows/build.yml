@@ -41,6 +41,10 @@ jobs:
       - run: npm run mac
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./dist/mac
       - name: Push to built branch
         run: |
           git config --global user.name "github-actions[bot]"
