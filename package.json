@@ -22,7 +22,7 @@
          "build/icon.ico",
          "build/splashIntro_resized.png",
          "build/installerIcon.ico",
-         "build/icons/mac/icon.icns"
+         "build/icons/**"
       ],
       "directories": {
          "buildResources": "build"
@@ -47,8 +47,7 @@
                "type": "link",
                "path": "/Applications"
             }
-         ],
-         "icon": "build/icons/mac/icon.icns"
+         ]
       }
    },
    "dependencies": {
