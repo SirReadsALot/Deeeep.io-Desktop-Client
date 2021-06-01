@@ -45,6 +45,6 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: downloads # The branch name where you want to push the assets
+          BRANCH: mac # The branch name where you want to push the assets
           FOLDER: dist # The directory where your assets are generated
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
