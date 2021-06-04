@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+<div class="nav">
+      <h1>Settings</h5> 
+</div>
+    <div class="main">
+      <button onclick="DarkMode()" class="darkBtn">Turn on Dark Mode</button> 
+    </div>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Dosis:wght@400;700&display=swap');
+      * {
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+      }
+      body {
+        background-color: white;
+        font-family: 'Raleway', sans-serif;
+      }
+      .nav {
+        background-color: black;
+        color: white;
+        height: 50px;
+        font-family: 'Dosis', sans-serif;
+      }
+      .nav h1 {
+        text-align: center;
+      }
+
+      .darkBtn {
+        align-self: center;
+      }
+    </style>
+    <script>
+      function DarkMode() {
+        document.getElementsByClassName("nav").style.backgroundColor = "white";
+        document.getElementsByClassName("main").style.backgroundColor = "black";
+      }
+    </script>
+  </body>
+</html>

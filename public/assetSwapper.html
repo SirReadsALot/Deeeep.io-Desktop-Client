@@ -83,24 +83,6 @@
           const { ipcRenderer } = require("electron")
           ipcRenderer.send("setSkin", (inputValue))
         }
-
-        // const main = document.getElementsByClassName("package-div")[0];
-        // const fuse = new Fuse(Object.keys(data))
-        // input.onkeypress = (e) => {
-        //   main.innerHTML = ""
-        //   const res = fuse.search(inputValue.value)
-        //   console.log(res.length)
-        //   for (const skin of res){
-        //     AddSkin(`${skin.item} (${skin.refIndex})`)
-        //   }
-        // }
-    	  // function AddSkin(txt) {
-        //   // ipcRenderer.send("setSkin", (input.value))\
-        //   const newDiv =  document.createElement("DIV");
-        //   newDiv.innerText = txt
-        //   newDiv.className = "skin-obj"
-        //   main.appendChild(newDiv);
-      	// }
     </script>
   </body>
 </html>
