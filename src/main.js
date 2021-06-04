@@ -1,4 +1,4 @@
-const { BrowserWindow, Menu, shell, Notification, app, ipcMain } = require("electron")
+const { BrowserWindow, Menu, shell, Notification, app, ipcMain, session } = require("electron")
 const RPC = require("discord-rpc")
 
 function createWindow() {
@@ -6,14 +6,14 @@ function createWindow() {
     width: 1120,
     height: 712,
     icon: "./build/icon.ico",
-    centre: true,
-    webPreferences: {
-      nodeIntegration: true,
+    center: true,
+     webPreferences: {
+      nodeIntegration: true
     },
   });
   win.loadURL("https:/deeeep.io/");
   win.removeMenu();
-
+  
   const menu = Menu.buildFromTemplate([
     {
       label: "Settings",
@@ -36,23 +36,36 @@ function createWindow() {
     {
       label: "Report a Bug",
       click() {
-        shell.openExternal(
-          "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues"
-        );
+        shell.openExternal("https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues" );
       },
     },
+    {
+      label: "Enable Docassets",
+      click() {
+        loadDocassets(win)
+      }
+    }
   ]);
   Menu.setApplicationMenu(menu);
   win.on("close", () => win.destroy());
-
-  // ipcMain.on('AddSkin', (arg) => {
-  //   win.webContents.executeJavaScript(`game.currentScene.myAnimal.setSkin(${arg})`)
-  //   console.log("THE WEBCONTENTS HAS BEEN INJECTED TROLL")
-  // })
 }
 
 function loadSettings() {
-  console.log("tol");
+  const settings = new BrowserWindow({
+    title: "D.D.C Settings",
+    width: 700,
+    height: 400,
+    icon: "./build/icon.ico",
+    center: true,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
+  });
+  settings.loadURL(`file://${__dirname}/../public/settings.html`);
+  settings.setMenu(null);
+  settings.on("close", () => settings.destroy());
 }
 
 function loadExtensionStore() {
@@ -65,22 +78,27 @@ function loadAssetSwapper(win) {
     width: 700,
     height: 600,
     icon: "./build/icon.ico",
-    centre: true,
+    center: true,
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false
     }
   });
   asset.loadURL(`file://${__dirname}/../public/assetSwapper.html`);
   asset.setMenu(null);
   asset.on("close", () => asset.destroy());
-
   ipcMain.on('setSkin', (e, inputValue) => {
       win.webContents.executeJavaScript(`
       game.currentScene.myAnimal.setSkin(${inputValue})
       `)
   })
+}
+
+function loadDocassets(win) {
+  const os = require('os')
+  win.webContents.session.loadExtension(`C:/Users/${os.userInfo().username}/AppData/Local/Google/Chrome/User Data/Default/Extensions/cmlbeiacmcbdiepcenjmhmkclmffbgbd/1.0.33_0`)
+    .then(console.log("Docassets is loaded!"))
 }
 
 function showNotification() {
@@ -101,8 +119,8 @@ function splashIntro() {
     resizable: false,
     frame: false,
     transparent: true,
-    webPreferences: {
-      nodeIntegration: true,
+     webPreferences: {
+       nodeIntegration: true,
     },
   });
   splash.loadURL(`file://${__dirname}/../public/splashIntro.html`);
@@ -123,19 +141,20 @@ app.once("ready", () => {
   splashIntro(), showNotification();
 });
 
-// const rpc = new RPC.Client({
-//   transport: "ipc",
-// });
+const rpc = new RPC.Client({
+  transport: "ipc",
+});
 
-// rpc.on("ready", () => {
-//   rpc.setActivity({
-//     details: "Playing Deeeep.io",
-//     largeImageKey: "deeplarge",
-//     largeImageText: "Deeeep.io",
-//     startTimestamp: new Date(),
-//   });
-// });
+rpc.on("ready", () => {
+  rpc.setActivity({
+    details: "Playing Deeeep.io",
+    largeImageKey: "deeplarge",
+    largeImageText: "Deeeep.io",
+    startTimestamp: new Date(),
+  });
+});
 
-// rpc.login({
-//   clientId: "817817065862725682",
-// });
+rpc.login({
+  clientId: "817817065862725682",
+});
+
