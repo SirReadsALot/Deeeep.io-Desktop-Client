@@ -1,5 +1,5 @@
 const { BrowserWindow, Menu, shell, Notification, app, ipcMain, session } = require("electron")
-const RPC = require("discord-rpc")
+const RPC = require("discord-rpc");
 
 function createWindow() {
   var win = new BrowserWindow({
@@ -13,7 +13,8 @@ function createWindow() {
   });
   win.loadURL("https:/deeeep.io/");
   win.removeMenu();
-  
+  win.webContents.openDevTools()
+
   const menu = Menu.buildFromTemplate([
     {
       label: "Settings",
@@ -28,9 +29,9 @@ function createWindow() {
       },
     },
     {
-      label: "Extensions",
+      label: "Enable Docassets",
       click() {
-        loadExtensionStore();
+        loadDocassets(win)
       },
     },
     {
@@ -38,12 +39,6 @@ function createWindow() {
       click() {
         shell.openExternal("https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues" );
       },
-    },
-    {
-      label: "Enable Docassets",
-      click() {
-        loadDocassets(win)
-      }
     }
   ]);
   Menu.setApplicationMenu(menu);
@@ -66,10 +61,6 @@ function loadSettings() {
   settings.loadURL(`file://${__dirname}/../public/settings.html`);
   settings.setMenu(null);
   settings.on("close", () => settings.destroy());
-}
-
-function loadExtensionStore() {
-  console.log("TROLLLED LMAO");
 }
 
 function loadAssetSwapper(win) {
