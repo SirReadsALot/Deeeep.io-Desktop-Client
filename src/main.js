@@ -149,3 +149,23 @@ rpc.login({
   clientId: "817817065862725682",
 });
 
+// const { TFFA, FFA, PD, OneVOne, V1, TA } = document.getElementsByClassName(".name")[0];
+
+// if (TFFA.value = "Team FFA") {
+//   console.log(`You are on ${TFFA.value}`)
+// } 
+// if (FFA.value = "Free For All") {
+//   console.log(`You are on ${FFA.value}`)
+// }
+// if (PD.value = "Pearl Defence") {
+//   console.log(`You are on ${PD.value}`)
+// }
+// if (OneVOne.value = "1vs1") {
+//   console.log(`You are on ${OneVOne.value}`)
+// }
+// if (V1.value = "First version(v1)") {
+//   console.log(`You are on ${V1.value}`)
+// }
+// if (TA.value = "Toxic Algae (Beta)") {
+//   console.log(`You are on ${TA.value}`)
+// }
