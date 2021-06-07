@@ -79,9 +79,25 @@ function loadAssetSwapper(win) {
   asset.loadURL(`file://${__dirname}/../public/assetSwapper.html`);
   asset.setMenu(null);
   asset.on("close", () => asset.destroy());
-  ipcMain.on('setSkin', (e, inputValue) => {
+  ipcMain.on('setSkin', (e, skins) => {
       win.webContents.executeJavaScript(`
-      game.currentScene.myAnimal.setSkin(${inputValue})
+      var skins = ${JSON.stringify(skins)};
+      if (window.interval != undefined) {
+        clearInterval(window.interval);
+      }
+      window.interval = undefined;
+        window.interval = setInterval(function(skins) {
+          try {
+            for (var i in skins) {
+              if (game.currentScene.myAnimal.visibleFishLevel == i) {
+                game.currentScene.myAnimal.setSkin(skins[i])
+              }
+            }
+          }
+          catch (err) {
+            var e;
+          }
+        }, 1000, skins)
       `)
   })
 }
