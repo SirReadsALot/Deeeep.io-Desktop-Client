@@ -75,6 +75,8 @@
       .skin-pack {
       	background-color: #999;
         border-radius: 3px;
+	margin: 5px;
+	padding: 5px;
       }
 
       .div-obj {
@@ -87,16 +89,52 @@
 
     </style>
     <script>
-    	  function AddSkin() {
-      		const inputValue = document.getElementsByClassName("skin-input")[0].value;
-          const { ipcRenderer } = require("electron")
-          ipcRenderer.send("setSkin", (inputValue))
-
-          const newDiv =  document.createElement("DIV");
-          newDiv.innerText = `ID:${inputValue}`;
-          newDiv.className = "div-obj";
-          document.body.appendChild(newDiv);
+    var skins;
+      function load() {
+        const { ipcRenderer } = require("electron")
+        if (localStorage.skins == undefined) {
+          localStorage.skins = "{}"
         }
+        skins = JSON.parse(localStorage.skins);
+        ipcRenderer.send("setSkin", (skins))
+        UpdateVisuals()
+      }
+
+      window.onload = load();
+
+  	  async function AddSkin() {
+        const { ipcRenderer } = require("electron")
+        const inputValue = document.getElementsByClassName("skin-input")[0].value;
+        const skinData = await new Promise((res, rej) => {
+          var  xhr = new XMLHttpRequest();
+           xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              res(this.responseText);
+            }
+          };
+           xhr.open("GET", "https://api.deeeep.io/skins/"+inputValue, true);
+           xhr.send();
+        })
+        if (JSON.parse(skinData).fish_level == undefined) {return}
+        skins[JSON.parse(skinData).fish_level] = inputValue;
+        localStorage.skins = JSON.stringify(skins);
+        ipcRenderer.send("setSkin", (skins));
+        UpdateVisuals();
+      }
+      function DeleteSkin(animalLevel) {
+        const { ipcRenderer } = require("electron")
+        delete skins[animalLevel];
+        localStorage.skins = JSON.stringify(skins);
+        ipcRenderer.send("setSkin", (skins));
+        UpdateVisuals();
+      }
+      function UpdateVisuals() {
+        var skinVisual = document.getElementsByClassName("package-div")[0];
+        skinVisual.innerHTML = "";
+        for (var i in skins) {
+          skinVisual.innerHTML += '<div class="skin-pack">animal with id '+i+' becomes skin with id '+skins[i]+'. <button onclick = "DeleteSkin('+i+')">remove</button></div>'
+        }
+      }
     </script>
   </body>
 </html>
