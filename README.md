@@ -58,6 +58,30 @@ You are also welcome to submit a pull request or issue at any time.
 
 Join our [Discord server](https://discord.gg/hpX9DZxyUC) or check out our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
 
+## 🚀Current features
+
+DiscordRPC
+
+Asset-Swapper
+
+Built-in Docassets
+
+Subreddits, mapmaker, creators centre and even discord opens within the client
+
+## 🤔 Eventually
+
+Detailed DiscordRPC based on gamemode
+
+Docassets fully functional
+
+Settings
+
+Donation menu item
+
+Deeeep.io BGM
+
+AutoUpdater
+
 ## License
 
 The Deeeep.io Desktop Client is licensed under the MIT license.
