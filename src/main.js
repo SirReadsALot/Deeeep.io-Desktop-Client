@@ -105,6 +105,8 @@ function splashIntro() {
   const splash = new BrowserWindow({
     width: 1130,
     height: 760,
+    /* width: 824,
+    height: 565, //this is for the other png */
     center: true,
     skipTaskbar: true,
     resizable: false,
@@ -132,27 +134,85 @@ app.once("ready", () => {
   splashIntro(), showNotification();
 });
 
+
 const rpc = new RPC.Client({
   transport: "ipc",
 });
+// rpc.on("ready", () => {
+// //   rpc.setActivity({
+// //     details: "Playing Deeeep.io",
+// //     largeImageKey: "deeplarge",
+// //     largeImageText: "Deeeep.io",
+// //     startTimestamp: new Date(),
+// // });
 
-rpc.on("ready", () => {
-  rpc.setActivity({
-    details: "Playing Deeeep.io",
-    largeImageKey: "deeplarge",
-    largeImageText: "Deeeep.io",
-    startTimestamp: new Date(),
-  });
-});
+//   const RPCInject = document.getElementsByClassname('gamemode-button')[0].childNodes[0];
 
-rpc.login({
-  clientId: "817817065862725682",
-});
+//   if (RPCInject.value = "Team FFA") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "tffa",
+//       largeImageText: "Deeeep.io | Team FFA",
+//       startTimestamp: new Date(),
+//    });
+//   } 
+//   if (RPCInject.value = "Free For All") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "ffa",
+//       largeImageText: "Deeeep.io | Free For All",
+//       startTimestamp: new Date(),
+//    });
+//   }
+//   if (RPCInject.value = "Pearl Defence") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "pd",
+//       largeImageText: "Deeeep.io | Pearl Defence",
+//       startTimestamp: new Date(),
+//    });
+//   }
+//   if (RPCInject.value = "1vs1") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "deeplarge",
+//       largeImageText: "Deeeep.io | Unknown",
+//       startTimestamp: new Date(),
+//    });
+//   }
+//   if (RPCInject.value = "First version(v1)") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "v1",
+//       largeImageText: "Deeeep.io | Version 1",
+//       startTimestamp: new Date(),
+//    });
+//   }
+//   if (RPCInject.value = "Toxic Algae (Beta)") {
+//     console.log(`You are on ${RPCInject.value}`),
+//     rpc.setActivity({
+//       details: "Playing Deeeep.io",
+//       largeImageKey: "toxicalgae",
+//       largeImageText: "Deeeep.io | Toxic Algae",
+//       startTimestamp: new Date(),
+//    });
+//   }
+// })
 
-// const { TFFA, FFA, PD, OneVOne, V1, TA } = document.getElementsByClassName(".name")[0];
+// rpc.login({
+//   clientId: "817817065862725682",
+// });
+
+// const { TFFA, FFA, PD, OneVOne, V1, TA } = document.body.getElementsByClassName(".name")[0];
 
 // if (TFFA.value = "Team FFA") {
 //   console.log(`You are on ${TFFA.value}`)
+  
 // } 
 // if (FFA.value = "Free For All") {
 //   console.log(`You are on ${FFA.value}`)
