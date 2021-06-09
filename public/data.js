@@ -81,7 +81,7 @@ const data = {
     "giantsalamander": 81,
     "alligatorsnappingturtle": 82,
     "giantsoftshellturtle": 83,
-    // "giantsoftshellturtleclosed": 84,
+    "giantsoftshellturtleclosed": 84,
     "olm": 85,
     "alligatorgar": 86,
     "humpbackwhale": 87,
@@ -104,3 +104,4 @@ const data = {
     "bullshark": 104,
     "hermitcrab": 105
 }
+

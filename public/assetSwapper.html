@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="nav">
-      <h1>Asset-Swapper</h5> 
+      <h1>Asset-Swapper</h1> 
     </div>
     <div class="main">
       <div class="skin-div">
@@ -93,9 +93,9 @@
           ipcRenderer.send("setSkin", (inputValue))
 
           const newDiv =  document.createElement("DIV");
-          newDiv.innerText = `ID:${inputValue}`;
+          newDiv.innerHTML = `ID:${inputValue}`;
           newDiv.className = "div-obj";
-          document.body.appendChild(newDiv);
+          document.appendChild(newDiv);
         }
     </script>
   </body>
