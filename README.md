@@ -16,9 +16,9 @@ It has features like a built-in asset swapper, built-in extension store, detaile
 
 | Version | Platform | Availability| 
 | ------- | -------- | ----------- |
-| v1.5.7    | Windows  | Yes | 
-| v1.5.8    | MacOS    | Coming Soon |
-| v1.7    | Linux(ChromeOS) | Coming Soon |
+| v1.6.2  | Windows  | Yes | 
+| v1.6.2    | MacOS    | Coming Soon |
+| v1.7    | Linux | Coming Soon |
 
 ## Installation
 
