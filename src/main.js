@@ -229,3 +229,4 @@ const rpc = new RPC.Client({
 // if (TA.value = "Toxic Algae (Beta)") {
 //   console.log(`You are on ${TA.value}`)
 // }
+
