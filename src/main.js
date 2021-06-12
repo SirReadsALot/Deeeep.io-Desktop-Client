@@ -13,7 +13,7 @@ function createWindow() {
   });
   win.loadURL("https:/deeeep.io/");
   win.removeMenu();
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   const menu = Menu.buildFromTemplate([
     {
@@ -103,12 +103,12 @@ function showNotification() {
 
 function splashIntro() {
   const splash = new BrowserWindow({
-    width: 1130,
-    height: 760,
+    width: 1220, // original: 1130
+    height: 820, // original: 760
     /* width: 824,
     height: 565, //this is for the other png */
     center: true,
-    skipTaskbar: true,
+    skipTaskbar: false,
     resizable: false,
     frame: false,
     transparent: true,
@@ -124,9 +124,17 @@ function splashIntro() {
       createWindow();
       setTimeout(() => {
         splash.destroy();
-      }, 2000);
-    }, 2000)
+      }, 7000); // original timing for both: 2000
+    }, 7000)
   );
+  // const autoUpdater = require("electron-updater")
+// autoUpdater.checkForUpdatesAndNotify()
+
+// const options = {
+//   provider: 'github',
+//   url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
+// }
+// const autoUpdater = new NsisUpdater(options)
 }
 
 app.userAgentFallback = "Chrome";
@@ -138,13 +146,17 @@ app.once("ready", () => {
 const rpc = new RPC.Client({
   transport: "ipc",
 });
-// rpc.on("ready", () => {
-// //   rpc.setActivity({
-// //     details: "Playing Deeeep.io",
-// //     largeImageKey: "deeplarge",
-// //     largeImageText: "Deeeep.io",
-// //     startTimestamp: new Date(),
-// // });
+rpc.on("ready", () => {
+  rpc.setActivity({
+    details: "Playing Deeeep.io",
+    largeImageKey: "deeplarge",
+    largeImageText: "Deeeep.io",
+    startTimestamp: new Date(),
+  });
+  rpc.login({
+    clientId: "817817065862725682"
+  });
+})
 
 //   const RPCInject = document.getElementsByClassname('gamemode-button')[0].childNodes[0];
 
@@ -203,11 +215,6 @@ const rpc = new RPC.Client({
 //    });
 //   }
 // })
-
-// rpc.login({
-//   clientId: "817817065862725682",
-// });
-
 // const { TFFA, FFA, PD, OneVOne, V1, TA } = document.body.getElementsByClassName(".name")[0];
 
 // if (TFFA.value = "Team FFA") {
@@ -229,4 +236,3 @@ const rpc = new RPC.Client({
 // if (TA.value = "Toxic Algae (Beta)") {
 //   console.log(`You are on ${TA.value}`)
 // }
-
