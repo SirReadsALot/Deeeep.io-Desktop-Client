@@ -87,16 +87,16 @@
 
     </style>
     <script>
-    	  function AddSkin() {
-      		const inputValue = document.getElementsByClassName("skin-input")[0].value;
-          const { ipcRenderer } = require("electron")
-          ipcRenderer.send("setSkin", (inputValue))
+      const { ipcRenderer } = require("electron")
+      function AddSkin() {
+        const inputValue = document.getElementsByClassName("skin-input")[0].value;
+        ipcRenderer.send("setSkin", inputValue)
 
-          const newDiv =  document.createElement("DIV");
-          newDiv.innerHTML = `ID:${inputValue}`;
-          newDiv.className = "div-obj";
-          document.appendChild(newDiv);
-        }
+        const newDiv =  document.createElement("DIV");
+        newDiv.innerHTML = `ID:${inputValue}`;
+        newDiv.className = "div-obj";
+        document.appendChild(newDiv);
+      }
     </script>
   </body>
 </html>

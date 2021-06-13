@@ -1,75 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <img src="../build/splashIntro_resized.png"> 
-    <!-- <img src="../build/splashIntro_TROLLED.png"> -->
-    <div id="myProgress">
-        <div id="myBar">5%</div>
-    </div>
-    <style>
-        img {
-            background-position: centre;
-            /* background-repeat: no-repeat;
+	<img src="../build/splashIntro_resized.png">
+	<span id="myProgress">
+		<span>Checking for updates...&emsp;</span>
+		<div class="loader"></div>
+	</span>
+	<style>
+		* {
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			/* background-repeat: no-repeat;
             background-size: cover; */
-            pointer-events: none;
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
-            -ms-user-select: none; 
-           }
+			pointer-events: none;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-drag: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
 
-        #myProgress {
-            width: 92%;
-            background-color: #ddd;
-            position: absolute;
-            z-index: 2;
-        }
+		#myProgress {
+			display: flex;
+			top: 80%;
+			left: 50%;
+			transform: translateX(-50%);
+			position: absolute;
+			z-index: 2;
+			font-size: 40px;
+		}
 
-        #myBar {
-            font-family: 'Dosis', sans-serif;
-            width: 5%;
-            height: 50px;
-            background-color: #04AA6D;
-            text-align: center;
-            line-height: 50px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            position: absolute;
-            z-index: 2;
-        }
-    </style>
-    <script>
-var troll = true
-var i = 0;
-function move() {
-        if (i == 0) {
-            i = 1;
-            var elem = document.getElementById("myBar");
-            var width = 10;
-            var id = setInterval(frame, 60);
+		.loader {
+			border: 10px solid #f3f3f3; /* Light grey */
+			border-top: 10px solid #3498db; /* Blue */
+			border-radius: 40px;
+			width: 40px;
+			height: 40px;
+			animation: spin 2s linear infinite;
+		}
 
-            function frame() {
-               if (width >= 100) {
-                clearInterval(id);
-                i = 0;
-            } else {
-                width++;
-                elem.style.width = width + "%";
-                elem.innerHTML = width + "%";
-            }
-        }
-    }
-}
-if (troll) {
-    move()
-}
-    </script>
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+	<script>
+		const elem = document.getElementById("myBar");
+		let width = 0
+		function progress() {
+			width++;
+			elem.style.width = width + "%";
+			elem.innerHTML = width + "%";
+		}
+	</script>
 </body>
+
 </html>
