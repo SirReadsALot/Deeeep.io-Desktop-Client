@@ -1,13 +1,6 @@
-const {
-    BrowserWindow,
-    Menu,
-    shell,
-    Notification,
-    app,
-    ipcMain,
-  } = require("electron");
-  const { Client } = require("discord-rpc");
-  const { autoUpdater } = require("electron-updater")
+const { BrowserWindow, Menu, shell, Notification, app, ipcMain, globalShortcut} = require("electron");
+const { Client } = require("discord-rpc");
+const { autoUpdater } = require("electron-updater")
   
   function createWindow() {
     var win = new BrowserWindow({
@@ -27,20 +20,26 @@ const {
     const menu = Menu.buildFromTemplate([
       {
         label: "Settings",
-        click: loadSettings()
+        click() { 
+          loadSettings()
+        }
       },
       {
         label: "Asset-Swapper",
-        click: loadAssetSwapper(win)
+        click() {
+          loadAssetSwapper(win)
+        }
       },
       {
         label: "Enable Docassets",
-        click: loadDocassets(win)
+        click() {
+          loadDocassets(win)
+        }
       },
       {
         label: "Report a Bug",
         click: () => shell.openExternal(
-          "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/issues"
+          "https://discord.gg/QAWSu7VWGW"
         )
       },
     ]);
@@ -49,8 +48,8 @@ const {
       console.log(value)
       rpc.setActivity({
         details: "Playing Deeeep.io",
-        largeImageKey: "build/icon.ico",
-        largeImageText: `Deeeep.io | ${value}`,
+        largeImageKey: "./build/icon.ico",
+        largeImageText: `Deeeep.io Desktop Client | ${value}`,
         startTimestamp: new Date(),
       });
     });
@@ -67,7 +66,7 @@ const {
       resizable: false,
       webPreferences: {
         nodeIntegration: true,
-        contextIsolation: false,
+        contextIsolation: false
       },
     });
     settings.loadURL(`file://${__dirname}/../public/settings.html`);
@@ -100,9 +99,9 @@ const {
   
   function loadDocassets(win) {
     const os = require("os");
-    win.webContents.session
-      .loadExtension(`C:/Users/${os.userInfo().username}/AppData/Local/Google/Chrome/User Data/Default/Extensions/cmlbeiacmcbdiepcenjmhmkclmffbgbd/1.0.33_0`)
-      .then("Docassets is loaded!");
+    win.webContents.session.loadExtension(`
+    C:/Users/${os.userInfo().username}/AppData/Local/Google/Chrome/User Data/Default/Extensions/cmlbeiacmcbdiepcenjmhmkclmffbgbd/1.0.33_0
+    `).then(console.log("Docassets is loaded!"))
   }
   
   function showNotification() {
@@ -140,15 +139,25 @@ const {
         createWindow();
         setTimeout(() => {
           splash.destroy();
-      }, 7000); // original timing for both: 2000
-    }, 7000)
+      }, 5000); // original timing for both: 2000
+    }, 5000)
     );
+
+    const options = {
+      provider: 'github',
+      url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
+    }
+    const autoUpdater = new NsisUpdater(options)
   }
   
   app.userAgentFallback = "Chrome";
   app.once("ready", () => {
     splashIntro(),
-    showNotification()
+    showNotification(),
+    globalShortcut.register("CommandOrControl+C", () => {
+      shell.openExternal("https://creators.deeeep.io/skins/pending")
+    })
+    autoUpdater.checkForUpdatesAndNotify()
   });
   
   var rpc = new Client({
@@ -167,5 +176,3 @@ const {
       startTimestamp: new Date(),
     })
   });
-
-
