@@ -1,6 +1,6 @@
-const { BrowserWindow, Menu, shell, Notification, app, ipcMain, globalShortcut} = require("electron");
+const { BrowserWindow, Menu, shell, Notification, app, ipcMain, globalShortcut, dialog, ipcRenderer} = require("electron");
 const { Client } = require("discord-rpc");
-const { autoUpdater } = require("electron-updater")
+const { NsisUpdater } = require("electron-updater")
   
   function createWindow() {
     var win = new BrowserWindow({
@@ -44,15 +44,15 @@ const { autoUpdater } = require("electron-updater")
       },
     ]);
     Menu.setApplicationMenu(menu);
-    ipcMain.on("gameMode", (_, value) => {
-      console.log(value)
-      rpc.setActivity({
-        details: "Playing Deeeep.io",
-        largeImageKey: "./build/icon.ico",
-        largeImageText: `Deeeep.io Desktop Client | ${value}`,
-        startTimestamp: new Date(),
-      });
-    });
+    // ipcMain.on("gameMode", (_, value) => {
+    //   console.log(value)
+    //   rpc.setActivity({
+    //     details: "Playing Deeeep.io",
+    //     largeImageKey: "./build/icon.ico",
+    //     largeImageText: `Deeeep.io Desktop Client | ${value}`,
+    //     startTimestamp: new Date(),
+    //   });
+    // });
     win.on("close", () => win.destroy());
   }
   
@@ -96,12 +96,30 @@ const { autoUpdater } = require("electron-updater")
         `);
     });
   }
-  
+
   function loadDocassets(win) {
     const os = require("os");
+    //app.relaunch(
     win.webContents.session.loadExtension(`
     C:/Users/${os.userInfo().username}/AppData/Local/Google/Chrome/User Data/Default/Extensions/cmlbeiacmcbdiepcenjmhmkclmffbgbd/1.0.33_0
     `).then(console.log("Docassets is loaded!"))
+    //) 
+    const dialogOpts = {
+      // type: "question",
+      // buttons: ["Restart", "Cancel"],
+      type: "info",
+      buttons: ["Ok"],
+      noLink: true,
+      icon: "./build/Logo_182x187.png",
+      title: "Docassets",
+      // detail: "D.D.C is going to restart since you are going to enable docassets, do you want to restart?"
+      detail: "Sorry, the built-in Docassets feature is under development"
+    }
+    dialog.showMessageBox(dialogOpts)
+
+    // if (!cancelId === 0) {
+    //   console.log("the response has been sent.")
+    // } 
   }
   
   function showNotification() {
@@ -132,32 +150,50 @@ const { autoUpdater } = require("electron-updater")
     splash.loadURL(`file://${__dirname}/../public/splashIntro.html`);
     splash.removeMenu();
     splash.setMenu(null);
-    // autoUpdater.checkForUpdatesAndNotify()
     //   .then((res) => splash.destroy())
-    splash.webContents.once("did-finish-load", () =>
-      setTimeout(() => {
-        createWindow();
-        setTimeout(() => {
-          splash.destroy();
-      }, 5000); // original timing for both: 2000
-    }, 5000)
-    );
+    // splash.webContents.once("did-finish-load", () =>
+    //   setTimeout(() => {
+    //     createWindow();
+    //     setTimeout(() => {
+    //       splash.destroy();
+    //   }, 2000); // original timing for both: 5000
+    // }, 2000)
+    // );
 
     const options = {
       provider: 'github',
       url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
     }
     const autoUpdater = new NsisUpdater(options)
+
+    autoUpdater.on("checking-for-update", () => {
+      ipcRenderer.send("checking")
+    })
+    autoUpdater.on("update-available", () => {
+      
+    })
+    autoUpdater.on("update-not-available", () => {
+      ipcRenderer.send("not-available")
+    })
+
+    ipcRenderer.on("stop-splash", () => {
+      splash.destroy(),
+      createWindow()
+    })
+    ipcRenderer.on("download-the-update", () => {
+      // app.quitAndInstall()
+      ipcRenderer.send("")
+    })
   }
-  
+
   app.userAgentFallback = "Chrome";
   app.once("ready", () => {
     splashIntro(),
     showNotification(),
-    globalShortcut.register("CommandOrControl+C", () => {
+    globalShortcut.register("CommandOrControl+Alt+H", () => {
       shell.openExternal("https://creators.deeeep.io/skins/pending")
     })
-    autoUpdater.checkForUpdatesAndNotify()
+    autoUpdater.checkForUpdates()
   });
   
   var rpc = new Client({
@@ -165,14 +201,30 @@ const { autoUpdater } = require("electron-updater")
   });
   
   rpc.login({
-    clientId: "817817065862725682",
+    clientId: "817817065862725682"
   })
-  
+
+  //const RPCInject = document.getElementsByClassname('gamemode-button')[0].childNodes[0];
+
   rpc.on("ready", () => {
-    rpc.setActivity({
-      details: "Playing Deeeep.io",
-      largeImageKey: "deeplarge_2",
-      largeImageText: "Deeeep.io",
-      startTimestamp: new Date(),
-    })
+    //if (RPCInject.value = "Team FFA") {
+      rpc.setActivity({
+        details: "Playing Deeeep.io",
+        largeImageKey: "deeplarge_2",
+        largeImageText: "Deeeep.io",
+        smallImageKey: "pd",
+        smallImageText: "Troll",
+        startTimestamp: new Date(),
+      })
+    //}
   });
+
+  /* 
+  list of key's for DiscordRPC
+  
+  deeplarge_2
+  tffa
+  pd
+  ffa
+  toxicalgae
+  */

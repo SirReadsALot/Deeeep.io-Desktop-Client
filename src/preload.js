@@ -8,5 +8,4 @@ function main() {
   btn.onclick = () => ipcRenderer.send("gameMode", label.innerHTML)
 }
 
-window.addEventListener("load", main)
-                    
+window.addEventListener("load", main())
