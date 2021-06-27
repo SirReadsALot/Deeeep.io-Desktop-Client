@@ -1,0 +1,96 @@
+# to package up the  app, do this:
+
+npm install electron-packager --save-dev -g,
+then in package.json:
+FOR WINDOWS NSIS:
+{
+   "name": "deeeep.io",
+   "productName": "Deeeep.io Desktop App",
+   "version": "1.6.2",
+   "author": "SirReadsALot",
+   "description": "The Deeeep.io Desktop Client",
+   "main": "src/main.js",
+   "scripts": {
+      "start": "electron .",
+      "pack": "electron-builder --dir",
+      "dist": "electron-builder"
+   },
+   "build": {
+      "productName": "Deeeep.io Desktop Client",
+      "appId": "io.deeeep.desktop",
+      "compression": "normal",
+      "files": [
+         "package.json",
+         "public/**",
+         "src/**.js",
+         "build/icon.ico",
+         "build/splashIntro_resized.png",
+         "build/installerIcon.ico"
+      ],
+      "nsis": {
+         "oneClick": false,
+         "allowToChangeInstallationDirectory": true,
+         "createDesktopShortcut": true,
+         "installerIcon": "build/installerIcon.ico",
+         "uninstallerIcon": "build/installerIcon.ico",
+         "runAfterFinish": false
+      }
+   },
+   "dependencies": {
+      "discord-rpc": "^3.2.0"   
+   },
+   "devDependencies": {
+      "electron": "^9.4.4"
+   }
+}
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FOR MAC DMG:
+{
+   "name": "deeeep.io",
+   "productName": "Deeeep.io_Desktop_App",
+   "version": "1.6.2",
+   "author": "SirReadsALot",
+   "description": "The Deeeep.io Desktop Client",
+   "main": "src/main.js",
+   "scripts": {
+      "start": "electron .",
+      "pack": "electron-builder --mac",
+      "dist": "electron-builder"
+   },
+   "build": {
+      "productName": "Deeeep.io_Desktop_Client",
+      "appId": "io.deeeep.desktop",
+      "compression": "normal",
+      "mac": {
+          "target": [
+             "dmg"
+          ],
+          "icon":"build/icons/mac/icon.icns",
+          "artifactName":"Deeeep.io Desktop Client",
+          "files": [
+            "package.json",
+            "public/**",
+            "src/**.js",
+            "build/icons/mac/icon.icns"
+         ]
+      }
+   },
+   "dependencies": {
+      "discord-rpc": "^3.2.0"
+   },
+   "devDependencies": {
+      "electron": "^9.4.4"
+   }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Owner: SirReadsALot
+Contributors: SilverTheSnakebird, 
+Theverycutefishy(soon), Quacc, chepic9990, Yamac, Myhailot
+
+use [https://convertico.com/] for making ico files
+
+
