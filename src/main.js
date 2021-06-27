@@ -159,31 +159,6 @@ const { NsisUpdater } = require("electron-updater")
     //   }, 2000); // original timing for both: 5000
     // }, 2000)
     // );
-
-    const options = {
-      provider: 'github',
-      url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
-    }
-    const autoUpdater = new NsisUpdater(options)
-
-    autoUpdater.on("checking-for-update", () => {
-      ipcRenderer.send("checking")
-    })
-    autoUpdater.on("update-available", () => {
-      
-    })
-    autoUpdater.on("update-not-available", () => {
-      ipcRenderer.send("not-available")
-    })
-
-    ipcRenderer.on("stop-splash", () => {
-      splash.destroy(),
-      createWindow()
-    })
-    ipcRenderer.on("download-the-update", () => {
-      // app.quitAndInstall()
-      ipcRenderer.send("")
-    })
   }
 
   app.userAgentFallback = "Chrome";
@@ -193,7 +168,54 @@ const { NsisUpdater } = require("electron-updater")
     globalShortcut.register("CommandOrControl+Alt+H", () => {
       shell.openExternal("https://creators.deeeep.io/skins/pending")
     })
-    autoUpdater.checkForUpdates()
+    
+    const options = {
+      requestHeaders: {
+          // Any request headers to include here
+          Authorization: ''
+      },
+      provider: 'github',
+      url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
+    }
+    var autoUpdater = new NsisUpdater(options)
+    autoUpdater.checkForUpdatesAndNotify()
+
+    autoUpdater.on("checking-for-update", () => {
+      ipcMain.send("checking")
+    })
+    autoUpdater.on("update-available", () => {
+      const dialogUpdate = {
+        type: "question",
+        buttons: ["Restart", "Cancel"],
+        noLink: true,
+        icon: "./build/Logo_182x187.png",
+        title: "D.D.C Updater",
+        detail: "There is a new update, do you want to update the D.D.C?"
+      }
+      dialog.showMessageBox(dialogUpdate).then((returnValue) => {
+        if (returnValue.response === 0) { 
+          autoUpdater.quitAndInstall()
+        }
+      })
+    })
+    autoUpdater.on("update-not-available", () => {
+      ipcMain.send("not-available")
+    })
+    autoUpdater.on('error', message => {
+      console.error('There was a problem updating the D.D.C')
+      console.error(message)
+    })
+
+    ipcMain.on("stop-splash", () => {
+      splash.destroy(),
+      createWindow()
+    })
+    ipcMain.on("download-the-update", () => {
+      setTimeout(() => {
+        app.quitAndInstall()
+      }, 3000) 
+      ipcMain.send("gonna-download")
+    })
   });
   
   var rpc = new Client({
