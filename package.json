@@ -1,7 +1,7 @@
 {
    "name": "deeeep.io",
-   "productName": "Deeeep.io_Desktop_App",
-   "version": "1.5.7",
+   "productName": "Deeeep.io Desktop Client",
+   "version": "1.6.5",
    "author": "SirReadsALot",
    "description": "The Deeeep.io Desktop Client",
    "main": "src/main.js",
@@ -12,7 +12,7 @@
       "mac": "electron-builder --mac"
    },
    "build": {
-      "productName": "Deeeep.io_Desktop_Client",
+      "productName": "Deeeep.io Desktop Client",
       "appId": "io.deeeep.desktop",
       "compression": "normal",
       "files": [
