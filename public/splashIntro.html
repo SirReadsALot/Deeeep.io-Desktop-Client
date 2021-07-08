@@ -92,10 +92,10 @@
 	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 	crossorigin="anonymous"></script>
 	<script>
-		const { ipcMain } = require("electron");
+		const { ipcRenderer } = require("electron");
 		const text_check = document.getElementsByClassName("text_check")
 
-		ipcMain.on("checking", () => {
+		ipcRenderer.on("checking", () => {
 			console.log("IT WORKED TROLL")
 			const elem = document.getElementById("myBar");
 			let width = 0
@@ -108,38 +108,42 @@
 			progress()
 		})
 
-		ipcMain.on("available", () => {
+		ipcRenderer.on("available", () => {
 			$(".myProgress").hide()
-			$("#myProgressDOWNLOAD").show()
-			var i = 0;
-			function move() {
-        		if (i == 0) {
-            		i = 1;
-            		var elem = document.getElementById("myBar");
-            		var width = 10;
-            		var id = setInterval(frame, 60);
-
-            function frame() {
-               if (width >= 100) {
-                	clearInterval(id);
-                	i = 0;
-            	} else {
-                	width++;
-                	elem.style.width = width + "%";
-                	elem.innerHTML = width + "%";
-            	}
-        	}
-    	}
-}
-			move()
 			ipcMain.send("download-the-update")
+			text_check.innerHTML = "New update found"
 		})
 
-		ipcMain.on("not-available", () => {
+		ipcRenderer.on("not-available", () => {
 			text_check.innerHTML = "No update found"
 			ipcMain.send("stop-splash")
 			$(".myProgress").hide()
+			$("#myProgressDOWNLOAD").hide()
 		})
+
+		ipcRenderer.on("gonna-download", () => {
+			$("#myProgressDOWNLOAD").show()
+			var i = 0;
+				function move() {
+        			if (i == 0) {
+            			i = 1;
+            			var elem = document.getElementById("myBar");
+            			var width = 10;
+            			var id = setInterval(frame, 60);
+
+            	function frame() {
+               			if (width >= 100) {
+                			clearInterval(id);
+                			i = 0;
+            			} else {
+                			width++;
+                			elem.style.width = width + "%";
+                			elem.innerHTML = width + "%";
+            			}
+        			}
+    			}
+			}	
+	})
 	</script>
 </body>
 </html>
