@@ -1,6 +1,6 @@
 const { BrowserWindow, Menu, shell, Notification, app, ipcMain, globalShortcut, dialog, ipcRenderer} = require("electron");
 const { Client } = require("discord-rpc");
-const { NsisUpdater } = require("electron-updater")
+const { autoUpdater } = require("electron-updater")
   
   function createWindow() {
     var win = new BrowserWindow({
@@ -159,6 +159,7 @@ const { NsisUpdater } = require("electron-updater")
     //   }, 2000); // original timing for both: 5000
     // }, 2000)
     // );
+    splash.openDevTools()
   }
 
   app.userAgentFallback = "Chrome";
@@ -169,16 +170,11 @@ const { NsisUpdater } = require("electron-updater")
       shell.openExternal("https://creators.deeeep.io/skins/pending")
     })
     
-    const options = {
-      requestHeaders: {
-          // Any request headers to include here
-          Authorization: ''
-      },
-      provider: 'github',
-      url: 'https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest'
-    }
-    var autoUpdater = new NsisUpdater(options)
-    autoUpdater.checkForUpdatesAndNotify()
+    autoUpdater.setFeedURL({
+      provider: "github",
+      releaseType: "release",
+      repo: "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest"
+    })
 
     autoUpdater.on("checking-for-update", () => {
       ipcMain.send("checking")
@@ -216,6 +212,8 @@ const { NsisUpdater } = require("electron-updater")
       }, 3000) 
       ipcMain.send("gonna-download")
     })
+
+    autoUpdater.checkForUpdates()
   });
   
   var rpc = new Client({
