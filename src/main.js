@@ -10,10 +10,10 @@ const { autoUpdater } = require("electron-updater")
       center: true,
       webPreferences: {
         nodeIntegration: true,
-        preload: `${__dirname}/preload.js`,
+        //preload: `${__dirname}/preload.js`,
       },
     });
-    // win.openDevTools()
+    win.openDevTools()
     win.loadURL("https:/deeeep.io/");
     win.removeMenu();
   
@@ -93,7 +93,7 @@ const { autoUpdater } = require("electron-updater")
     ipcMain.on("setSkin", (inputValue) => {
       win.webContents.executeJavaScript(`
         game.currentScene.myAnimal.setSkin(${inputValue})
-        `);
+      `);
     });
   }
 
@@ -150,16 +150,15 @@ const { autoUpdater } = require("electron-updater")
     splash.loadURL(`file://${__dirname}/../public/splashIntro.html`);
     splash.removeMenu();
     splash.setMenu(null);
-    //   .then((res) => splash.destroy())
-    // splash.webContents.once("did-finish-load", () =>
-    //   setTimeout(() => {
-    //     createWindow();
-    //     setTimeout(() => {
-    //       splash.destroy();
-    //   }, 2000); // original timing for both: 5000
-    // }, 2000)
-    // );
-    splash.openDevTools()
+    splash.webContents.once("did-finish-load", () =>
+      setTimeout(() => {
+        createWindow();
+        setTimeout(() => {
+          splash.destroy();
+      }, 2000); // original timing for both: 5000
+    }, 2000)
+    );
+    // splash.openDevTools()
   }
 
   app.userAgentFallback = "Chrome";
@@ -170,50 +169,50 @@ const { autoUpdater } = require("electron-updater")
       shell.openExternal("https://creators.deeeep.io/skins/pending")
     })
     
-    autoUpdater.setFeedURL({
-      provider: "github",
-      releaseType: "release",
-      repo: "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest"
-    })
+    // autoUpdater.setFeedURL({
+    //   provider: "github",
+    //   releaseType: "release",
+    //   repo: "https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest"
+    // })
 
-    autoUpdater.on("checking-for-update", () => {
-      ipcMain.send("checking")
-    })
-    autoUpdater.on("update-available", () => {
-      const dialogUpdate = {
-        type: "question",
-        buttons: ["Restart", "Cancel"],
-        noLink: true,
-        icon: "./build/Logo_182x187.png",
-        title: "D.D.C Updater",
-        detail: "There is a new update, do you want to update the D.D.C?"
-      }
-      dialog.showMessageBox(dialogUpdate).then((returnValue) => {
-        if (returnValue.response === 0) { 
-          autoUpdater.quitAndInstall()
-        }
-      })
-    })
-    autoUpdater.on("update-not-available", () => {
-      ipcMain.send("not-available")
-    })
-    autoUpdater.on('error', message => {
-      console.error('There was a problem updating the D.D.C')
-      console.error(message)
-    })
+    // autoUpdater.on("checking-for-update", () => {
+    //   ipcMain.send("checking")
+    // })
+    // autoUpdater.on("update-available", () => {
+    //   const dialogUpdate = {
+    //     type: "question",
+    //     buttons: ["Restart", "Cancel"],
+    //     noLink: true,
+    //     icon: "./build/Logo_182x187.png",
+    //     title: "D.D.C Updater",
+    //     detail: "There is a new update, do you want to update the D.D.C?"
+    //   }
+    //   dialog.showMessageBox(dialogUpdate).then((returnValue) => {
+    //     if (returnValue.response === 0) { 
+    //       autoUpdater.quitAndInstall()
+    //     }
+    //   })
+    // })
+    // autoUpdater.on("update-not-available", () => {
+    //   ipcMain.send("not-available")
+    // })
+    // autoUpdater.on('error', message => {
+    //   console.error('There was a problem updating the D.D.C')
+    //   console.error(message)
+    // })
 
-    ipcMain.on("stop-splash", () => {
-      splash.destroy(),
-      createWindow()
-    })
-    ipcMain.on("download-the-update", () => {
-      setTimeout(() => {
-        app.quitAndInstall()
-      }, 3000) 
-      ipcMain.send("gonna-download")
-    })
+    // ipcMain.on("stop-splash", () => {
+    //   splash.destroy(),
+    //   createWindow()
+    // })
+    // ipcMain.on("download-the-update", () => {
+    //   setTimeout(() => {
+    //     app.quitAndInstall()
+    //   }, 3000) 
+    //   ipcMain.send("gonna-download")
+    // })
 
-    autoUpdater.checkForUpdates()
+    // autoUpdater.checkForUpdates()
   });
   
   var rpc = new Client({
@@ -227,16 +226,62 @@ const { autoUpdater } = require("electron-updater")
   //const RPCInject = document.getElementsByClassname('gamemode-button')[0].childNodes[0];
 
   rpc.on("ready", () => {
-    //if (RPCInject.value = "Team FFA") {
+  //   ipcMain.on("gameMode", (label) => {
+  //     if (label.innerHTML === "Pearl Defence") {
+  //       rpc.setActivity({
+  //         details: "Playing Deeeep.io",
+  //         largeImageKey: "deeplarge_2",
+  //         largeImageText: "Deeeep.io",
+  //         smallImageKey: "pd",
+  //         smallImageText: "Playing Pearl Defence",
+  //         startTimestamp: new Date()
+  //       })
+  //     } else if (label.innerHTML === "Team FFA") {
+  //       rpc.setActivity({
+  //         details: "Playing Deeeep.io",
+  //         largeImageKey: "deeplarge_2",
+  //         largeImageText: "Deeeep.io",
+  //         smallImageKey: "tffa",
+  //         smallImageText: "Playing Team FFA",
+  //         startTimestamp: new Date()
+  //       })
+  //     } else if (label.innerHTML === "Free For All") {
+  //       rpc.setActivity({
+  //         details: "Playing Deeeep.io",
+  //         largeImageKey: "deeplarge_2",
+  //         largeImageText: "Deeeep.io",
+  //         smallImageKey: "ffa",
+  //         smallImageText: "Playing Free For All",
+  //         startTimestamp: new Date()
+  //       }) 
+  //     } else if (label.innerHTML === "Toxic Algae (Beta)") {
+  //       rpc.setActivity({
+  //         details: "Playing Deeeep.io",
+  //         largeImageKey: "deeplarge_2",
+  //         largeImageText: "Deeeep.io",
+  //         smallImageKey: "toxicalgae",
+  //         smallImageText: "Playing Toxic Algae",
+  //         startTimestamp: new Date(),
+  //       })
+  //     } else if (label.innerHTML === "First version (v1)" || label.innerHTML === "1vs1") {
+  //       rpc.setActivity({
+  //         details: "Playing Deeeep.io",
+  //         largeImageKey: "deeplarge_2",
+  //         largeImageText: "Deeeep.io",
+  //         smallImageKey: null,
+  //         smallImageText: "Playing Unknown Gamemode",
+  //         startTimestamp: new Date(),
+  //       })
+  //     }
+  //   })
       rpc.setActivity({
         details: "Playing Deeeep.io",
         largeImageKey: "deeplarge_2",
         largeImageText: "Deeeep.io",
-        smallImageKey: "pd",
-        smallImageText: "Troll",
+        smallImageKey: "ffa",
+        smallImageText: "Playing Unknown Gamemode",
         startTimestamp: new Date(),
       })
-    //}
   });
 
   /* 
