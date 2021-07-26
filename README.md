@@ -82,8 +82,6 @@ Deeeep.ioBGM
 
 AutoUpdater
 
-Detailed DiscordRPC
-
 Modified Censorship
 
 ## License
