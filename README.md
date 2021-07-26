@@ -16,7 +16,7 @@ It has features like a built-in asset swapper, built-in extension store, detaile
 
 | Version | Platform | Availability| 
 | ------- | -------- | ----------- |
-| v1.5.8  | Windows  | Yes | 
+| v1.6.2  | Windows  | Yes | 
 | v1.5.8    | MacOS    | Coming Soon |
 | v1.7    | Linux | Coming Soon |
 
@@ -56,7 +56,7 @@ To gain access to this repository, contact `SirReadsALot#3380` on Discord.
 
 You are also welcome to submit a pull request or issue at any time.
 
-Join our [Discord server](https://discord.gg/hpX9DZxyUC) or check out our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
+Join our [Discord server](https://discord.gg/BMHVrKYeem) or check out our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
 
 ## 🚀Current features
 
@@ -78,9 +78,13 @@ Settings
 
 Donation menu item
 
-Deeeep.io BGM
+Deeeep.ioBGM
 
 AutoUpdater
+
+Detailed DiscordRPC
+
+Modified Censorship
 
 ## License
 
