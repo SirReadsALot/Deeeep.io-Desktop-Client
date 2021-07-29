@@ -78,11 +78,11 @@ Settings
 
 Donation menu item
 
-Deeeep.ioBGM
-
 AutoUpdater
 
 Modified Censorship
+
+Noob Vision
 
 ## License
 
