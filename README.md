@@ -76,6 +76,8 @@ Docassets fully functional
 
 Settings
 
+DDC Plugins
+
 Donation menu item
 
 AutoUpdater
