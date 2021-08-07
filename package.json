@@ -13,7 +13,6 @@
    "build": {
       "productName": "Deeeep.io Desktop Client",
       "appId": "io.deeeep.desktop",
-      "compression": "normal",
       "files": [
          "package.json",
          "public/**",
