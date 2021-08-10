@@ -88,4 +88,4 @@ Noob Vision
 
 ## License
 
-The Deeeep.io Desktop Client is licensed under the MIT license.
+The Deeeep.io Desktop Client is licensed under the GPL-3.0 license.
