@@ -1,4 +1,4 @@
-### Deeeep.io Desktop Client
+# Deeeep.io Desktop Client - GoLang Edition
 
 Go port using webview
 
