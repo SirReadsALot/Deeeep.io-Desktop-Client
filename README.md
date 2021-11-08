@@ -74,8 +74,6 @@ Subreddits, mapmaker, creators centre and even discord opens within the client
 
 Detailed DiscordRPC based on gamemode
 
-Docassets fully functional
-
 Settings
 
 DDC Plugins
