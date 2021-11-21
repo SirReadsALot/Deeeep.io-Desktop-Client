@@ -1,4 +1,4 @@
-module github.com/deep_desktop
+module github.com/SirReadsALot/deep_desktop
 
 go 1.16
 

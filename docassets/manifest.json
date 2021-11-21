@@ -13,7 +13,7 @@
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwo0IbvEDe9RxI0ECktmNtAc2rFdXAj46K50xS+ytoaqKipAQ7x6zHmLLQHzbxM057ZmskGyEVEscuDRegqTn+w+GmLKZox90nMmmfaZRFzz18Rg9ZEC/8UwYMkUlYHPIhPQt1RogYIhwHgPoTJ7M4zDG47rEbX3hBkaOWeJFBMD+pA958LYfdNgl7BZ/+XBOFjjyLgZFHvew2QasBVWMikme7BmtcNPwwK5JM5WWGq8+/MPAsKJIb1rsmlgKPc4CcXAZfsHY3yTSrizyfA1gdl9SVNZ/Vk5buircgTz+WuriyWf1Y4PlpB5eUX6qA1+Q92D9V9pSqG4ebxzLZYcZ1QIDAQAB",
    "manifest_version": 2,
    "name": "Doctorpus Assets",
-   "permissions": [ "webRequest", "https://deeeep.io/*", "webRequestBlocking", "storage" ],
+   "permissions": [ "webRequest", "https://deeeep.io/*", "webRequestBlocking", "storage", "tabs" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "1.0.36"
 }
