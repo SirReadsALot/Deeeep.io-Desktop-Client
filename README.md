@@ -1,9 +1,10 @@
 # Deeeep.io Desktop Client - GoLang Edition
 
-Go port using webview
+<img src="./assets/logo_golang.png">
 
-To run the app,
-```go run main.go```
+Go port using Lorca
+Run the app using:
+`go_run.exe`
 
-To build the app,
-```go build -o dist/Deeeep.io.exe -ldflags -H=windowsgui src/main.go ```
+Build the app using:
+`go_build.exe`
