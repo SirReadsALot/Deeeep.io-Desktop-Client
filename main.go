@@ -11,8 +11,8 @@ import (
 	"github.com/zserge/lorca"
 )
 
-type config struct {
-	Docassets bool `json:docassets`
+type Config struct {
+	Docassets bool `json:Docassets`
 }
 
 func main() {
@@ -21,13 +21,14 @@ func main() {
 	// swappath := path.Join(cwd, "swapper")
 	flags := fmt.Sprintf("--load-extension=%v", docpath)
 
-	config := config {false}
+	var config Config
 	data, err := os.ReadFile("config.json")
 	if err != nil {
+		config = Config {false}
 		data, _ := json.Marshal(config)
     	os.WriteFile("config.json", data, 0644)
 	} else {
-		json.Unmarshal(data, config)
+		json.Unmarshal(data, &config)
 	}
 	cfcpy := config
 
@@ -63,7 +64,7 @@ func main() {
 	<-ui.Done()
 }
 
-func query(config config) string {
+func query(config Config) string {
 	return fmt.Sprintf("?docassets=%v", config.Docassets)
 }
 
