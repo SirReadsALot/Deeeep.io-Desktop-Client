@@ -1,36 +1,39 @@
-# name: Build DDC
-# on: [push]
-# jobs: 
-#   windows_build:
-#     name: WinBuild
-#     runs-on: windows-latest
+name: Build DDC
+on: 
+  push:
+    branches:
+      - golang
+jobs: 
+  windows_build:
+    name: WinBuild
+    runs-on: windows-latest
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-go@v2
-#       with:
-#         go-version: "1.17.1"
-#         - run: go build -o dist/win/Deeeep.io-Desktop-Client.exe -ldflags -H=windowsgui src/main.go
-#   mac_build:
-#     name: MacBuild
-#     runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      with:
+        go-version: "1.17.1"
+        - run: go build -o dist/win/Deeeep.io-Desktop-Client.exe -ldflags -H=windowsgui main.go
+  mac_build:
+    name: MacBuild
+    runs-on: unbuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-go@v2
-#       with:
-#         go-version: "1.17.1"
-#         - run: cd dist/mac
-#       - run: env GOOS=darwin GOARCH=arm64 go build -o dist/mac/Deeeep.io-Desktop-Client src/main.go
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      with:
+        go-version: "1.17.1"
+        - run: cd dist/mac
+      - run: env GOOS=darwin GOARCH=arm64 go build -o dist/mac/Deeeep.io-Desktop-Client main.go
 
-#   linux_build:
-#     name: LinuxBuild
-#     runs-on: ubuntu-latest
+  linux_build:
+    name: LinuxBuild
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-go@v2
-#       with:
-#         go-version: "1.17.1"
-#       - run: env GOOS=linux GOARCH=arm64 go build -o dist/linux/Deeeep.io-Desktop-Client src/main.go
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      with:
+        go-version: "1.17.1"
+      - run: env GOOS=linux GOARCH=arm64 go build -o dist/linux/Deeeep.io-Desktop-Client main.go
 
