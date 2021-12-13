@@ -1,3 +1,6 @@
+FOR DISCORDRPC
+https://github.com/hugolgst/rich-go
+
 FOR AUTO UPDATER
 https://github.com/inconshreveable/go-update
 
