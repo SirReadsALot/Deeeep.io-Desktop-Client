@@ -42,10 +42,13 @@ func main() {
 
 	ui, _ := lorca.New("data:text/html,"+url.PathEscape(`
 		<title>Deeeep.io Desktop App</title>
-		<style>*{padding: 0; margin: 0; overflow: hidden}</style>
-		<img id="img" src="https://tinyurl.com/m5a4d3vw"></img>
-	`)+query(config), "", 887, 586, flags)
-	time.Sleep(4 * time.Second)
+		<style>*{padding: 0; margin: 0; overflow: hidden}
+		#loading{text-align: center; font-size: 40px; font-weight: bold; position: absolute; z-index: 2; color: white;}</style>
+		<!-- <img id="img" src="https://tinyurl.com/m5a4d3vw"></img> -->
+		<img id="img" src="https://sralcodeproj.netlify.app/assets/myhailot.png"></img>
+		<h3 id="loading">Loading...</h3>
+	`)+query(config), "", 1120, 740, flags) // previous: 887x586
+	time.Sleep(5 * time.Second)
 
 	err = client.Login("817817065862725682")
 	if err != nil {
@@ -106,14 +109,7 @@ func menu(ui lorca.UI) {
 		div.style.zIndex = "100"
 		div.style.width = "100%"
 		div.innerHTML = '<nav id="menu" class="navbar navbar-expand navbar-dark bg-dark">\
-			<!-- <ul class="navbar-nav">
-				<li class"nav-item"><a class="nav-link pull-left" onclick="open_navbar()">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbar-stuff">\
-						<span class="navbar-toggler-icon"></span>\
-					</button>\
-				</a></li>\
-			</ul>\ -->
-		<div id="navbar-stuff">
+		<div class="collapse navbar-collapse">\
 			<ul class="navbar-nav mr-auto">\
 				<li class="nav-item"><a class="nav-link" id="docassets">\
 					<img style="width: 30px; height: 30px;" src="https://lh3.googleusercontent.com/JwLoyKugJQ-GNq-hGK94I23EJETk2_2Wi3UrLlShwBa1UTgiWFQQ4uvmKfxi7pacYwBbjg1IxOeus7Tlv8h5-Lui_5Q=w128-h128-e365-rj-sc0x00ffffff">\
@@ -121,14 +117,13 @@ func menu(ui lorca.UI) {
 						style="font-size: 10px; margin-top: -10px">ON</div>\
 				</a></li>\
 			</ul>\
-				<ul class="navbar-nav">\
-					<li class="nav-item"><a class="nav-link pull-right" onclick="dark()">\
-						<svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="currentColor">\
-							<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />\
-						</svg>\
-					</a></li>\
-				</ul>\
-			</div>\
+			<ul class="navbar-nav">\
+				<li class="nav-item"><a class="nav-link pull-right" onclick="dark()">\
+					<svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="currentColor">\
+						<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />\
+					</svg>\
+				</a></li>\
+			</ul>\
 		</div>\
 		</nav>'
 		document.body.insertBefore(div, app)
