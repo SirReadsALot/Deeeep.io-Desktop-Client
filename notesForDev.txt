@@ -1,9 +1,0 @@
-FOR DISCORDRPC
-https://github.com/hugolgst/rich-go
-
-FOR AUTO UPDATER
-https://github.com/inconshreveable/go-update
-
-FOR THE PLUGIN SYSTEM:
-https://golangdocs.com/golang-download-files
-https://golangcode.com/unzip-files-in-go/

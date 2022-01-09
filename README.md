@@ -1,11 +1,11 @@
-# Deeeep.io Desktop Client - GoLang Edition
+# Deeeep.io Desktop Client - Golang Edition
 
 <img src="./assets/logo_golang.png">
 
 Go port using Lorca
 
 Run the app using:
-`go_run.exe`
+```go run src/main.go```
 
 Build the app using:
-`go_build.exe`
+```go build -o dist/Deeeep.io_Desktop.exe```
