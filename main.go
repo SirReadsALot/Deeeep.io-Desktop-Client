@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/url"
 	"os"
@@ -16,13 +17,14 @@ import (
  */
 
 var script, _ = os.ReadFile("./src/script.js")
+var index, _ = os.ReadFile("./src/index.html")
 
 func main() {
 	plugins := core.NewPluginManager()
-	plugins.AddPlugin(core.EXTENSION, "docassets", true)
-	plugins.AddPlugin(core.EXTENSION, "swapper", true)
-	plugins.AddPlugin(core.SCRIPT, "rpc", true)
-	plugins.AddPlugin(core.SCRIPT, "evotree", true)
+	plugins.AddPlugin(core.EXTENSION, "Docassets", "docassets", true)
+	plugins.AddPlugin(core.EXTENSION, "Swapper", "swapper", true)
+	plugins.AddPlugin(core.SCRIPT, "Discord RPC", "rpc", true)
+	plugins.AddPlugin(core.SCRIPT, "Evo Tree", "evotree", true)
 	plugins.LoadConfig()
 	flags := plugins.InitPlugins()
 
@@ -40,21 +42,41 @@ func main() {
 	core.DiscordRpc(&ui)
 	ui.Bind("setConfig", func(config map[string]core.Config) {
 		plugins.Config = config
+	})
+
+	ui.Bind("reload", func() {
 		ui.Load(`https://beta.deeeep.io` + plugins.QueryPlugins())
 		plugins.ReloadPlugins(&ui)
-		ui.Eval(string(script))
+		EvalDefaultScripts(&ui, plugins)
 	})
 
 	ui.Load(`https://beta.deeeep.io` + plugins.QueryPlugins())
 	ui.SetBounds(lorca.Bounds{0, 0, 1200, 1000, "maximized"})
 	plugins.ReloadPlugins(&ui)
-	ui.Eval(string(script))
+	EvalDefaultScripts(&ui, plugins)
 
 	defer func() {
 		ui.Close()
 		plugins.SaveConfig()
 	}()
 	<-ui.Done()
+}
+
+func EvalDefaultScripts(ref *lorca.UI, plugins core.PluginManager) {
+	ui := *ref
+	config, _ := json.Marshal(plugins.Config)
+	data, _ := json.Marshal(plugins.Plugins)
+	ui.Eval(
+		"const config = " + string(config) + 
+		";const data = " + string(data),
+	)
+	ui.Eval(`window.addEventListener("load", () => {
+		const app = document.getElementById("app")
+		const modal = document.createElement("div")
+		app.appendChild(modal)
+		modal.outerHTML =`  + "`" + string(index) + "`" +
+	`})`)
+	ui.Eval(string(script))
 }
 
 func CheckAndLogFatal(e error) {

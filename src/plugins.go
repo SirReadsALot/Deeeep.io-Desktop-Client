@@ -2,7 +2,6 @@ package core
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"path"
@@ -20,20 +19,21 @@ const (
 )
 
 type Config = struct {
-	Active bool
+	Active bool `json:"active"`
 	// Installed bool
 }
 
 type PluginManager struct {
-	Plugins   map[string]Plugin
-	Config    map[string]Config
+	Plugins map[string]Plugin
+	Config  map[string]Config
 }
 
 type Plugin struct {
-	Type    PluginType
-	Name    string
-	Default bool
-	Src     string
+	Type    PluginType `json:"type"`
+	Name    string     `json:"name"`
+	Path    string     `json:"path"`
+	Default bool       `json:"default"`
+	Src     string     `json:"src"`
 	// Url       string
 }
 
@@ -51,8 +51,6 @@ func (p *PluginManager) LoadConfig() {
 		for name, plugin := range p.Plugins {
 			config[name] = Config{plugin.Default}
 		}
-		data, _ := json.Marshal(config)
-		os.WriteFile("config.json", data, 0644)
 	} else {
 		json.Unmarshal(data, &config)
 		for name, plugin := range p.Plugins {
@@ -65,8 +63,8 @@ func (p *PluginManager) LoadConfig() {
 	p.Config = config
 }
 
-func (p *PluginManager) AddPlugin(Type PluginType, Name string, Default bool) {
-	p.Plugins[Name] = Plugin{Type, Name, Default, ""}
+func (p *PluginManager) AddPlugin(Type PluginType, Name string, Path string, Default bool) {
+	p.Plugins[Path] = Plugin{Type, Name, Path, Default, ""}
 }
 
 func (p *PluginManager) InitPlugins() string {
@@ -78,11 +76,11 @@ func (p *PluginManager) InitPlugins() string {
 	// }
 	flag := "--load-extension="
 	for name, plugin := range p.Plugins {
-		ext := fmt.Sprintf("plugins/%v", plugin.Name)
+		ext := "plugins/" + plugin.Path
 		if plugin.Type == EXTENSION {
-			flag = fmt.Sprintf("%v%v,", flag, path.Join(cwd, ext))
+			flag = flag + path.Join(cwd, ext) + ","
 		} else {
-			dat, _ := os.ReadFile(fmt.Sprintf("%v/script.js", ext))
+			dat, _ := os.ReadFile(ext + "/script.js")
 			plugin, _ := p.Plugins[name]
 			plugin.Src = string(dat)
 			p.Plugins[name] = plugin
@@ -95,7 +93,7 @@ func (p *PluginManager) QueryPlugins() string {
 	query := "?"
 	for name, plugin := range p.Plugins {
 		if plugin.Type == EXTENSION && p.Config[name].Active {
-			query = fmt.Sprintf("%v%v=true&&", query, plugin.Name)
+			query = query + plugin.Path + "=true&&"
 		}
 	}
 	return query
