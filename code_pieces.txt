@@ -1,0 +1,15 @@
+// screenshot function
+function takeScreenshot() {
+    wait = true;
+    app.renderer.extract.canvas(app.stage).toBlob((b) => {
+        const a = document.createElement('a');
+        document.body.append(a);
+        a.download = 'screenshot';
+        a.href = URL.createObjectURL(b);
+        a.click();
+        a.remove();
+    }, 'image/png');
+}
+
+app.renderer.plugins.interaction.on('pointerdown', takeScreenshot);
+
