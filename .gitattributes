@@ -1,3 +1,2 @@
 *.typescript linguist-detectable=false
 *.javascript linguist-detectable=false
-*.go linguist-detectable=true
