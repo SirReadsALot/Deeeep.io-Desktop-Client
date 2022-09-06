@@ -6,7 +6,7 @@ import (
 	"github.com/zserge/lorca"
 )
 
-func makeWindow() {
-	fmt.Println("works")
+func makeWindow(assetswap lorca.UI) {
+	fmt.Println("new window works")
 	lorca.New("f", "$", 23, 23)
 }

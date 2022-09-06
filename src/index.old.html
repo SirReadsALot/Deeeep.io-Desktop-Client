@@ -1,0 +1,89 @@
+<style>
+    .ext-red {
+        background-color: rgb(239, 68, 68);
+        border-color: rgb(220, 38, 38);
+    }
+
+    .ext-black {
+        background-color: rgb(107, 114, 128);
+        border-color: rgb(75, 85, 99);
+    }
+
+    body .ext-button {
+        border-bottom-width: 4px;
+        border-radius: 1rem;
+    }
+
+    .ext-box {
+        background-color: rgb(17, 24, 39);
+        width: 120px;
+        height: 120px;
+        border-radius: 1rem;
+        filter: brightness(50%);
+    }
+
+    .ext-box:hover,
+    .ext-box:hover * {
+        filter: brightness(100%);
+    }
+
+    .ext-box.active {
+        outline: 2px solid white;
+        filter: brightness(100%);
+    }
+
+    .ext-modal {
+        background-color: rgb(31, 41, 55);
+        border: solid 2px rgb(55, 65, 81);
+        border-radius: 0.75rem;
+        width: 500px;
+        height: 400px
+    }
+
+    .ext-core {
+        top: 5px;
+        right: 5px;
+        border: 1px solid white;
+        border-radius: 25px;
+        font-size: 14px;
+    }
+
+    #ext-main {
+        flex-wrap: wrap;
+        width: 88%;
+        margin: auto;
+        gap: 15px;
+    }
+</style>
+
+<div style="z-index: 100;" class="w-screen h-screen absolute" id="ext-modal">
+    <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
+    <div class="w-full h-full absolute flex justify-center items-center">
+        <div class="flex flex-col ext-modal relative">
+            <div style="font-size: 1.3rem" class="text-center py-2">Extensions</div>
+            <div style="top: 5px; right: 10px; z-index:101;" class="absolute ext-close">x</div>
+            <div style="flex: 1;" class="text-center">
+                <div class="p-4 flex" id="ext-main"></div>
+            </div>
+            <div class="text-center py-4">
+                <div class="el-button ext-button ext-red">Reload</div>
+                <div class="el-button ext-button ext-black ext-close">Close</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="z-index: 100;" class="w-screen h-screen absolute" id="evo-modal">
+    <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
+    <div class="w-full h-full absolute flex justify-center items-center">
+        <div class="flex flex-col evo-modal relative">
+            <div style="font-size: 1.3rem" class="text-center py-2">Evo Tree</div>
+            <button class="evo-close box-x-close"><svg width="1.125em" height="1.125em" viewBox="0 0 24 24" class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72="" style="--sx:1; --sy:1; --r:0deg;"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" data-v-35f7fcad=""></path></svg></button>
+            <div style="flex: 1;" class="text-center">
+                <div class="p-4 flex" id="evo-main"></div>
+            </div>
+            <div class="text-center py-4">
+                <div class="button evo-button evo-black evo-close">Close</div>
+            </div>
+        </div>
+    </div>
+</div>
