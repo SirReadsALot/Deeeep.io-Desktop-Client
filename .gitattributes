@@ -1,1 +1,1 @@
-*.typescript linguist-detectable=true
+*.javascript linguist-detectable=false
