@@ -1,4 +1,4 @@
-# Deeeep.io Desktop Client - Golang Edition
+# Deeeep.io Desktop Client
 
 <img src="./assets/logo_golang.png">
 
