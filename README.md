@@ -1,6 +1,6 @@
 # Deeeep.io Desktop Client
 
-<img src="./assets/logo_golang.png">
+<img src="./assets/golang_logo.png">
 
 Go port using Lorca
 
