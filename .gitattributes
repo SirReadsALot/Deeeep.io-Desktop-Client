@@ -1,1 +1,1 @@
-*.golang linguist-detectable=true
+*.typescript linguist-language=go
