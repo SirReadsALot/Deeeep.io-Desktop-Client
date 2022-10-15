@@ -19,6 +19,18 @@ The Deeeep.io Desktop Client is a free and open source desktop app made with gol
 | v1.7    | Linux | Coming Soon |
 
 
+## Installation
+
+This application requires [go](https://go.dev/) to be installed.
+
+To download this repository:
+
+> This step requires Git to be installed
+```
+git clone https://github.com/SirReadsALot/Deeeep.io-Desktop-Client.git
+cd Deeeep.io-Desktop-Client
+```
+
 Run the app using:
 ```
 go run src/main.go
