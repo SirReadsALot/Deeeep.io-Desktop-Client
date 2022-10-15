@@ -8,7 +8,7 @@
 
 Welcome to the official repository of the Deeeep.io Desktop Client!
 
-The Deeeep.io Desktop Client is a free and open source desktop app made with golang for the hit io game called Deeeep.io.
+The Deeeep.io Desktop Client is a free and open source desktop app made with go for the hit io game called Deeeep.io.
 
 ## Supported Platforms
 
