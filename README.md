@@ -35,11 +35,20 @@ Run the app using:
 ```
 go run main.go
 ```
+or by doing
+```
+./go_run.exe
+```
 
 Build the app using:
 ```
 go build -o dist/Deeeep.io-Desktop-Client.exe
 ```
+or by doing:
+```
+./go_build.exe
+```
+
 ## Contributing
 
 To gain access to this repository, contact `SirReadsALot#3380` on Discord.
