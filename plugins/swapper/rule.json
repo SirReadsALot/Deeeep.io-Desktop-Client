@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": { "url": "https://deep-cors.deno.dev/index.2f09e083.js" }
+    },
+    "condition": {
+      "urlFilter": "index",
+      "domains": ["deeeep.io", "beta.deeeep.io"],
+      "resourceTypes": ["script"]
+    }
+  }
+]

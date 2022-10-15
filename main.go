@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/url"
 	"os"
@@ -23,11 +24,11 @@ var game_name, _ = os.ReadFile("./src/game_name.js")
 var index, _ = os.ReadFile("./src/index.html")
 
 func main() {
+	log.SetOutput(ioutil.Discard)
 	plugins := core.NewPluginManager()
 	plugins.AddPlugin(core.EXTENSION, "Docassets", "docassets", true)
 	plugins.AddPlugin(core.EXTENSION, "Swapper", "swapper", true)
 	plugins.AddPlugin(core.SCRIPT, "DiscordRPC", "rpc", true)
-	plugins.AddPlugin(core.SCRIPT, "Evotree", "evotree", true)
 	plugins.LoadConfig()
 	flags := plugins.InitPlugins()
 
@@ -45,10 +46,10 @@ func main() {
 	// time.Sleep(2 * time.Second)
 	CheckAndLogFatal(err)
 
-	core.DiscordRpc() //&ui)
-	/* ui.Bind("setConfig", func(config map[string]core.Config) {
+	core.DiscordRpc()
+	ui.Bind("setConfig", func(config map[string]core.Config) {
 		plugins.Config = config
-	}) */
+	})
 
 	ui.Bind("reload", func() {
 		ui.Close()
@@ -59,49 +60,6 @@ func main() {
 
 	ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
 	ui.Eval(string(game_name))
-	ui.Eval(`
-	  (function () {
-			var blockContextMenu
-	
-			blockContextMenu = function (evt) {
-			  evt.preventDefault();
-			  console.log("[DDC] [!] contextmenu blocked")
-			};
-	
-			window.addEventListener('contextmenu', blockContextMenu);
-		})();
-	
-		window.addEventListener('keydown', e => {
-			const evoModal = document.getElementById("evo-modal")
-			if (e.key == "q" && e.isComposing) {
-			  evoModal.classList.toggle("active")
-			  evoModal.transform = "scale(1)"
-			  evoModal.opacity = 1
-			  //alert("key Q held")
-			} else if (e.key != "q" || e.repeat) {
-				return;
-			} else {
-			  evoModal.classList.toggle("hidden")
-			  //alert("no key held")
-			}
-		}) 
-		window.addEventListener('keyup', e => {
-			if (e.key.toLowerCase() == "q") {
-				evoModal.style.transform = "scale (0)"
-				evoModal.style.opacity = 0
-			}
-		})
-	
-		console.log("[DDC] initiating fishLevelData logging function...")
-		window.addEventListener("keydown", e => {
-			if (e.key === "w") {
-				console.log(game.currentScene.myAnimal.fishLevelData)
-			} else {
-				return;
-			}
-		})
-	`)
-	// ui.Eval(string(sw))
 	ui.SetBounds(lorca.Bounds{0, 0, 1200, 800, ""})
 	plugins.ReloadPlugins(&ui)
 	EvalDefaultScripts(&ui, plugins)
@@ -128,6 +86,7 @@ func EvalDefaultScripts(ref *lorca.UI, plugins core.PluginManager) {
 		app.appendChild(modal)
 		modal.outerHTML =` + "`" + string(index) + "`" +
 		`})`)
+	ui.Eval(string(game_name))
 	ui.Eval(string(script))
 }
 

@@ -1,4 +1,7 @@
 {
+  "background": {
+    "service_worker": "background.js"
+  },
   "description": "Deeeep.io Cache",
   "manifest_version": 3,
   "name": "Deeeep.io Cache",
