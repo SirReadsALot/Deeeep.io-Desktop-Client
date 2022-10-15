@@ -33,7 +33,7 @@ cd Deeeep.io-Desktop-Client
 
 Run the app using:
 ```
-go run src/main.go
+go run main.go
 ```
 
 Build the app using:
