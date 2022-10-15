@@ -3,6 +3,7 @@
 # Deeeep.io Desktop Client
 
 <img src="./assets/golang_logo.png">
+> **NOTE**: the [electron edition](https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/electron) was the default version before we switched to golang because of some drawbacks of electron.
 
 Welcome to the official repository of the Deeeep.io Desktop Client!
 
