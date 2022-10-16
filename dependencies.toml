@@ -1,9 +1,0 @@
-[discordrpc]
-url = "https://github.com/hugolgst/rich-go"
-
-[auto-updater]
-url = "https://github.com/inconshreveable/go-update"
-
-[plugin-system]
-docs = "https://golangdocs.com/golang-download-files"
-code = "https://golangcode.com/unzip-files-in-go/""

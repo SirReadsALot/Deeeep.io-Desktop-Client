@@ -7,4 +7,4 @@ require (
 	github.com/zserge/lorca v0.1.10
 )
 
-replace github.com/zserge/lorca => github.com/CarrotzRule123/lorca v0.1.11
+replace github.com/zserge/lorca => github.com/CarrotzRule123/lorca v0.1.12
