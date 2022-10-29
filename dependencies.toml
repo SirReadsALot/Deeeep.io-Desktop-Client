@@ -6,4 +6,9 @@ url = "https://github.com/inconshreveable/go-update"
 
 [plugin-system]
 docs = "https://golangdocs.com/golang-download-files"
-code = "https://golangcode.com/unzip-files-in-go/""
+code = "https://golangcode.com/unzip-files-in-go/"
+
+[screenshot-hotkey]
+url = "https://pkg.go.dev/golang.design/x/hotkey"
+
+
