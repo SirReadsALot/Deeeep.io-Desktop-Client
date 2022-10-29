@@ -22,13 +22,12 @@
         padding: 0.75rem 1.25rem;
         font-size: .875rem;
     }
-    
+
     .box-x-close {
         position: absolute;
         top: 0.3rem;
         right: 0.5rem;
     }
-
 
     .ext-red {
         background-color: rgb(239, 68, 68);
@@ -36,8 +35,8 @@
     }
 
     .ext-red:hover {
-        background-color: rgb(220,38,38);
-        border-color: rgb(185,28,28)
+        background-color: rgb(220, 38, 38);
+        border-color: rgb(185, 28, 28)
     }
 
     .ext-black {
@@ -46,8 +45,8 @@
     }
 
     .ext-black:hover {
-        background-color: rgb(75,85,99);
-        border-color: rgb(55,65,81)
+        background-color: rgb(75, 85, 99);
+        border-color: rgb(55, 65, 81)
     }
 
     body .ext-button {
@@ -56,24 +55,32 @@
     }
 
     .ext-box {
-        background-color: rgb(17, 24, 39);
-        width: 120px;
-        height: 120px;
-        border-radius: 1rem;
-        filter: brightness(50%);
+        width: 90%;
+        margin: auto;
+        margin-top: 5px;
         background-repeat: no-repeat;
         background-size: 50%;
         background-position: center 35%;
     }
 
-    .ext-box:hover,
-    .ext-box:hover * {
-        filter: brightness(100%);
+    .ext-area {
+        background-color: rgb(17, 24, 39);
+        border-radius: 0.5rem;
     }
 
-    .ext-box.active {
-        outline: 2px solid white;
-        filter: brightness(100%);
+    .ext-pill {
+        width: max-content;
+        padding: 10px;
+        margin-right: 10px;
+    }
+
+    .ext-pill:hover,
+    .ext-pill:hover * {
+        outline: 1px solid white;
+    }
+
+    .ext-pill.active {
+        background-color: rgb(30, 64, 175);
     }
 
     .ext-modal {
@@ -92,13 +99,60 @@
         font-size: 14px;
     }
 
-    #ext-main {
-        flex-wrap: wrap;
-        width: 88%;
-        margin: auto;
-        gap: 15px;
+    .checkbox {
+        background-color: var(--el-text-color-regular);
+        border-radius: 20px;
+        padding: 2px;
     }
 
+    .checkbox-inner {
+        background-color: white;
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        margin-right: 20px;
+    }
+
+    .checkbox.active {
+        background-color: rgb(30, 64, 175);
+    }
+
+    .checkbox-inner.active {
+        margin-left: 20px;
+        margin-right: 0px;
+    }
+
+    td {
+        padding: 8px;
+    }
+
+    .ext-pages {
+        flex: 1;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .ext-input {
+        height: 30px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    #extensions {
+        right: 50%;
+        z-index: 100;
+        transform: translateX(50%);
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    #extensions:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
 
     /*starting evo section*/
 
@@ -108,8 +162,8 @@
     }
 
     .evo-red:hover {
-        background-color: rgb(220,38,38);
-        border-color: rgb(185,28,28)
+        background-color: rgb(220, 38, 38);
+        border-color: rgb(185, 28, 28)
     }
 
     .evo-black {
@@ -118,8 +172,8 @@
     }
 
     .evo-black:hover {
-        background-color: rgb(75,85,99);
-        border-color: rgb(55,65,81)
+        background-color: rgb(75, 85, 99);
+        border-color: rgb(55, 65, 81)
     }
 
     body .evo-button {
@@ -155,23 +209,66 @@
     }
 </style>
 
-<div style="z-index: 100;" class="w-screen h-screen absolute" id="ext-modal">
+<div class="absolute" id="extensions">Extensions</div>
+
+<div style="z-index: 100;" class="w-screen h-screen absolute hidden" id="ext-modal">
     <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
     <div class="w-full h-full absolute flex justify-center items-center">
         <div class="flex flex-col ext-modal relative">
             <div style="font-size: 1.3rem" class="text-center py-2">Extensions</div>
-            <button class="ext-close box-x-close"><svg width="1.125em" height="1.125em" viewBox="0 0 24 24" class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72="" style="--sx:1; --sy:1; --r:0deg;"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" data-v-35f7fcad=""></path></svg></button>
-            <div style="flex: 1;" class="text-center">
-                <div class="p-4 flex" id="ext-main"></div>
-            </div>
-            <div class="text-center py-4">
-                <div class="button ext-button ext-red">Reload</div>
-                <div class="button ext-button ext-black ext-close">Close</div>
+            <button class="ext-close box-x-close"><svg width="1.125em" height="1.125em" viewBox="0 0 24 24"
+                    class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72=""
+                    style="--sx:1; --sy:1; --r:0deg;">
+                    <path
+                        d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                        data-v-35f7fcad=""></path>
+                </svg></button>
+            <div style="flex: 1;" class="text-center flex flex-col">
+                <div class="ext-box flex">
+                    <div class="ext-pill ext-area active" data-name="docassets">DocAssets</div>
+                    <div class="ext-pill ext-area" data-name="swapper">Swapper</div>
+                    <div class="ext-pill ext-area" data-name="rpc">DiscordRPC</div>
+                    <div class="ext-pill ext-area" data-name="evo">Evolutions</div>
+                </div>
+                <div class="ext-box ext-area ext-pages">
+                    <table style="margin: auto;" class="ext-page" id="docassets">
+                        <tr class="option" id="doc-enable">
+                            <td>Enabled</td>
+                            <td>
+                                <div class="checkbox" id="doc-check">
+                                    <div class="checkbox-inner" id="doc-check-inner"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="option">
+                            <td colspan="2">
+                                <div class="button ext-button ext-red" id="doc-btn">Reload</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="margin: auto;" class="ext-page hidden" id="swapper">
+                        <tr class="option" id="doc-enable">
+                            <td>Skin Code</td>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="Enter Skin Code" id="swapper-input">
+                            </td>
+                        </tr>
+                        <tr class="option">
+                            <td colspan="2">
+                                <div class="button ext-button ext-black" id="swapper-btn">Swap!</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="margin: auto;" class="ext-page hidden" id="rpc">
+                    </table>
+                    <table style="margin: auto;" class="ext-page hidden" id="evo">
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div style="z-index: 100;" class="w-screen h-screen absolute" id="evo-modal">
+<!-- <div style="z-index: 100;" class="w-screen h-screen absolute hidden" id="evo-modal">
     <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
     <div class="w-full h-full absolute flex justify-center items-center">
         <div class="flex flex-col evo-modal relative">
@@ -185,5 +282,4 @@
             </div>
         </div>
     </div>
-</div>
-
+</div> -->

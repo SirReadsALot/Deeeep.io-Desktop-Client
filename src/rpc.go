@@ -8,7 +8,7 @@ import (
 	// "github.com/zserge/lorca"
 )
 
-func DiscordRpc() { //ui *lorca.UI) {
+func DiscordRPC() { //ui *lorca.UI) {
 	// (*ui).Bind("DiscordRpc", func() {
 	err := client.Login("817817065862725682")
 	if err != nil {
