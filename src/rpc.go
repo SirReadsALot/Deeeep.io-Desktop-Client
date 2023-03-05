@@ -22,11 +22,11 @@ func DiscordRPC() { //ui *lorca.UI) {
 			select {
 			case <-ticker.C:
 				err = client.SetActivity(client.Activity{
-					Details:    "Playing Unknown gamemode",
+					Details:    "Playing FFA gamemode",
 					LargeImage: "deeplarge_2",
 					LargeText:  "Playing Deeeep.io Desktop Client",
 					SmallImage: "ffa",
-					SmallText:  "Playing Unknown gamemode",
+					SmallText:  "Playing FFA gamemode",
 					Timestamps: &client.Timestamps{
 						Start: &now,
 					},

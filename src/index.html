@@ -209,6 +209,7 @@
     }
 </style>
 
+
 <div style="z-index: 100;" class="w-screen h-screen absolute hidden" id="ext-modal">
     <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
     <div class="w-full h-full absolute flex justify-center items-center">
@@ -225,8 +226,8 @@
                 <div class="ext-box flex">
                     <div class="ext-pill ext-area active" data-name="docassets">DocAssets</div>
                     <div class="ext-pill ext-area" data-name="swapper">Swapper</div>
+                    <div class="ext-pill ext-area" data-name="multi_swap">Multi-Swap</div>
                     <div class="ext-pill ext-area" data-name="rpc">DiscordRPC</div>
-                    <div class="ext-pill ext-area" data-name="evo">Evolutions</div>
                 </div>
                 <div class="ext-box ext-area ext-pages">
                     <table style="margin: auto;" class="ext-page" id="docassets">
@@ -246,9 +247,9 @@
                     </table>
                     <table style="margin: auto;" class="ext-page hidden" id="swapper">
                         <tr class="option" id="doc-enable">
-                            <td>Skin Code</td>
+                            <td>Skin Id</td>
                             <td>
-                                <input class="ext-input" type="text" placeholder="Enter Skin Code" id="swapper-input">
+                                <input class="ext-input" type="text" placeholder="Enter Skin Id" id="swapper-input">
                             </td>
                         </tr>
                         <tr class="option">
@@ -257,9 +258,37 @@
                             </td>
                         </tr>
                     </table>
-                    <table style="margin: auto;" class="ext-page hidden" id="rpc">
+                    <table style="margin: auto;" class="ext-page hidden" id="multi_swap">
+                        <tr class="option" id="doc-enable">
+                            <td>Skin Id</td>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="Enter Skin Id" id="m_swap-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Choose animal</td>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="Enter animal Id" id="m_anim-input">
+                            </td>
+                            <td>
+                                <button id="openList-btn"><div style="height: 25px; width: 25px; background-color: rgb(26, 33, 43);"><svg class="h-6 w-6 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <line x1="15" y1="9" x2="9" y2="15" />  <polyline points="15 15 15 9 9 9" /></svg></div></button>
+                            </td>
+                        </tr>
+                        <tr class="option">
+                            <td colspan="2">
+                                <div class="button ext-button ext-black" id="m_swap-btn">Save</div>
+                            </td>
+                        </tr> 
                     </table>
-                    <table style="margin: auto;" class="ext-page hidden" id="evo">
+                    <table style="margin: auto;" class="ext-page hidden" id="rpc">
+                        <tr class="option" id="rpc-enable">
+                            <td>Enabled</td>
+                            <td>
+                                <div class="checkbox" id="rpc-check">
+                                    <div class="checkbox-inner" id="rpc-check-inner"></div>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>

@@ -122,5 +122,5 @@ func CheckAndLogFatal(e error) {
 func (p *PluginManager) AddPlugins() {
 	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{"Active": true})
 	p.AddPlugin(EXTENSION, "Swapper", "swapper", Config{})
-	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"Usrnm": ""})
+	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"Active": false})
 }

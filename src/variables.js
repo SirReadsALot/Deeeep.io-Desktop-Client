@@ -1,0 +1,244 @@
+export const IDList = `
+<p>fish: 0</p>
+<br>
+<p>crab: 1</p>
+<br>
+<p>jellyfish: 2</p>
+<br>
+<p>squid: 3</p>
+<br>
+<p>seagull: 4</p>
+<br>
+<p>ray: 5</p>
+<br>
+<p>beaver: 6</p>
+<br>
+<p>penguin: 7</p>
+<br>
+<p>tshark: 8</p>
+<br>
+<p>dolphin: 9</p>
+<br>
+<p>shark: 10</p>
+<br>
+<p>killerwhale: 11</p>
+<br>
+<p>whale: 12</p>
+<br>
+<p>worm: 13</p>
+<br>
+<p>anglerfish: 14</p>
+<br>
+<p>leopardseal: 15</p>
+<br>
+<p>blobfish: 16</p>
+<br>
+<p>kingcrab: 17</p>
+<br>
+<p>pollock: 18</p>
+<br>
+<p>seaturtle: 19</p>
+<br>
+<p>oarfish: 20</p>
+<br>
+<p>octopus: 21</p>
+<br>
+<p>giantsquid: 22</p>
+<br>
+<p>narwhal: 23</p>
+<br>
+<p>cachalot: 24</p>
+<br>
+<p>polarbear: 25</p>
+<br>
+<p>lamprey: 26</p>
+<br>
+<p>pelican: 27</p>
+<br>
+<p>whaleshark: 28</p>
+<br>
+<p>remora: 29</p>
+<br>
+<p>marlin: 30</p>
+<br>
+<p>sunfish: 31</p>
+<br>
+<p>stonefish: 32</p>
+<br>
+<p>ghost: 33</p>
+<br>
+<p>crocodile: 34</p>
+<br>
+<p>electriceel: 35</p>
+<br>
+<p>frog: 36</p>
+<br>
+<p>hippo: 37</p>
+<br>
+<p>manatee: 38</p>
+<br>
+<p>snappingturtle: 39</p>
+<br>
+<p>piranha: 40</p>
+<br>
+<p>snake: 41</p>
+<br>
+<p>baldeagle: 42</p>
+<br>
+<p>lionfish: 43</p>
+<br>
+<p>dragonfly: 44</p>
+<br>
+<p>mantaray: 45</p>
+<br>
+<p>elephantseal: 46</p>
+<br>
+<p>lanternfish: 47</p>
+<br>
+<p>sleepershark: 48</p>
+<br>
+<p>gulpereel: 49</p>
+<br>
+<p>giantisopod: 50</p>
+<br>
+<p>giantisopodclosed: 51</p>
+<br>
+<p>babypenguin: 52</p>
+<br>
+<p>seal: 53</p>
+<br>
+<p>icefish: 54</p>
+<br>
+<p>barreleye: 55</p>
+<br>
+<p>dragonfish: 56</p>
+<br>
+<p>humboldtsquid: 57</p>
+<br>
+<p>sealion: 58</p>
+<br>
+<p>flyingfish: 59</p>
+<br>
+<p>duck: 60</p>
+<br>
+<p>goblinshark: 61</p>
+<br>
+<p>catfish: 62</p>
+<br>
+<p>littleauk: 63</p>
+<br>
+<p>pufferfish: 64</p>
+<br>
+<p>pufferfishfilled: 65</p>
+<br>
+<p>tigershark: 66</p>
+<br>
+<p>lionmanejellyfish: 67</p>
+<br>
+<p>anaconda: 68</p>
+<br>
+<p>bobbitworm: 69</p>
+<br>
+<p>mahimahi: 70</p>
+<br>
+<p>walrus: 71</p>
+<br>
+<p>frilledshark: 72</p>
+<br>
+<p>sawfish: 73</p>
+<br>
+<p>mantisshrimp: 74</p>
+<br>
+<p>axolotl: 75</p>
+<br>
+<p>bat: 76</p>
+<br>
+<p>firefly: 77</p>
+<br>
+<p>blindcavefish: 78</p>
+<br>
+<p>crayfish: 79</p>
+<br>
+<p>goliathbullfrog: 80</p>
+<br>
+<p>giantsalamander: 81</p>
+<br>
+<p>alligatorsnappingturtle: 82</p>
+<br>
+<p>giantsoftshellturtle: 83</p>
+<br>
+<p>giantsoftshellturtleclosed: 84</p>
+<br>
+<p>olm: 85</p>
+<br>
+<p>alligatorgar: 86</p>
+<br>
+<p>humpbackwhale: 87</p>
+<br>
+<p>sardine: 88</p>
+<br>
+<p>horseshoecrab: 89</p>
+<br>
+<p>baskingshark: 90</p>
+<br>
+<p>colossalsquid: 91</p>
+<br>
+<p>climbingcavefish: 92</p>
+<br>
+<p>archerfish: 93</p>
+<br>
+<p>seaotter: 94</p>
+<br>
+<p>lobster: 95</p>
+<br>
+<p>barracuda: 96</p>
+<br>
+<p>frogfish: 97</p>
+<br>
+<p>morayeel: 98</p>
+<br>
+<p>wobbegongshark: 99</p>
+<br>
+<p>leatherbackturtle: 100</p>
+<br>
+<p>threshershark: 101</p>
+<br>
+<p>atlantictorpedo: 102</p>
+<br>
+<p>coconutcrab: 103</p>
+<br>
+<p>bullshark: 104</p>
+<br>
+<p>hermitcrab: 105</p>
+<br>
+<p>giantpacificoctopus: 106</p>
+<br>
+<p>beakedwhale: 107</p>
+<br>
+<p>megamouthshark: 108</p>
+<br>
+<p>belugawhale: 109</p>
+<br>
+<p>vampiresquid: 110</p>
+<br>
+<p>halibut: 111</p>
+<br>
+<p>bowheadwhale: 112</p>
+<br>
+<p>japanesespidercrab: 113</p>
+<br>
+<p>cookiecuttershark: 114</p>
+<br>
+<p>sarcasticfringehead: 115</p>
+<br>
+<p>parrotfish: 116</p>
+<br>
+<p>wolfeel: 117</p>
+<br>
+<p>giantsiphonophore: 118</p>
+<br>
+<p>coelacanth: 119</p>
+<br>
+<p>napoleonwrasse: 120</p>
+`
+
