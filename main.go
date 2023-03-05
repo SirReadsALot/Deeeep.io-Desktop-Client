@@ -45,7 +45,7 @@ func main() {
 		</style>
 		<img id="img" src="https://sralcodeproj.netlify.app/assets/myhailot.png" style="object-fit: cover">
 		</html>
-	`), "", 1120, 740, flags, "--disable-dinosaur-easter-egg") // previous: 887x586
+	`), "", 1120, 740, flags, "--disable-dinosaur-easter-egg", "--disable-background-timer-throttling") // previous: 887x586
 	CheckAndLogFatal(err)
 
 	// <-update
@@ -58,6 +58,12 @@ func main() {
 		ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
 		core.DiscordRPC()
 		EvalDefaultScripts(&ui, plugins)
+	})
+	ui.Bind("makeWindow", func(content string, width int, height int) {
+		lorca.New("data:text/html,"+url.PathEscape(content), "", width, height, "")
+	})
+	ui.Bind("exit", func() {
+		ui.Close()
 	})
 
 	ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
