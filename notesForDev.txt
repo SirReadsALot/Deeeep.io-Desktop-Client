@@ -8,20 +8,7 @@ FOR THE PLUGIN SYSTEM:
 https://golangdocs.com/golang-download-files
 https://golangcode.com/unzip-files-in-go/
 
-// screenshot function
-function takeScreenshot() {
-    wait = true;
-    app.renderer.extract.canvas(app.stage).toBlob((b) => {
-        const a = document.createElement('a');
-        document.body.append(a);
-        a.download = 'screenshot';
-        a.href = URL.createObjectURL(b);
-        a.click();
-        a.remove();
-    }, 'image/png');
-}
-
-app.renderer.plugins.interaction.on('pointerdown', takeScreenshot);
-
+SCREENSHOT:
+https://github.com/kesarion/screenshot
 
 

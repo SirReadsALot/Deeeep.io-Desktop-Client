@@ -2,17 +2,22 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
+
 	//"io"
 	"io/ioutil"
 	"log"
 
 	// "net/http"
+	"image/png"
+	"math/rand"
 	"net/url"
 	"os"
 
 	// "os/exec"
 
 	core "github.com/SirReadsALot/deep_desktop/src"
+	"github.com/vova616/screenshot"
 	"github.com/zserge/lorca"
 )
 
@@ -64,6 +69,23 @@ func main() {
 	})
 	ui.Bind("exit", func() {
 		ui.Close()
+	})
+	ui.Bind("screenshot", func() {
+		img, err := screenshot.CaptureScreen()
+		if err != nil {
+			print(err)
+		}
+		i := rand.Intn(50)
+		name := fmt.Sprintf("./images/screenshot%d.png", i)
+		save, err := os.Create(name)
+		if err != nil {
+			print(err)
+		}
+		err = png.Encode(save, img)
+		if err != nil {
+			print(err)
+		}
+		save.Close()
 	})
 
 	ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
