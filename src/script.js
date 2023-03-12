@@ -67,6 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const chooseAnimInput = document.getElementById("m_anim-input")
   const saveID = document.getElementById("m_swap-btn")
   const openList = document.getElementById("openList-btn")
+  const s_Id = []
+  const a_Id = []
+
+  saveID.addEventListener("click", () => {
+    const skinId = parseInt(swapperInput_m.value)
+    const animalId = parseInt(chooseAnimInput.value)
+    s_Id.push(skinId)
+    a_Id.push(animalId)
+    console.log("SKIN ID'S: " + s_Id)
+    console.log("ANIMAL ID's: " + a_Id)
+    
+  })
+
+
   const listHTML = `<html>
   <title>Animal ID List</title>
   <style>
@@ -92,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   </script>
   </html>`
-  // saveID.addEventListener()
   openList.addEventListener("click", () => {
     makeWindow(listHTML, 463, 483)
   })
@@ -152,6 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Q released")
     }
   })
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Z" || e.key === "z") {
+      screenshot()
+    }
+  })
   /* logic: if the key pressed is W, open up the extension UI and log in confirmation
      else the extension UI should remain hidden
      if the key pressed is not equal to W, return with nothing
@@ -165,8 +183,4 @@ function updateConfig(data) {
   }
   setConfig(JSON.stringify(config))
 }
-
-const IDLis2 = ``
-
-
 
