@@ -1,5 +1,4 @@
 //console.log(`[DDC Config] ${JSON.stringify(data)}`)
-
 (function () {
   var blockContextMenu
 
@@ -118,6 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   reqList(url)
 
+  (function () {
+    var blockContextMenu
+  
+    blockContextMenu = function (evt) {
+      evt.preventDefault();
+    };
+  
+    window.addEventListener('contextmenu', blockContextMenu);
+  })(); 
   </script>
   </html>`
   openList.addEventListener("click", () => {
@@ -200,18 +208,47 @@ document.addEventListener("DOMContentLoaded", () => {
     return
   }
   })
-  
+
   window.addEventListener("keydown", (e) => {
     if (e.key === "Z" || e.key === "z") {
       screenshot()
     }
   })
-  /* logic: if the key pressed is W, open up the extension UI and log in confirmation
-     else the extension UI should remain hidden
-     if the key pressed is not equal to W, return with nothing
-  */
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "E" || e.key === "e") {
+      var evoTree = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <title>EvoTree</title>
+      </head>
+      <body>
+      <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
+        <style>
+        html, body {
+          margin: 0; 
+          height: 100%; 
+          overflow: hidden;
+        }
+        </style>
+        <script>
+        (function () {
+          var blockContextMenu
+        
+          blockContextMenu = function (evt) {
+            evt.preventDefault();
+          };
+        
+          window.addEventListener('contextmenu', blockContextMenu);
+        })(); 
+        </script>
+      </body>
+      </html>
+      `
+      makeWindow(evoTree, 865, 663)
+    }
+  })
 })
-
 function updateConfig(data) {
   const config = {}
   for (const name in data) {

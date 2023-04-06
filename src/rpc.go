@@ -5,11 +5,9 @@ import (
 	"time"
 
 	"github.com/hugolgst/rich-go/client"
-	// "github.com/zserge/lorca"
 )
 
-func DiscordRPC() { //ui *lorca.UI) {
-	// (*ui).Bind("DiscordRpc", func() {
+func DiscordRPC() {
 	err := client.Login("817817065862725682")
 	if err != nil {
 		fmt.Println(err)
@@ -22,11 +20,11 @@ func DiscordRPC() { //ui *lorca.UI) {
 			select {
 			case <-ticker.C:
 				err = client.SetActivity(client.Activity{
-					Details:    "Playing FFA gamemode",
+					Details:    "Playing Unknown gamemode",
 					LargeImage: "deeplarge_2",
 					LargeText:  "Playing Deeeep.io Desktop Client",
 					SmallImage: "ffa",
-					SmallText:  "Playing FFA gamemode",
+					SmallText:  "Playing Unknown gamemode",
 					Timestamps: &client.Timestamps{
 						Start: &now,
 					},
