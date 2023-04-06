@@ -11,4 +11,5 @@ https://golangcode.com/unzip-files-in-go/
 SCREENSHOT:
 https://github.com/kesarion/screenshot
 
-
+windres resource.rc -o resource.o [logo for exe]
+g++ run.cpp resource.o -o go_run_test
