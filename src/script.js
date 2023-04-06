@@ -66,18 +66,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const swapperInput_m = document.getElementById("m_swap-input")
   const chooseAnimInput = document.getElementById("m_anim-input")
   const saveID = document.getElementById("m_swap-btn")
+  const clearBtn = document.getElementById("m_swap-clearbtn")
   const openList = document.getElementById("openList-btn")
   const s_Id = []
   const a_Id = []
 
   saveID.addEventListener("click", () => {
-    const skinId = parseInt(swapperInput_m.value)
+    const skanId = parseInt(swapperInput_m.value)
     const animalId = parseInt(chooseAnimInput.value)
-    s_Id.push(skinId)
+    s_Id.push(skanId)
     a_Id.push(animalId)
     console.log("SKIN ID'S: " + s_Id)
     console.log("ANIMAL ID's: " + a_Id)
-    
+    let fishData = gameScene.gameScene.myAnimal.fishLevelData.fishLevel
+    let swap = gameScene.gameScene.game.currentScene.myAnimal.setSkin
+    function m_swap() {
+      for (n of s_Id) {
+        if (fishData === s_Id[n]) {
+          swap(s_Id[n])
+        }
+      }
+    }
+    m_swap()
+  })
+  clearBtn.addEventListener("click", () => {
+    s_Id.length = 0
+    a_Id.length = 0
   })
 
 
@@ -149,22 +163,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const ExternalEx = extModal
+  const playBtn = document.getElementsByClassName("el-button btn play btn nice-button green block btn play")[0]
+  const Exbg = document.getElementsByClassName("w-full h-full absolute")[0]
+  Exbg.style.pointerEvents = "none"
   window.addEventListener("keydown", (e) => {
-    if (e.key === "q" || e.key === "Q") {
-      ExternalEx.style.opacity = 1
-      ExternalEx.classList.toggle("active")
-      console.log("Q pressed")
-    } else {
-      return;
+  if (playBtn) {
+    switch(e.key) {
+      case "q":
+      case "Q":
+        ExternalEx.style.opacity = 1
+        ExternalEx.classList.toggle("active")
+        ExternalEx.classList.toggle("absolute")
+        console.log("Q pressed")
+        break;
+      default:
+        return
     }
+  } else {
+    return
+  }
   })
   window.addEventListener("keyup", (e) => {
-    if (e.key === "q" || e.key === "Q") {
-      ExternalEx.classList.toggle("hidden")
-      ExternalEx.style.opacity = 0
-      console.log("Q released")
+  if (playBtn) {
+    switch(e.key) {
+      case "q":
+      case "Q":
+        ExternalEx.style.opacity = 0
+        ExternalEx.classList.toggle("hidden")
+        ExternalEx.classList.remove("absolute")
+        console.log("Q released")
+        break;
+      default:
+        return
     }
+  } else {
+    return
+  }
   })
+  
   window.addEventListener("keydown", (e) => {
     if (e.key === "Z" || e.key === "z") {
       screenshot()
