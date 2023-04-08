@@ -1,8 +1,8 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-go.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
 
-# Deeeep.io Desktop Client
+# Deeeep.io Desktop Client [ElectroGo]
 
-<img src="./assets/golang_logo.png">
+<img src="./assets/Logo_182x187.png">
 
 > **NOTE**: the [electron edition](https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/electron) was the default version before we switched to golang because of some drawbacks of electron.
 > 
