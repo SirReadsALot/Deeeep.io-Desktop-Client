@@ -2,7 +2,9 @@
 
 # Deeeep.io Desktop Client [ElectroGo]
 
+<p align="center">
 <img src="./assets/Logo_182x187.png">
+</p>
 
 > **NOTE**: the [electron edition](https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/electron) was the default version before we switched to golang because of some drawbacks of electron.
 > 
