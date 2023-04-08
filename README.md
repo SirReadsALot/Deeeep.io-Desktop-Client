@@ -1,4 +1,4 @@
-[![forthebadge](https://forthebadge.com/images/badges/made-with-go.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
 
 # Deeeep.io Desktop Client [ElectroGo]
 
