@@ -5,7 +5,8 @@
 <img src="./assets/golang_logo.png">
 
 > **NOTE**: the [electron edition](https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/electron) was the default version before we switched to golang because of some drawbacks of electron.
-> *This is the ElectroGo version of the DDC, currently experimental but it might become official in the future*
+> 
+> *This is the **ElectroGo version** of the DDC, currently experimental but it might become official in the future*
 
 Welcome to the official repository of the Deeeep.io Desktop Client! 
 
