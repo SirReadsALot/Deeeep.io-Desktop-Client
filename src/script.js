@@ -1,7 +1,6 @@
 //console.log(`[DDC Config] ${JSON.stringify(data)}`)
 (function () {
   var blockContextMenu
-
   blockContextMenu = function (evt) {
     evt.preventDefault();
   };
@@ -11,6 +10,17 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  var navBar = document.getElementsByClassName("el-row top-right-nav items-center")[0]
+  var updateLog = document.createElement("div")
+  updateLog.innerHTML = `<div class="el-col el-col-24 is-guttered auto-col" data-v-6a9d399d="" data-v-190e0e28="" style="padding-right: 4px; padding-left: 4px;"><div class="el-dropdown nice-dropdown" data-v-7db8124a="" data-v-190e0e28=""><button class="el-button el-button--small el-tooltip__trigger btn nice-button yellow has-icon square only-icon el-tooltip__trigger" aria-disabled="false" type="button" id="el-id-9348-12" role="button" tabindex="0" aria-controls="el-id-9348-13" aria-expanded="false" aria-haspopup="menu" data-v-1676d978="" data-v-7db8124a=""><!--v-if--><span class=""><!----><!----></span>
+  <img src="https://cdn.discordapp.com/attachments/1035856135187595347/1094211126834770030/updatelog.png" height="28px" width="28px">
+  </button><!--v-if--></div></div>`
+  navBar.append(updateLog)
+  updateLog.addEventListener("click", () => {
+    console.log("UpdateLog clicked")
+  })
+
+  
   const ext = document.querySelector(".pink").cloneNode(true)
   ext.style.width = "5.5rem"
 
