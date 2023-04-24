@@ -1,10 +1,10 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 
-	//"io"
 	"io/ioutil"
 	"log"
 
@@ -24,10 +24,12 @@ import (
 const SRC = "https://api.github.com/repos/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest"
 const VERSION = "v1.7"
 
-var script, _ = os.ReadFile("./src/script.js")
+//go:embed src/script.js
+var script []byte
+
 var index, _ = os.ReadFile("./src/index.html")
 
-var update = make(chan string)
+//var script, _ = os.ReadFile("./src/script.js")
 
 func main() {
 	/* go CheckUpdate()
@@ -43,14 +45,17 @@ func main() {
 
 	ui, err := lorca.New("data:text/html,"+url.PathEscape(`
 		<html>
+		<head>
 		<title>Deeeep.io Desktop Client</title>
+		<link rel="icon" href="./assets/favicon.ico">
+		</head>
 		<style>
 		*{padding: 0; margin: 0; overflow: hidden}
 		#loading{text-align: center; font-size: 40px; font-weight: bold; position:relative; z-index: 2; color: white;}
 		</style>
-		<img id="img" src="https://sralcodeproj.netlify.app/assets/myhailot.png" style="object-fit: cover">
+		<img id="img" src="https://sralcodeproj.netlify.app/assets/myhailot.png" loading="lazy" style="object-fit: cover">
 		</html>
-	`), "", 1120, 740, flags, "--disable-dinosaur-easter-egg", "--disable-background-timer-throttling") // previous: 887x586
+	`), "", 1120, 740, flags, "--disable-dinosaur-easter-egg") // previous: 887x586
 	CheckAndLogFatal(err)
 
 	// <-update
@@ -76,7 +81,7 @@ func main() {
 			print(err)
 		}
 		i := rand.Intn(50)
-		name := fmt.Sprintf("./images/screenshot%d.png", i)
+		name := fmt.Sprintf("./screenshots/screenshot%d.png", i)
 		save, err := os.Create(name)
 		if err != nil {
 			print(err)
@@ -88,6 +93,7 @@ func main() {
 		save.Close()
 	})
 
+	// time.Sleep(5 * time.Second)
 	ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
 	ui.SetBounds(lorca.Bounds{0, 0, 1200, 800, lorca.WindowStateMaximized})
 	EvalDefaultScripts(&ui, plugins)
@@ -99,6 +105,7 @@ func main() {
 	}()
 
 	<-ui.Done()
+	fmt.Printf("mainWin exited.")
 }
 
 func EvalDefaultScripts(ref *lorca.UI, plugins core.PluginManager) {
