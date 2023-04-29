@@ -123,4 +123,6 @@ func (p *PluginManager) AddPlugins() {
 	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{"Active": true})
 	p.AddPlugin(EXTENSION, "Swapper", "swapper", Config{})
 	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"Active": false})
+	p.AddPlugin(EXTENSION, "LinkSwap", "link_swap", Config{})
+	// p.AddPlugin(EXTENSION, "DeeeepioBGM", "deeeepio_bgm", Config{})
 }

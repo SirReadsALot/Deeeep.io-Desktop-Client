@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 //console.log(`[DDC Config] ${JSON.stringify(data)}`)
 (function () {
   var blockContextMenu
@@ -9,7 +10,6 @@
 })(); 
 
 document.addEventListener("DOMContentLoaded", () => {
-
   var navBar = document.getElementsByClassName("el-row top-right-nav items-center")[0]
   var updateLog = document.createElement("div")
   updateLog.innerHTML = `<div class="el-col el-col-24 is-guttered auto-col" data-v-6a9d399d="" data-v-190e0e28="" style="padding-right: 4px; padding-left: 4px;"><div class="el-dropdown nice-dropdown" data-v-7db8124a="" data-v-190e0e28=""><button class="el-button el-button--small el-tooltip__trigger btn nice-button yellow has-icon square only-icon el-tooltip__trigger" aria-disabled="false" type="button" id="el-id-9348-12" role="button" tabindex="0" aria-controls="el-id-9348-13" aria-expanded="false" aria-haspopup="menu" data-v-1676d978="" data-v-7db8124a=""><!--v-if--><span class=""><!----><!----></span>
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLog.addEventListener("click", () => {
     console.log("UpdateLog clicked")
   })
-
   
   const ext = document.querySelector(".pink").cloneNode(true)
   ext.style.width = "5.5rem"
@@ -71,7 +70,31 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`[DDC Asset Swapper] ${id}`)
   })
 
+  // Terrain/Pet Swapper
+  const Configl = "../plugins/link_swap/config/link_swap.json"
+  const file = require(Configl)
+
+  const petInput = document.getElementById("pet-input").value
+  const petCustomInput = document.getElementById("pet-custom-input").value
+  const terrainInput = document.getElementById("terrain-input").value
+  const terrainCustomInput = document.getElementById("terrain-custom-input").value
+  const petBtn = document.getElementById("pet-btn")
+  const terrainBtn = document.getElementById("terrain-btn")
+  terrainBtn.addEventListener("click", () => {
+    alert("Sorry, it's under construction 🛠")
+  })
+  petBtn.addEventListener("click", () => {
+    file.PET_originalURL = petInput
+    file.PET_customURL = petCustomInput
+    fs.writeFile(Configl, JSON.stringify(file, null, 2), function writeJSON(err) {
+      if (err) return console.log(err)
+    })
+  })
+
+
+
   // Multi-Swap
+  /*
   const swapperInput_m = document.getElementById("m_swap-input")
   const chooseAnimInput = document.getElementById("m_anim-input")
   const saveID = document.getElementById("m_swap-btn")
@@ -141,6 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
   openList.addEventListener("click", () => {
     makeWindow(listHTML, 463, 483)
   })
+  */
 
   // Doc Assets
   const doc = document.getElementById("doc-enable")
