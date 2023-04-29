@@ -226,7 +226,8 @@
                 <div class="ext-box flex">
                     <div class="ext-pill ext-area active" data-name="docassets">DocAssets</div>
                     <div class="ext-pill ext-area" data-name="swapper">Swapper</div>
-                    <div class="ext-pill ext-area" data-name="multi_swap">Multi-Swap</div>
+                    <!-- <div class="ext-pill ext-area" data-name="multi_swap">Multi-Swap</div> -->
+                    <div class="ext-pill ext-area" data-name="ter_pet">T/P Swap</div>
                     <div class="ext-pill ext-area" data-name="rpc">DiscordRPC</div>
                 </div>
                 <div class="ext-box ext-area ext-pages">
@@ -258,6 +259,34 @@
                             </td>
                         </tr>
                     </table>
+                    <table style="margin: auto;" class="ext-page hidden" id="ter_pet">
+                        <td>Terrain/Pet Swapper</td>
+                        <tr class="option" id="doc-enable">
+                            <td>
+                                <input class="ext-input" type="text" placeholder="Enter pet url" id="pet-input">
+                            </td>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="pet custom url" id="pet-custom-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="Enter terrain url" id="terrain-input">
+                            </td>
+                            <td>
+                                <input class="ext-input" type="text" placeholder="terrain custom url" id="terrain-custom-input">
+                            </td>
+                        </tr>
+                        <tr class="option">
+                            <td colspan="1">
+                                <div class="button ext-button ext-black" id="pet-btn">Swap pet</div>
+                            </td>
+                            <td>
+                                <div class="button ext-button ext-black" id="terrain-btn">Swap terrain</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--
                     <table style="margin: auto;" class="ext-page hidden" id="multi_swap">
                         <tr class="option" id="doc-enable">
                             <td>Skin Id</td>
@@ -282,8 +311,8 @@
                                 <div class="button ext-button ext-black" id="m_swap-btn">Save</div>
                             </td>
                         </tr>
-
                     </table>
+                -->
                     <table style="margin: auto;" class="ext-page hidden" id="rpc">
                         <tr class="option" id="rpc-enable">
                             <td>Enabled</td>
