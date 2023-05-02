@@ -145,8 +145,10 @@
 		background-color: rgb(31, 41, 55);
 		border: solid 2px rgb(55, 65, 81);
 		border-radius: 0.75rem;
-		width: 500px;
-		height: 400px;
+		width: calc(100vw - 100px);
+		height: calc(100vh - 100px);
+		max-width: 500px;
+		max-height: 400px;
 	}
 
 	.ext-modal * {
@@ -284,8 +286,8 @@
 		<div class="flex flex-col ext-modal relative">
 			<div style="font-size: 1.3rem" class="text-center py-2">Extensions</div>
 			<button class="ext-close box-x-close">
-				<svg width="1.125em" height="1.125em" viewBox="0 0 24 24" class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72="" style="--sx: 1; --sy: 1; --r: 0deg">
-					<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" data-v-35f7fcad=""></path>
+				<svg width="1.125em" height="1.125em" viewBox="0 0 24 24" class="svg-icon" fill="gray">
+					<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path>
 				</svg>
 			</button>
 			<div style="flex: 1" class="text-center flex flex-col">
