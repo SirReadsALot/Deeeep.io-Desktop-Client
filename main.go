@@ -4,11 +4,11 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"io/ioutil"
 	"log"
 
-	// "net/http"
 	"image/png"
 	"math/rand"
 	"net/url"
@@ -27,8 +27,10 @@ const VERSION = "v1.7"
 //go:embed src/script.js
 var script []byte
 
-var index, _ = os.ReadFile("./src/index.html")
+//go:embed src/index.html
+var index []byte
 
+//var index, _ = os.ReadFile("./src/index.html")
 //var script, _ = os.ReadFile("./src/script.js")
 
 func main() {
@@ -55,7 +57,7 @@ func main() {
 		</style>
 		<img id="img" src="https://sralcodeproj.netlify.app/assets/myhailot.png" loading="lazy" style="object-fit: cover">
 		</html>
-	`), "", 1120, 740, flags, "--disable-dinosaur-easter-egg") // previous: 887x586
+	`), "", 1120, 740, flags, "--remote-allow-origins=*") // previous: 887x586
 	CheckAndLogFatal(err)
 
 	// <-update
@@ -65,12 +67,12 @@ func main() {
 	})
 
 	ui.Bind("reload", func() {
+		println(plugins.QueryPlugins())
 		ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
-		core.DiscordRPC()
 		EvalDefaultScripts(&ui, plugins)
 	})
 	ui.Bind("makeWindow", func(content string, width int, height int) {
-		lorca.New("data:text/html,"+url.PathEscape(content), "", width, height, "")
+		lorca.New("data:text/html,"+url.PathEscape(content), "", width, height, "--remote-allow-origins=*")
 	})
 	ui.Bind("exit", func() {
 		ui.Close()
@@ -93,9 +95,16 @@ func main() {
 		save.Close()
 	})
 
-	// time.Sleep(5 * time.Second)
+	time.Sleep(5 * time.Second)
+	//println(plugins.QueryPlugins())
 	ui.Load(`https://deeeep.io` + plugins.QueryPlugins())
-	ui.SetBounds(lorca.Bounds{0, 0, 1200, 800, lorca.WindowStateMaximized})
+	ui.SetBounds(lorca.Bounds{
+		Left:        0,
+		Top:         0,
+		Width:       1200,
+		Height:      800,
+		WindowState: lorca.WindowStateMaximized,
+	})
 	EvalDefaultScripts(&ui, plugins)
 	core.DiscordRPC()
 
