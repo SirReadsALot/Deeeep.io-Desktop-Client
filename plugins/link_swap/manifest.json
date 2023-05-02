@@ -1,9 +1,0 @@
-{
-  "description": "Deeeep.io Link",
-  "manifest_version": 3,
-  "name": "Deeeep.io Link",
-  "permissions": ["webRequest", "storage", "declarativeNetRequest"],
-  "host_permissions": ["https://deeeep.io/*", "https://beta.deeeep.io/*"],
-  "update_url": "https://clients2.google.com/service/update2/crx",
-  "version": "0.0.1"
-}

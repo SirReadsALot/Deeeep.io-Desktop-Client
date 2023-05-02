@@ -14,10 +14,6 @@ const (
 	EXTENSION
 )
 
-type Active struct {
-	Active bool
-}
-
 type Config = map[string]interface{}
 
 type PluginManager struct {
@@ -78,16 +74,9 @@ func (p *PluginManager) InitPlugins() string {
 }
 
 func (p *PluginManager) QueryPlugins() string {
-	query := "?"
-	for _, plugin := range p.Plugins {
-		active, ok := plugin.Config["Active"]
-		if plugin.Type == EXTENSION && ok {
-			if active.(bool) {
-				query = query + plugin.Path + "=true&&"
-			}
-		}
-	}
-	return query
+	data, err := json.Marshal(p.GetConfig())
+	CheckAndLogFatal(err)
+	return "?config=" + string(data)
 }
 
 func (p *PluginManager) GetConfig() map[string]Config {
@@ -120,9 +109,12 @@ func CheckAndLogFatal(e error) {
 }
 
 func (p *PluginManager) AddPlugins() {
-	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{"Active": true})
+	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{
+		"active": true, 
+		"pet": "", 
+		"customPet": "",
+	})
 	p.AddPlugin(EXTENSION, "Swapper", "swapper", Config{})
-	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"Active": false})
-	p.AddPlugin(EXTENSION, "LinkSwap", "link_swap", Config{})
+	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"active": false})
 	// p.AddPlugin(EXTENSION, "DeeeepioBGM", "deeeepio_bgm", Config{})
 }
