@@ -50,6 +50,29 @@ function toggleRedirect() {
 
 chrome.browserAction.onClicked.addListener(toggleRedirect); 
 
+let config = {};
+let enabled = false;
+chrome.tabs.onUpdated.addListener(function (_tabId, _changeInfo, tab) {
+    if (tab.url && tab.url.split("?config=")[1]) {
+        config = JSON.parse(tab.url.split("?config=")[1].replaceAll("%22", "\""))
+        enabled = config.docassets.active
+    }
+})
+
+chrome.webRequest.onBeforeRequest.addListener(
+    function (request) {
+        if (request.url === config.docassets.pet) {
+            console.log(`Redirecting ${request.url}`)
+            return {
+                redirectUrl: config.docassets.customPet
+            }
+        }
+    },
+    { urls: ['https://cdn.deeeep.io/custom/pets/*'], types: ["image"] },
+    ["blocking"]
+)
+
+
 //script
 
 script = 'https://the-doctorpus.github.io/doc-assets/scripts/bundle.js';
@@ -70,7 +93,7 @@ function tempMarkChecked(toAdd) {
   
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        let url = options.redirectAssets ? script : details.url; 
+        let url = enabled ? script : details.url;
 
         return {redirectUrl: url};
     },
@@ -87,7 +110,7 @@ function genericHandler(redirectTemplate, regex, name, filenameKeys=['filename']
     function handler(details) {
         let redirectUrl = details.url; 
         
-        if (options.redirectAssets) {
+        if (enabled) {
             const m = regex.exec(details.url); // checks if might be valid X
 
             console.log(`original ${name} URL is ${details.url}`); 
@@ -279,4 +302,4 @@ chrome.webRequest.onBeforeRequest.addListener(
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
     },
     ["blocking"]
-); 
+);
