@@ -1,292 +1,317 @@
 <style>
-    .button {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        line-height: 1;
-        height: 32px;
-        white-space: nowrap;
-        cursor: pointer;
-        text-align: center;
-        box-sizing: border-box;
-        outline: 0;
-        transition: .1s;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        vertical-align: middle;
-        -webkit-appearance: none;
-        min-height: 2.5rem;
-        border-radius: 0.25rem;
-        padding: 0.75rem 1.25rem;
-        font-size: .875rem;
-    }
+	.button {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 1;
+		height: 32px;
+		white-space: nowrap;
+		cursor: pointer;
+		text-align: center;
+		box-sizing: border-box;
+		outline: 0;
+		transition: 0.1s;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		vertical-align: middle;
+		-webkit-appearance: none;
+		min-height: 2.5rem;
+		border-radius: 0.25rem;
+		padding: 0.75rem 1.25rem;
+		font-size: 0.875rem;
+	}
 
-    .box-x-close {
-        position: absolute;
-        top: 0.3rem;
-        right: 0.5rem;
-    }
+	.box-x-close {
+		position: absolute;
+		top: 0.3rem;
+		right: 0.5rem;
+	}
 
-    .ext-red {
-        background-color: rgb(239, 68, 68);
-        border-color: rgb(220, 38, 38);
-    }
+	.ext-red,
+	.ext-black,
+	.ext-blue,
+	.ext-pill {
+		border-bottom-width: 4px;
+	}
 
-    .ext-red:hover {
-        background-color: rgb(220, 38, 38);
-        border-color: rgb(185, 28, 28)
-    }
+	.ext-red {
+		background-color: rgb(239, 68, 68);
+		border-color: rgb(220, 38, 38);
+	}
 
-    .ext-black {
-        background-color: rgb(107, 114, 128);
-        border-color: rgb(75, 85, 99);
-    }
+	.ext-red:hover {
+		background-color: rgb(220, 38, 38);
+		border-color: rgb(185, 28, 28);
+	}
 
-    .ext-black:hover {
-        background-color: rgb(75, 85, 99);
-        border-color: rgb(55, 65, 81)
-    }
+	.ext-black {
+		background-color: rgb(107, 114, 128);
+		border-color: rgb(75, 85, 99);
+	}
 
-    body .ext-button {
-        border-bottom-width: 4px;
-        border-radius: 1rem;
-    }
+	.ext-black:hover {
+		background-color: rgb(75, 85, 99);
+		border-color: rgb(55, 65, 81);
+	}
 
-    .ext-box {
-        width: 90%;
-        margin: auto;
-        margin-top: 5px;
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center 35%;
-    }
+	.ext-blue,
+	.ext-pill {
+		background-color: rgb(59, 130, 246);
+		border-color: rgb(37, 99, 235);
+	}
 
-    .ext-area {
-        background-color: rgb(17, 24, 39);
-        border-radius: 0.5rem;
-    }
+	.ext-blue:hover,
+	.ext-pill:hover {
+		background-color: rgb(37, 99, 235);
+		border-color: rgb(29, 78, 216);
+	}
 
-    .ext-pill {
-        width: max-content;
-        padding: 10px;
-        margin-right: 10px;
-    }
+	body .ext-button {
+		border-bottom-width: 4px;
+		border-radius: 1rem;
+	}
 
-    .ext-pill:hover,
-    .ext-pill:hover * {
-        outline: 1px solid white;
-    }
+	.ext-box {
+		width: 90%;
+		margin: auto;
+		margin-top: 5px;
+		background-repeat: no-repeat;
+		background-size: 50%;
+		background-position: center 35%;
+	}
 
-    .ext-pill.active {
-        background-color: rgb(30, 64, 175);
-    }
+	.ext-area {
+		/* background-color: rgb(17, 24, 39); */
+		border-radius: 0.5rem;
+	}
 
-    .ext-modal {
-        background-color: rgb(31, 41, 55);
-        border: solid 2px rgb(55, 65, 81);
-        border-radius: 0.75rem;
-        width: 500px;
-        height: 400px
-    }
+	.ext-pill {
+		width: max-content;
+		padding: 9px 10px;
+		margin-right: 10px;
+		border-radius: 69420px;
+		font-size: 0.9rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-    .ext-core {
-        top: 5px;
-        right: 5px;
-        border: 1px solid white;
-        border-radius: 25px;
-        font-size: 14px;
-    }
+	.ext-pill.active {
+		/* background-color: rgb(64, 158, 255); */
+		background-color: rgb(55, 65, 81);
+		border-bottom: none;
+	}
 
-    .checkbox {
-        background-color: var(--el-text-color-regular);
-        border-radius: 20px;
-        padding: 2px;
-    }
+	.ext-modal {
+		background-color: rgb(31, 41, 55);
+		border: solid 2px rgb(55, 65, 81);
+		border-radius: 0.75rem;
+		width: 500px;
+		height: 400px;
+	}
 
-    .checkbox-inner {
-        background-color: white;
-        width: 15px;
-        height: 15px;
-        border-radius: 20px;
-        margin-right: 20px;
-    }
+	.ext-core {
+		top: 5px;
+		right: 5px;
+		border: 1px solid white;
+		border-radius: 25px;
+		font-size: 14px;
+	}
 
-    .checkbox.active {
-        background-color: rgb(30, 64, 175);
-    }
+	.checkbox {
+		background-color: var(--el-text-color-regular);
+		border-radius: 20px;
+		padding: 2px;
+	}
 
-    .checkbox-inner.active {
-        margin-left: 20px;
-        margin-right: 0px;
-    }
+	.checkbox-inner {
+		background-color: white;
+		width: 15px;
+		height: 15px;
+		border-radius: 20px;
+		margin-right: 20px;
+	}
 
-    td {
-        padding: 8px;
-    }
+	.checkbox.active {
+		background-color: rgb(64, 158, 255);
+	}
 
-    .ext-pages {
-        flex: 1;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
+	.checkbox-inner.active {
+		margin-left: 20px;
+		margin-right: 0px;
+	}
 
-    .ext-input {
-        height: 30px;
-        border-radius: 5px;
-        padding: 5px;
-    }
+	td {
+		padding: 8px;
+	}
 
-    #extensions {
-        right: 50%;
-        z-index: 100;
-        transform: translateX(50%);
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 40px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
+	.ext-pages {
+		flex: 1;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
 
-    #extensions:hover {
-        background-color: rgba(0, 0, 0, 0.4);
-    }
+	.ext-input {
+		height: 30px;
+		border-radius: 5px;
+		padding: 5px;
+		background-color: rgb(17, 24, 39);
+		outline: none;
+		border: transparent 1px solid;
+	}
+	.ext-input:active,
+	.ext-input:focus {
+		border: rgb(64, 158, 255) 1px solid;
+	}
 
-    /*starting evo section*/
+	#extensions {
+		right: 50%;
+		z-index: 100;
+		transform: translateX(50%);
+		background-color: rgba(0, 0, 0, 0.2);
+		padding: 40px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
 
-    .evo-red {
-        background-color: rgb(239, 68, 68);
-        border-color: rgb(220, 38, 38);
-    }
+	#extensions:hover {
+		background-color: rgba(0, 0, 0, 0.4);
+	}
 
-    .evo-red:hover {
-        background-color: rgb(220, 38, 38);
-        border-color: rgb(185, 28, 28)
-    }
+	/*starting evo section*/
 
-    .evo-black {
-        background-color: rgb(107, 114, 128);
-        border-color: rgb(75, 85, 99);
-    }
+	.evo-red {
+		background-color: rgb(239, 68, 68);
+		border-color: rgb(220, 38, 38);
+	}
 
-    .evo-black:hover {
-        background-color: rgb(75, 85, 99);
-        border-color: rgb(55, 65, 81)
-    }
+	.evo-red:hover {
+		background-color: rgb(220, 38, 38);
+		border-color: rgb(185, 28, 28);
+	}
 
-    body .evo-button {
-        border-bottom-width: 4px;
-        border-radius: 1rem;
-    }
+	.evo-black {
+		background-color: rgb(107, 114, 128);
+		border-color: rgb(75, 85, 99);
+	}
 
-    .evo-box.active {
-        outline: 2px solid white;
-        filter: brightness(100%);
-    }
+	.evo-black:hover {
+		background-color: rgb(75, 85, 99);
+		border-color: rgb(55, 65, 81);
+	}
 
-    .evo-modal {
-        background-color: rgb(31, 41, 55);
-        border: solid 2px rgb(55, 65, 81);
-        border-radius: 0.75rem;
-        width: 100vh;
-    }
+	body .evo-button {
+		border-bottom-width: 4px;
+		border-radius: 1rem;
+	}
 
-    .evo-core {
-        top: 5px;
-        right: 5px;
-        border: 1px solid white;
-        border-radius: 25px;
-        font-size: 14px;
-    }
+	.evo-box.active {
+		outline: 2px solid white;
+		filter: brightness(100%);
+	}
 
-    #evo-main {
-        flex-wrap: wrap;
-        width: 88%;
-        margin: auto;
-        gap: 15px;
-    }
+	.evo-modal {
+		background-color: rgb(31, 41, 55);
+		border: solid 2px rgb(55, 65, 81);
+		border-radius: 0.75rem;
+		width: 100vh;
+	}
+
+	.evo-core {
+		top: 5px;
+		right: 5px;
+		border: 1px solid white;
+		border-radius: 25px;
+		font-size: 14px;
+	}
+
+	#evo-main {
+		flex-wrap: wrap;
+		width: 88%;
+		margin: auto;
+		gap: 15px;
+	}
 </style>
 
-
-<div style="z-index: 100;" class="w-screen h-screen absolute hidden" id="ext-modal">
-    <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
-    <div class="w-full h-full absolute flex justify-center items-center">
-        <div class="flex flex-col ext-modal relative">
-            <div style="font-size: 1.3rem" class="text-center py-2">Extensions</div>
-            <button class="ext-close box-x-close"><svg width="1.125em" height="1.125em" viewBox="0 0 24 24"
-                    class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72=""
-                    style="--sx:1; --sy:1; --r:0deg;">
-                    <path
-                        d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                        data-v-35f7fcad=""></path>
-                </svg></button>
-            <div style="flex: 1;" class="text-center flex flex-col">
-                <div class="ext-box flex">
-                    <div class="ext-pill ext-area active" data-name="docassets">DocAssets</div>
-                    <div class="ext-pill ext-area" data-name="swapper">Swapper</div>
-                    <!-- <div class="ext-pill ext-area" data-name="multi_swap">Multi-Swap</div> -->
-                    <div class="ext-pill ext-area" data-name="ter_pet">T/P Swap</div>
-                    <div class="ext-pill ext-area" data-name="rpc">DiscordRPC</div>
-                </div>
-                <div class="ext-box ext-area ext-pages">
-                    <table style="margin: auto;" class="ext-page" id="docassets">
-                        <tr class="option" id="doc-enable">
-                            <td>Enabled</td>
-                            <td>
-                                <div class="checkbox" id="doc-check">
-                                    <div class="checkbox-inner" id="doc-check-inner"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="option">
-                            <td colspan="2">
-                                <div class="button ext-button ext-red" id="doc-btn">Reload</div>
-                            </td>
-                        </tr>
-                    </table>
-                    <table style="margin: auto;" class="ext-page hidden" id="swapper">
-                        <tr class="option" id="doc-enable">
-                            <td>Skin Id</td>
-                            <td>
-                                <input class="ext-input" type="text" placeholder="Enter Skin Id" id="swapper-input">
-                            </td>
-                        </tr>
-                        <tr class="option">
-                            <td colspan="2">
-                                <div class="button ext-button ext-black" id="swapper-btn">Swap!</div>
-                            </td>
-                        </tr>
-                    </table>
-                    <table style="margin: auto;" class="ext-page hidden" id="ter_pet">
-                        <td>Terrain/Pet Swapper</td>
-                        <tr class="option" id="doc-enable">
-                            <td>
-                                <input class="ext-input" type="text" placeholder="Enter pet url" id="pet-input">
-                            </td>
-                            <td>
-                                <input class="ext-input" type="text" placeholder="pet custom url" id="pet-custom-input">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="ext-input" type="text" placeholder="Enter terrain url" id="terrain-input">
-                            </td>
-                            <td>
-                                <input class="ext-input" type="text" placeholder="terrain custom url" id="terrain-custom-input">
-                            </td>
-                        </tr>
-                        <tr class="option">
-                            <td colspan="1">
-                                <div class="button ext-button ext-black" id="pet-btn">Swap pet</div>
-                            </td>
-                            <td>
-                                <div class="button ext-button ext-black" id="terrain-btn">Swap terrain</div>
-                            </td>
-                        </tr>
-                    </table>
-                    <!--
+<div style="z-index: 100" class="w-screen h-screen absolute hidden" id="ext-modal">
+	<div style="background-color: rgba(0, 0, 0, 0.5)" class="w-full h-full absolute"></div>
+	<div class="w-full h-full absolute flex justify-center items-center">
+		<div class="flex flex-col ext-modal relative">
+			<div style="font-size: 1.3rem" class="text-center py-2">Extensions</div>
+			<button class="ext-close box-x-close">
+				<svg width="1.125em" height="1.125em" viewBox="0 0 24 24" class="svg-icon" color="gray" data-v-35f7fcad="" data-v-3140a19a="" data-v-daae3c72="" style="--sx: 1; --sy: 1; --r: 0deg">
+					<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" data-v-35f7fcad=""></path>
+				</svg>
+			</button>
+			<div style="flex: 1" class="text-center flex flex-col">
+				<div class="ext-box flex">
+					<div class="ext-pill ext-area active" data-name="docassets">DocAssets</div>
+					<div class="ext-pill ext-area" data-name="swapper">Swapper</div>
+					<!-- <div class="ext-pill ext-area" data-name="multi_swap">Multi-Swap</div> -->
+					<div class="ext-pill ext-area" data-name="ter_pet">T/P Swap</div>
+					<div class="ext-pill ext-area" data-name="rpc">DiscordRPC</div>
+				</div>
+				<div class="ext-box ext-area ext-pages">
+					<table style="margin: auto" class="ext-page" id="docassets">
+						<tr class="option" id="doc-enable">
+							<td>Enabled</td>
+							<td>
+								<div class="checkbox" id="doc-check">
+									<div class="checkbox-inner" id="doc-check-inner"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="option">
+							<td colspan="2">
+								<div class="button ext-button ext-red" id="doc-btn">Reload</div>
+							</td>
+						</tr>
+					</table>
+					<table style="margin: auto" class="ext-page hidden" id="swapper">
+						<tr class="option" id="doc-enable">
+							<td>Skin Id</td>
+							<td>
+								<input class="ext-input" type="text" placeholder="Enter Skin Id" id="swapper-input" />
+							</td>
+						</tr>
+						<tr class="option">
+							<td colspan="2">
+								<div class="button ext-button ext-black" id="swapper-btn">Swap!</div>
+							</td>
+						</tr>
+					</table>
+					<table style="margin: auto" class="ext-page hidden" id="ter_pet">
+						<td>Terrain/Pet Swapper</td>
+						<tr class="option" id="doc-enable">
+							<td>
+								<input class="ext-input" type="text" placeholder="Enter pet url" id="pet-input" />
+							</td>
+							<td>
+								<input class="ext-input" type="text" placeholder="Enter terrain url" id="terrain-input" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input class="ext-input" type="text" placeholder="Enter pet custom url" id="pet-custom-input" />
+							</td>
+							<td>
+								<input class="ext-input" type="text" placeholder="Enter terrain custom url" id="terrain-custom-input" />
+							</td>
+						</tr>
+						<tr class="option">
+							<td colspan="1">
+								<div class="button ext-button ext-black" id="pet-btn">Swap pet</div>
+							</td>
+							<td>
+								<div class="button ext-button ext-black" id="terrain-btn">Swap terrain</div>
+							</td>
+						</tr>
+					</table>
+					<!--
                     <table style="margin: auto;" class="ext-page hidden" id="multi_swap">
                         <tr class="option" id="doc-enable">
                             <td>Skin Id</td>
@@ -313,20 +338,20 @@
                         </tr>
                     </table>
                 -->
-                    <table style="margin: auto;" class="ext-page hidden" id="rpc">
-                        <tr class="option" id="rpc-enable">
-                            <td>Enabled</td>
-                            <td>
-                                <div class="checkbox" id="rpc-check">
-                                    <div class="checkbox-inner" id="rpc-check-inner"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+					<table style="margin: auto" class="ext-page hidden" id="rpc">
+						<tr class="option" id="rpc-enable">
+							<td>Enabled</td>
+							<td>
+								<div class="checkbox" id="rpc-check">
+									<div class="checkbox-inner" id="rpc-check-inner"></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- <div style="z-index: 100;" class="w-screen h-screen absolute hidden" id="evo-modal">
     <div style="background-color: rgba(0,0,0,.5);" class="w-full h-full absolute"></div>
