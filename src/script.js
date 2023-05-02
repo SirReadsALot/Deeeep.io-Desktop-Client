@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	petInput.value = data.docassets.Config.pet;
 	petCustomInput.value = data.docassets.Config.customPet;
 	terrainBtn.addEventListener("click", () => {
-		alert("Sorry, it's under construction 🛠");
+		alert("Sorry, it's under construction 🛠️");
 	});
 	petBtn.addEventListener("click", () => {
 		data.docassets.Config.pet = document.getElementById("pet-input").value;
