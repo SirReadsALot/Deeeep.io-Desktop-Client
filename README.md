@@ -18,6 +18,12 @@ The Deeeep.io Desktop Client is a free and open source desktop app made with go 
 | v1.7    | MacOS    | Coming Soon |
 | v1.7    | Linux | Coming Soon |
 
+[x] Windows 64-bit version
+[x] Windows 32-bit version
+[ ] Mac amd64 version
+[x]
+[x] 
+
 
 ## Installation
 
