@@ -1,11 +1,11 @@
 //console.log(`[DDC Config] ${JSON.stringify(data)}`)
 
- document.addEventListener('contextmenu', (e) => e.preventDefault())
+document.addEventListener('contextmenu', (e) => e.preventDefault())
 
 document.addEventListener("DOMContentLoaded", () => {
   const navBar = document.getElementsByClassName("el-row top-right-nav items-center")[0]
   const updateLog = document.createElement("div")
-  updateLog.innerHTML = `<div class="el-col el-col-24 is-guttered auto-col" data-v-6a9d399d="" data-v-190e0e28="" style="padding-right: 4px; padding-left: 4px;"><div class="el-dropdown nice-dropdown" data-v-7db8124a="" data-v-190e0e28=""><button class="el-button el-button--small el-tooltip__trigger btn nice-button yellow has-icon square only-icon el-tooltip__trigger" aria-disabled="false" type="button" id="el-id-9348-12" role="button" tabindex="0" aria-controls="el-id-9348-13" aria-expanded="false" aria-haspopup="menu" data-v-1676d978="" data-v-7db8124a=""><!--v-if--><span class=""><!----><!----></span>
+  updateLog.innerHTML = `<div class="tr-menu-button ext-yellow" style="padding-right: 4px; padding-left: 4px;"><div class="el-dropdown nice-dropdown" data-v-7db8124a="" data-v-190e0e28=""><button class="el-button el-button--small el-tooltip__trigger btn nice-button yellow has-icon square only-icon el-tooltip__trigger" aria-disabled="false" type="button" id="el-id-9348-12" role="button" tabindex="0" aria-controls="el-id-9348-13" aria-expanded="false" aria-haspopup="menu" data-v-1676d978="" data-v-7db8124a=""><!--v-if--><span class=""><!----><!----></span>
   <img src="https://cdn.discordapp.com/attachments/1035856135187595347/1094211126834770030/updatelog.png" height="28px" width="28px">
   </button><!--v-if--></div></div>`
   navBar.append(updateLog)
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             overflow: hidden;
           }
           </style>
-          <script>window.addEventListener('contextmenu', () => evt.preventDefault())</script>
+          <script>window.addEventListener('contextmenu', (evt) => evt.preventDefault())</script>
         `
         makeWindow(evoTree, 865, 663)
       }
@@ -225,6 +225,48 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   document.addEventListener("keyup", () => keydown = false)
+
+
+  const ctrlOrCmdCodes = new Set(["KeyD", "KeyH", "KeyJ", "KeyE", "KeyD", "KeyG", "KeyN", "KeyO", "KeyP", "KeyQ", "KeyR", "KeyS", "KeyT", "KeyW", "KeyY", "Tab", "PageUp", "PageDown", "F4"]);
+	const cmdCodes = new Set(["BracketLeft", "BracketRight", "Comma"]);
+	const cmdOptionCodes = new Set(["ArrowLeft", "ArrowRight", "KeyB"]);
+	const ctrlShiftCodes = new Set(["KeyQ", "KeyW"]);
+	const altCodes = new Set(["Home", "ArrowLeft", "ArrowRight", "F4"]);
+
+	function preventDefaultShortcuts(event) {
+		let prevent = false;
+		if (navigator.userAgent.match(/Mac OS X/)) {
+			if (event.metaKey) {
+				if (event.keyCode > 48 && event.keyCode <= 57)
+					// 1-9
+					prevent = true;
+				if (ctrlOrCmdCodes.has(event.code) || cmdCodes.has(event.code)) prevent = true;
+				if (event.shiftKey && cmdOptionCodes.has(event.code)) prevent = true;
+				if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+					if (!event.contentEditable && event.target.nodeName !== "INPUT" && event.target.nodeName !== "TEXTAREA") prevent = true;
+				}
+			}
+		} else {
+			if (event.code === "F4") prevent = true;
+			if (event.ctrlKey) {
+				if (event.keyCode > 48 && event.keyCode <= 57)
+					// 1-9
+					prevent = true;
+				if (ctrlOrCmdCodes.has(event.code)) prevent = true;
+				if (event.shiftKey && ctrlShiftCodes.has(event.code)) prevent = true;
+			}
+			if (event.altKey && altCodes.has(event.code)) prevent = true;
+		}
+
+		if (prevent) event.preventDefault();
+	}
+
+	document.addEventListener("keydown", preventDefaultShortcuts, false);
+	document.addEventListener("keydown", (event) => {
+		if ((event.key === "q" || event.key === "Q") && (event.metaKey || event.ctrlKey)) {
+			event.preventDefault();
+		}
+	});
 })
 
 function updateConfig(data) {
