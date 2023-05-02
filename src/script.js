@@ -1,17 +1,10 @@
-import * as fs from 'fs';
 //console.log(`[DDC Config] ${JSON.stringify(data)}`)
-(function () {
-  var blockContextMenu
-  blockContextMenu = function (evt) {
-    evt.preventDefault();
-  };
 
-  window.addEventListener('contextmenu', blockContextMenu);
-})(); 
+ document.addEventListener('contextmenu', (e) => e.preventDefault())
 
 document.addEventListener("DOMContentLoaded", () => {
-  var navBar = document.getElementsByClassName("el-row top-right-nav items-center")[0]
-  var updateLog = document.createElement("div")
+  const navBar = document.getElementsByClassName("el-row top-right-nav items-center")[0]
+  const updateLog = document.createElement("div")
   updateLog.innerHTML = `<div class="el-col el-col-24 is-guttered auto-col" data-v-6a9d399d="" data-v-190e0e28="" style="padding-right: 4px; padding-left: 4px;"><div class="el-dropdown nice-dropdown" data-v-7db8124a="" data-v-190e0e28=""><button class="el-button el-button--small el-tooltip__trigger btn nice-button yellow has-icon square only-icon el-tooltip__trigger" aria-disabled="false" type="button" id="el-id-9348-12" role="button" tabindex="0" aria-controls="el-id-9348-13" aria-expanded="false" aria-haspopup="menu" data-v-1676d978="" data-v-7db8124a=""><!--v-if--><span class=""><!----><!----></span>
   <img src="https://cdn.discordapp.com/attachments/1035856135187595347/1094211126834770030/updatelog.png" height="28px" width="28px">
   </button><!--v-if--></div></div>`
@@ -19,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLog.addEventListener("click", () => {
     console.log("UpdateLog clicked")
   })
-  
+
   const ext = document.querySelector(".pink").cloneNode(true)
   ext.style.width = "5.5rem"
 
@@ -67,31 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
   swapperBtn.addEventListener("click", () => {
     const id = parseInt(swapperInput.value)
     gameScene.gameScene.game.currentScene.myAnimal.setSkin(id)
-    console.log(`[DDC Asset Swapper] ${id}`)
+    //console.log(`[DDC Asset Swapper] ${id}`)
   })
 
   // Terrain/Pet Swapper
-  const Configl = "../plugins/link_swap/config/link_swap.json"
-  const file = require(Configl)
-
-  const petInput = document.getElementById("pet-input").value
-  const petCustomInput = document.getElementById("pet-custom-input").value
-  const terrainInput = document.getElementById("terrain-input").value
-  const terrainCustomInput = document.getElementById("terrain-custom-input").value
+  const petInput = document.getElementById("pet-input")
+  const petCustomInput = document.getElementById("pet-custom-input")
+  // const terrainInput = document.getElementById("terrain-input").value
+  // const terrainCustomInput = document.getElementById("terrain-custom-input").value
   const petBtn = document.getElementById("pet-btn")
   const terrainBtn = document.getElementById("terrain-btn")
+  petInput.value = data.docassets.Config.pet
+  petCustomInput.value = data.docassets.Config.customPet
   terrainBtn.addEventListener("click", () => {
     alert("Sorry, it's under construction 🛠")
   })
   petBtn.addEventListener("click", () => {
-    file.PET_originalURL = petInput
-    file.PET_customURL = petCustomInput
-    fs.writeFile(Configl, JSON.stringify(file, null, 2), function writeJSON(err) {
-      if (err) return console.log(err)
-    })
+    data.docassets.Config.pet = document.getElementById("pet-input").value
+    data.docassets.Config.customPet = document.getElementById("pet-custom-input").value
+    updateConfig(data)
+    reload()
   })
-
-
 
   // Multi-Swap
   /*
@@ -174,13 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
   doc.addEventListener("click", () => {
     docCheck.classList.toggle("active")
     docCheckInner.classList.toggle("active")
-    data.docassets.Config.Active = !data.docassets.Config.Active
+    data.docassets.Config.active = !data.docassets.Config.active
     updateConfig(data)
   })
   docBtn.addEventListener("click", () => {
     reload()
   })
-  if (data.docassets.Config.Active) {
+  if (data.docassets.Config.active) {
     docCheck.classList.toggle("active")
     docCheckInner.classList.toggle("active")
   }
@@ -188,101 +177,56 @@ document.addEventListener("DOMContentLoaded", () => {
   // DiscordRPC
   const rpc = document.getElementById("rpc-enable")
   const rpcCheck = document.getElementById("rpc-check")
-  const rpcBtn = document.getElementById("rpc-btn")
+  // const rpcBtn = document.getElementById("rpc-btn")
   const rpcCheckInner = document.getElementById("rpc-check-inner")
   rpc.addEventListener("click", () => {
     rpcCheck.classList.toggle("active")
     rpcCheckInner.classList.toggle("active")
-    data.rpc.Config.Active = !data.rpc.Config.Active
+    data.rpc.Config.active = !data.rpc.Config.active
     updateConfig(data)
   })
   // rpcBtn.addEventListener("click", () => {
   //   reload()
   // })
-  if (data.rpc.Config.Active) {
+  if (data.rpc.Config.active) {
     rpcCheck.classList.toggle("active")
     rpcCheckInner.classList.toggle("active")
   }
 
-  const ExternalEx = extModal
-  const playBtn = document.getElementsByClassName("el-button btn play btn nice-button green block btn play")[0]
+  // Shortcut Keys
+  const home = document.getElementsByClassName("home-page")[0]
   const Exbg = document.getElementsByClassName("w-full h-full absolute")[0]
   Exbg.style.pointerEvents = "none"
-  window.addEventListener("keydown", (e) => {
-  if (playBtn) {
-    switch(e.key) {
-      case "q":
-      case "Q":
-        ExternalEx.style.opacity = 1
-        ExternalEx.classList.toggle("active")
-        ExternalEx.classList.toggle("absolute")
-        console.log("Q pressed")
-        break;
-      default:
-        return
-    }
-  } else {
-    return
-  }
-  })
-  window.addEventListener("keyup", (e) => {
-  if (playBtn) {
-    switch(e.key) {
-      case "q":
-      case "Q":
-        ExternalEx.style.opacity = 0
-        ExternalEx.classList.toggle("hidden")
-        ExternalEx.classList.remove("absolute")
+  let keydown = false
+  document.addEventListener("keydown", (e) => {
+    if (ext && !keydown && home.style.display == "none") {
+      if (e.key === "Q" || e.key === "q") {
+        extModal.classList.toggle("hidden")
         console.log("Q released")
-        break;
-      default:
-        return
+      } else if (e.key === "Z" || e.key === "z") {
+        screenshot()
+      } else if (e.key === "T" || e.key === "t") {
+        const evoTree = `
+        <title>EvoTree</title>
+          <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
+          <style>
+          html, body {
+            margin: 0; 
+            height: 100%; 
+            overflow: hidden;
+          }
+          </style>
+          <script>window.addEventListener('contextmenu', () => evt.preventDefault())</script>
+        `
+        makeWindow(evoTree, 865, 663)
+      }
     }
-  } else {
-    return
-  }
+    keydown = true
   })
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Z" || e.key === "z") {
-      screenshot()
-    }
-  })
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "E" || e.key === "e") {
-      var evoTree = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <title>EvoTree</title>
-      </head>
-      <body>
-      <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
-        <style>
-        html, body {
-          margin: 0; 
-          height: 100%; 
-          overflow: hidden;
-        }
-        </style>
-        <script>
-        (function () {
-          var blockContextMenu
-        
-          blockContextMenu = function (evt) {
-            evt.preventDefault();
-          };
-        
-          window.addEventListener('contextmenu', blockContextMenu);
-        })(); 
-        </script>
-      </body>
-      </html>
-      `
-      makeWindow(evoTree, 865, 663)
-    }
-  })
+  document.addEventListener("keyup", () => keydown = false)
 })
+
 function updateConfig(data) {
   const config = {}
   for (const name in data) {
