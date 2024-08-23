@@ -220,36 +220,39 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // Multi-Swap
-  /*
   const swapperInput_m = document.getElementById("m_swap-input")
   const chooseAnimInput = document.getElementById("m_anim-input")
   const saveID = document.getElementById("m_swap-btn")
   const clearBtn = document.getElementById("m_swap-clearbtn")
   const openList = document.getElementById("openList-btn")
-  const s_Id = []
-  const a_Id = []
 
+  let currentFishLevel = -1;
+  let skins = {};
   saveID.addEventListener("click", () => {
-    const skanId = parseInt(swapperInput_m.value)
+    
+    const skinId = parseInt(swapperInput_m.value)
     const animalId = parseInt(chooseAnimInput.value)
-    s_Id.push(skanId)
-    a_Id.push(animalId)
-    console.log("SKIN ID'S: " + s_Id)
-    console.log("ANIMAL ID's: " + a_Id)
-    let fishData = gameScene.gameScene.myAnimal.fishLevelData.fishLevel
-    let swap = gameScene.gameScene.game.currentScene.myAnimal.setSkin
-    function m_swap() {
-      for (n of s_Id) {
-        if (fishData === s_Id[n]) {
-          swap(s_Id[n])
-        }
-      }
+    if (gameScene?.gameScene?.myAnimals?.length && gameScene.gameScene.myAnimals.length > 0 && gameScene.gameScene.myAnimals[0].fishLevelData.fishLevel === animalId) {
+      gameScene.gameScene.myAnimals.forEach((a) => a.setSkin(skinId))
     }
-    m_swap()
+    skins[animalId] = skinId
   })
+  function onFishLevelChange(id) {
+    if (typeof skins[id] === "number") {
+      gameScene.gameScene.myAnimals.forEach((a) => a.setSkin(skins[id]))
+    }
+  }
+  setInterval(() => {
+    if (!gameScene?.gameScene?.myAnimals?.length || gameScene.gameScene.myAnimals.length < 1) return currentFishLevel = -1;
+    const newFishLevel = gameScene.gameScene.myAnimals[0].fishLevelData.fishLevel;
+    if (currentFishLevel !== newFishLevel) {
+        currentFishLevel = newFishLevel;
+        onFishLevelChange(currentFishLevel);
+    }
+  }, 100)
   clearBtn.addEventListener("click", () => {
-    s_Id.length = 0
-    a_Id.length = 0
+    skins = {}
+    gameScene.gameScene.myAnimals.forEach((a) => a.setSkin())
   })
 
 
@@ -290,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
   openList.addEventListener("click", () => {
     makeWindow(listHTML, 463, 483)
   })
-  */
 
   // Doc Assets
   const doc = document.getElementById("doc-enable")

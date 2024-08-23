@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"os/exec"
 	"time"
 
 	"io/ioutil"
@@ -157,10 +158,9 @@ type Release struct {
 	Tag string `json:"tag_name"`
 }
 
-
 func CheckUpdate() {
 	update := make(chan string)
-	
+
 	resp, err := http.Get(SRC)
 	CheckAndLogFatal(err)
 	defer resp.Body.Close()
@@ -179,6 +179,3 @@ func CheckUpdate() {
 	core.DiscordRPC()
 	update <- ""
 }
-
-
-
