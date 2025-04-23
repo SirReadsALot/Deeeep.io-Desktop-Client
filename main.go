@@ -25,7 +25,7 @@ import (
 )
 
 const SRC = "https://api.github.com/repos/SirReadsALot/Deeeep.io-Desktop-Client/releases/latest"
-const VERSION = "v1.7"
+const VERSION = "v2.1"
 
 //go:embed src/script.js
 var script []byte

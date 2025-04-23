@@ -72,13 +72,11 @@ or by doing:
 ```
 
 
-## Contributing
-
-To gain access to this repository, contact `SirReadsALot#3380` on Discord.
-
-You are also welcome to submit a pull request or issue at any time.
+## General Info
 
 Join our [Discord server](https://discord.gg/BMHVrKYeem) or check out our [website](https://sirreadsalot.github.io/sralcodeproj/).
+
+> *This repository will not receive any major updates other than fixes*
 
 ## License
 
