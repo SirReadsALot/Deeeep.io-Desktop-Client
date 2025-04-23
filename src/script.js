@@ -420,32 +420,34 @@ document.addEventListener("DOMContentLoaded", () => {
   Exbg.style.pointerEvents = "none"
   let keydown = false
   document.addEventListener("keydown", (e) => {
-    if (ext && !keydown && home.style.display == "none") {
-      if (e.key === "Q" || e.key === "q") {
-        extModal.classList.toggle("hidden")
-        console.log("Q released")
-      } else if (e.key === "Z" || e.key === "z") {
-        screenshot()
-      } else if (e.key === "T" || e.key === "t") {
-        const evoTree = `
-        <title>EvoTree</title>
-          <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
-          <style>
-          html, body {
-            margin: 0; 
-            height: 100%; 
-            overflow: hidden;
-          }
-          </style>
-          <script>window.addEventListener('contextmenu', (evt) => evt.preventDefault())</script>
-        `
-        makeWindow(evoTree, 865, 663)
-      }
+    if (document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement) return;
+    if (!ext || keydown || home.style.display !== "none") return;
+
+    if (e.key.toLowerCase() === "q") {
+      extModal.classList.toggle("hidden")
+    } else if (e.key.toLowerCase() === "z") {
+      screenshot()
+    } else if (e.key.toLowerCase() === "t") {
+      const evoTree = `
+      <title>EvoTree</title>
+        <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
+        <style>
+        html, body {
+          margin: 0; 
+          height: 100%; 
+          overflow: hidden;
+        }
+        </style>
+        <script>window.addEventListener('contextmenu', (evt) => evt.preventDefault())</script>
+      `
+      makeWindow(evoTree, 865, 663)
     }
     keydown = true
   })
 
-  document.addEventListener("keyup", () => keydown = false)
+  document.addEventListener("keyup", () => {
+    keydown = false
+  })
 
 
   const ctrlOrCmdCodes = new Set(["KeyD", "KeyH", "KeyJ", "KeyE", "KeyD", "KeyG", "KeyN", "KeyO", "KeyP", "KeyQ", "KeyR", "KeyS", "KeyT", "KeyW", "KeyY", "Tab", "PageUp", "PageDown", "F4"]);
