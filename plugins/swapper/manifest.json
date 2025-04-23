@@ -5,7 +5,7 @@
    "description": "Asset Swapper",
    "manifest_version": 2,
    "name": "Asset Swapper",
-   "permissions": [ "webRequest", "https://beta.deeeep.io/*", "webRequestBlocking", "storage", "declarativeNetRequest" ],
+   "permissions": [ "webRequest", "https://deeeep.io/*", "webRequestBlocking", "storage", "declarativeNetRequest" ],
    "declarative_net_request": {
       "rule_resources": [
             {
