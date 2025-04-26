@@ -418,7 +418,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const home = document.getElementsByClassName("home-page")[0]
   const Exbg = document.getElementsByClassName("w-full h-full absolute")[0]
   Exbg.style.pointerEvents = "none"
-  let keydown = false
+  let keydown = false 
+  if (document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement) return;
+  if (!ext || keydown || home.style.display !== "none") return;
+
+    if (e.key.toLowerCase() === "q") {
+      extModal.classList.toggle("hidden")
+    } else if (e.key.toLowerCase() === "z") {
+      screenshot()
+    } else if (e.key.toLowerCase() === "t") {
+      const evoTree = `
+      <title>EvoTree</title>
+        <img src="https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/assets/Tree.png">
+        <style>
+        html, body {
+          margin: 0; 
+          height: 100%; 
+          overflow: hidden;
+        }
+        </style>
+        <script>window.addEventListener('contextmenu', (evt) => evt.preventDefault())</script>
+      `
+      makeWindow(evoTree, 865, 663)
+  /*
   document.addEventListener("keydown", (e) => {
     if (ext && !keydown && home.style.display == "none") {
       if (e.key === "Q" || e.key === "q") {
@@ -444,8 +466,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     keydown = true
   })
+  */
 
-  document.addEventListener("keyup", () => keydown = false)
+  document.addEventListener("keyup", () => {keydown = false})
 
 
   const ctrlOrCmdCodes = new Set(["KeyD", "KeyH", "KeyJ", "KeyE", "KeyD", "KeyG", "KeyN", "KeyO", "KeyP", "KeyQ", "KeyR", "KeyS", "KeyT", "KeyW", "KeyY", "Tab", "PageUp", "PageDown", "F4"]);
