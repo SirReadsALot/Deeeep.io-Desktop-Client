@@ -1,6 +1,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
 
-# Deeeep.io Desktop Client [ElectroGo]
+# Deeeep.io Desktop Client [WV3]
 
 <p align="center">
 <img src="./assets/Logo_182x187.png">
@@ -18,9 +18,9 @@ The Deeeep.io Desktop Client is a free and open source desktop app made with go 
 
 | Version | Platform | Availability| 
 | ------- | -------- | ----------- |
-| v1.7  | Windows  | Coming Soon | 
-| v1.7    | MacOS    | Coming Soon |
-| v1.7    | Linux | Coming Soon |
+| v2.0  | Windows  | Yes | 
+| v2.0    | MacOS    | Yes |
+| v2.0    | Linux | Yes |
 
 
 ## Installation
