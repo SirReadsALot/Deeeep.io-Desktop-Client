@@ -1,16 +1,15 @@
-[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-go.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![discord](https://img.shields.io/discord/841929038620786689?label=DISCORD%20SERVER&style=for-the-badge)](https://discord.gg/BMHVrKYeem)
 
-# Deeeep.io Desktop Client [WV3]
+[![Github All Releases](https://img.shields.io/github/downloads/SirReadsALot/Deeeep.io-Desktop-Client/total.svg)]()
 
-<p align="center">
-<img src="./assets/Logo_182x187.png">
-</p>
+
+# Deeeep.io Desktop Client
+
+<img src="./assets/golang_logo.png">
 
 > **NOTE**: the [electron edition](https://github.com/SirReadsALot/Deeeep.io-Desktop-Client/tree/electron) was the default version before we switched to golang because of some drawbacks of electron.
-> 
-> *This is the **ElectroGo version** of the DDC, currently experimental but it might become official in the future*
 
-Welcome to the official repository of the Deeeep.io Desktop Client! 
+Welcome to the official repository of the Deeeep.io Desktop Client!
 
 The Deeeep.io Desktop Client is a free and open source desktop app made with go for the hit io game called Deeeep.io.
 
@@ -18,12 +17,31 @@ The Deeeep.io Desktop Client is a free and open source desktop app made with go 
 
 | Version | Platform | Availability| 
 | ------- | -------- | ----------- |
-| v2.0  | Windows  | Yes | 
-| v2.0    | MacOS    | Yes |
-| v2.0    | Linux | Yes |
+| v2.0  | Windows  | Published | 
+| v2.0    | MacOS    | Published |
+| v2.0    | Linux | Published |
 
+- [x] Windows 64-bit version
+- [x] Windows 32-bit version
+- [x] Mac universal version
+- [x] Linux amd64 version
+- [x] Linux 386 version
 
-## Installation
+## Installing
+
+### Windows
+
+To install:
+```ps
+iwr -useb https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/installers/install-windows.ps1 | iex
+```
+
+To uninstall:
+```ps
+iwr -useb https://raw.githubusercontent.com/SirReadsALot/Deeeep.io-Desktop-Client/golang/installers/uninstall-windows.ps1 | iex
+```
+
+## Running from source code
 
 This application requires [go](https://go.dev/) to be installed.
 
@@ -53,14 +71,13 @@ or by doing:
 ./go_build.exe
 ```
 
-## Contributing
 
-To gain access to this repository, contact `SirReadsALot#3380` on Discord.
+## General Info
 
-You are also welcome to submit a pull request or issue at any time.
+Join our [Discord server](https://discord.gg/BMHVrKYeem) or check out our [website](https://sirreadsalot.github.io/sralcodeproj/).
 
-Join our [Discord server](https://discord.gg/BMHVrKYeem) or check out our [website](https://sralcodeproj.netlify.app/deeeep.io_desktop_client).
+> *This repository will not receive any major updates other than fixes*
 
 ## License
 
-The Deeeep.io Desktop Client is licensed under the GPL-3.0 license.
+The Deeeep.io Desktop Client is licensed under the MIT license.

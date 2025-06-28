@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 	"path"
+	"path/filepath"
+	"strings"
 )
 
 type PluginType = uint8
@@ -14,9 +16,17 @@ const (
 	EXTENSION
 )
 
-type Active struct {
-	Active bool
+func GetCwd() string {
+	if strings.Contains(os.Args[0], "go-build") {
+		var cwd, _ = os.Getwd()
+		return cwd
+	} else {
+		var exec, _ = os.Executable()
+		return filepath.Dir(exec)
+	}
 }
+
+var cwd = GetCwd()
 
 type Config = map[string]interface{}
 
@@ -63,7 +73,6 @@ func (p *PluginManager) AddPlugin(Type PluginType, name string, path string, con
 
 func (p *PluginManager) InitPlugins() string {
 	flag := "--load-extension="
-	var cwd, _ = os.Getwd()
 	for name, plugin := range p.Plugins {
 		ext := "plugins/" + plugin.Path
 		if plugin.Type == EXTENSION {
@@ -78,16 +87,9 @@ func (p *PluginManager) InitPlugins() string {
 }
 
 func (p *PluginManager) QueryPlugins() string {
-	query := "?"
-	for _, plugin := range p.Plugins {
-		active, ok := plugin.Config["Active"]
-		if plugin.Type == EXTENSION && ok {
-			if active.(bool) {
-				query = query + plugin.Path + "=true&&"
-			}
-		}
-	}
-	return query
+	data, err := json.Marshal(p.GetConfig())
+	CheckAndLogFatal(err)
+	return "?config=" + string(data)
 }
 
 func (p *PluginManager) GetConfig() map[string]Config {
@@ -101,7 +103,7 @@ func (p *PluginManager) GetConfig() map[string]Config {
 func (p *PluginManager) SaveConfig() {
 	data, err := json.Marshal(p.GetConfig())
 	CheckAndLogFatal(err)
-	err = os.WriteFile("config.json", data, 0644)
+	err = os.WriteFile(path.Join(cwd, "config.json"), data, 0644)
 	CheckAndLogFatal(err)
 }
 
@@ -120,7 +122,21 @@ func CheckAndLogFatal(e error) {
 }
 
 func (p *PluginManager) AddPlugins() {
-	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{"Active": true})
-	p.AddPlugin(EXTENSION, "Swapper", "swapper", Config{})
-	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"Active": false})
+	p.AddPlugin(EXTENSION, "Docassets", "docassets", Config{
+		"active":    true,
+		"pet":       "",
+		"customPet": "",
+	})
+	// p.AddPlugin(EXTENSION, "Swapper", "swapper", Config{})
+	p.AddPlugin(SCRIPT, "DiscordRPC", "rpc", Config{"active": false})
+	p.AddPlugin(SCRIPT, "DeeeepioBGM", "deeeepio_bgm", Config{
+		"area21": "",
+		"area22": "",
+		"area25": "",
+		"area26": "",
+		"area37": "",
+		"area38": "",
+		"area41": "",
+		"area42": "",
+	})
 }
