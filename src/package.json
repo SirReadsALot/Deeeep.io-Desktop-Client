@@ -1,0 +1,20 @@
+{
+	"type": "module",
+	"scripts": {
+		"build": "node build/esbuild.js"
+	},
+	"dependencies": {
+		"preact": "^10.26.9",
+		"react": "npm:@preact/compat@^18.3.1",
+		"react-dom": "npm:@preact/compat@^18.3.1"
+	},
+	"devDependencies": {
+		"@types/react": "^19.1.5",
+		"@types/react-dom": "^19.1.5",
+		"cssnano": "^7.0.7",
+		"esbuild": "^0.25.4",
+		"esbuild-sass-plugin": "^3.3.1",
+		"postcss": "^8.5.3",
+		"tailwindcss": "^3.4.17"
+	}
+}
